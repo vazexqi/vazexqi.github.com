@@ -1,0 +1,31 @@
+--- 
+layout: post
+typo_id: 196
+title: Interesting features for Eclipse 3.2
+---
+<p>
+<a href="http://www.eclipse.org/">Eclipse</a> is one of the best IDE for Java. As a matter of fact, it if my preferred IDE for developing Java applications. However, writing plug-ins for Eclipse itself is no trivial task. And I have the utmost respect for people who worked on the Java Development Tools (JDT). Here are some of the features that seem useful for Eclipse 3.2
+</p>
+
+<p>All the new features can be accessed from the "What's New" menu item in Eclipse 3.2. Since I cannot seem to find the link to the web site (I could only find the one on Eclipse 3.1 <a href="http://help.eclipse.org/help31/index.jsp">here</a>) that details the features so we will have to make do with my descriptions. Whenever possible, I will stick with the Eclipse-given name for that feature.</p>
+
+<p>
+<ul>
+<li>Introduce Indirection refactoring <br />
+Introduce Indirection is a new refactoring that lets you redirect all callers of a method to a new method. The new method calls the original one. You can replace the default implementation of the new method by any other if you like. I think this would be really useful when I need to preserve the API for some old code.
+</li>
+
+<li>Refactoring history <br />
+Most of the refactorings offered by JDT are now tracked in a Refactoring History. The refactoring infrastructure stores detailed information about refactorings which have been performed on your workspace. With a proper history of all the refactorings, I would be able to revert nicely to an earlier state. Also, it helps people who are reading my code to actually see the evolution of it. If this history can be checked in to a code repository, that would be better since all my team members would have access to it.
+</li>
+
+<li>Rename Type updates similarly named elements <br />
+The Rename Type refactoring can now rename variables and methods with names similar to the renamed type. This feature helps to keep method and variable names synchronized with type names. For instance, if I have a class called Bar and a class variable called fBar, when I rename the class Bar to Foo, Eclipse can intelligently suggest that I rename fBar to fFoo.
+</li>
+
+<li>Category support <br />
+Categories can be defined in Javadoc comments for types, methods, and fields using the @category tag. This is actually part of the <a href="http://www-128.ibm.com/developerworks/library/j-annotate1/">annotations</a> features that was introduced in Java 5.0. Basically, Eclipse is smart enough to filter based on the categories. This makes the IDE feel most like Smalltalk where methods are placed in different categories. This definitely makes finding the right method much simpler.</li>
+</ul>
+</p>
+
+<p>For a more in-depth look at the other features for Eclipse 3.2, there is a nice article <a href="http://www.onjava.com/lpt/a/6644">here</a>.</p>

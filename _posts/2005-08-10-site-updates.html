@@ -1,0 +1,21 @@
+--- 
+layout: post
+typo_id: 93
+title: Site updates!
+---
+<p>
+Typo 2.5.3 was released and it has a much more comprehensive .htaccess file compared to the one that I was using previously. Actually, the one I was using was copied over from Typo 2.0.6 
+</p>
+<p>
+Anyway, the problem with my web server is now because of the static pages that Typo uses. Apache does not like serving those. Goodness knows why though, it would just report the infamous <b><pre>posix error: connection reset by peer</pre></b> that I have been seeing the past couple of days. The easiest solution would be to have Typo not create any static pages; that is not to have it cache anything. However, I have not figured how to do that yet.
+</p>
+<p>
+Also, I added new Ruby category for this web blog.
+</p>
+<p>
+Update: Actually after constructing this entry, I tweaked the .htaccess file and commented out the following line:
+<pre>
+# RewriteRule ^$ index.html [QSA]
+</pre>
+That prevents it from caching the index.html file so that it will always serve it. At least in this case, most users will not get a half loaded page since it is always regenerated. Of course, you lose some speed on this. But that is always more welcomed than a half loaded page. It seems that I could turn of caching for all files by tweaking with the .htaccess file but I will leave things as they are now. Future Typo releases might have a setting to toggle caching.
+</p>

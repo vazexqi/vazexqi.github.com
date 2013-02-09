@@ -1,0 +1,46 @@
+--- 
+layout: post
+typo_id: 224
+title: Performance... performance... performance
+---
+<p><a href="http://www.butunclebob.com/ArticleS.UncleBob.PerformanceTuning">ArticleS.UncleBob.PerformanceTuning</a>:
+</p>
+
+<blockquote cite="http://www.butunclebob.com/ArticleS.UncleBob.PerformanceTuning" title="ArticleS.UncleBob.PerformanceTuning"> "All this just leads back to the title. Performance tuning is perverse. What you think is going on is seldom what really is going on. Who could have guessed that limiting the outer iteration to the square root of the maximum would yeild just a 2X increase in performance? Who could have guessed that the algorithm itself was linear?!"
+</blockquote>
+
+<p>
+Optimizing is a dangerous game. It's always tempting to try to make small tricks here and there which you think are going to help your program run faster. However, unless you actually check out the speed increase, you will realize that those small tricks do not matter significantly. 
+</p>
+
+<p>
+I used to do little tricks such as that in C/C++ or Java as well. Maybe it's the nature of the language that allows such "optimizations". I don't do such optimizations when using Smalltalk or Ruby. At this stage, some of you might decide to jump in and say: 'cos that languages are so darn slow to begin with. Ruby might be slow (for now) but there are variants of Smalltalk that run almost on par with C.
+</p>
+
+<p>
+ For instance, in a function, I might think that a calling another function (say pow()) a couple of times is going to really slow. So I cache this value whenever possible by assigning it to some variable. Sure, <i>everyone</i> knows that calling pow() is going to slow so caching that value especially if you are going to use is going to make great difference right? Not true. Caching variables for something like this is what a compiler ought to be able to do by itself. Caching variables can be something short-termed because when you actually have to modify your code, you might forget to change all the places where you use that cached variable. Maybe you cached the value for pow(number, 3) and used it in four different places, then if you ever need to use pow(number, 2) you have to allocate a new variable and all that again. The changes that need to be made to your code to accommodate that change might not be trivial.
+</p>
+
+<p>
+So unless you have a profiler at hand <b>and</b> real world usage data, your suspicions on what part to optimize is going to be wrong. For an algorithm that is always going to be linear, O(n) at most what you can do is speed it up by a constant amount. Unless you change the algorithm, there is no way you can suddenly get to O(lg n) performance.</p>
+
+<p><a href="http://www.joelonsoftware.com/articles/FiveWorlds.html">Five Worlds - Joel on Software</a>:
+</p>
+
+<blockquote cite="http://www.joelonsoftware.com/articles/FiveWorlds.html" title="Five Worlds - Joel on Software"> "Embedded Software has the unique property that it goes in a piece of hardware and in almost every case can never be updated. This is a whole different world, here. The quality requirements are much higher, because there are no second chances. You may be dealing with a processor that runs dramatically more slowly than the typical desktop processor, so you may spend a lot of time optimizing. Fast code is more important than elegant code."
+</blockquote>
+
+<p>
+But then again, such tricks are important when you do not have a great compiler. For instance, on embedded systems. It's hard for people to write great C compilers for every microchip there is out there. You can be pretty sure that the C compiler you are using for the ATMegatel chip is not going to be as good as the one you have your desktop. In such cases, little tricks on the developer's part does work. That was pretty much the reason why people wrote in assembly last time when the first C compiler came out: it just wasn't good enough yet for demanding tasks like games that push the limits of the computer.
+</p>
+
+<p><a href="http://blog.qualityaspect.com/2006/08/26/the-emperors-new-clothes-syndrome/">The Emperor&rsquo;s New Clothes Syndrome</a>:
+</p>
+
+<blockquote cite="http://blog.qualityaspect.com/2006/08/26/the-emperors-new-clothes-syndrome/" title=""> "The problem is that although we know exactly what doesn't work right and how it should be fixed, most of us will never say anything. We don't say anything because there's a very good chance the minute we do we will be marked as uncooperative, pessimistic, or simply detached from the business reality."
+</blockquote>
+
+<p>
+So the next time your team member suggests so clever little optimizing trick, please think it through before actually implementing it. Most clever little tricks that used to work great in the past might not be so necessary anymore. Things like loop unravelling should definitely be left to the compiler so that you do not generate weird amounts of code that no one else can clean up after you. Seriously, think about it. The same goes for over-engineering, I guess but that would require more articles before I can come to a valid conclusion.</p>
+
+<small>I read the three articles I quoted at different times during the week but I clobbered them together just now and they actually fit rather nicely. I hope.</small>

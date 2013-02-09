@@ -1,0 +1,133 @@
+--- 
+layout: post
+typo_id: 301
+title: Thoughts on the iPhone SDK
+---
+<small>
+As I am writing this, I am also partly listening to the <a href="http://www.apple.com/quicktime/qtv/iphoneroadmap/"><em>Apple March 6 Event</em></a> where the iPhone SDK was first introduced. And halfway through, I cannot help but notice that Scott Forstall was practically <strong>emulating</strong> Steve Jobs. He even used phrases like "... a <em>screamer</em>...", "... we made it <em>even</em> better...", "... the iPhone is <em>the most advanced</em>... ", "... years ahead of any other...". He is definitely a smart guy but I think he is emulating Steve too much. It would have been nice to see his own personality. On the other hand, this also means that I probably have watched too much of Steve Jobs to know how he talks....
+</small>
+<br />
+<p>
+So, I downloaded the free version of the <a href="http://developer.apple.com/iphone/program/">iPhone SDK</a>. It comes in at a whopping 2.1 GB so it took about 20 minutes to download.
+</p>
+
+<p>
+After extracting it, the README has this to say:
+<ol>
+<li> It requires about 5.3 GB for installation.</li>
+<li> It requires OS X 10.5.2 on <strong>intel</strong> machines (some <a href="http://www.iphoneatlas.com/2008/03/10/surprise-iphone-sdk-also-works-on-powerpc-macs/">claim</a> that it can work on powerpc as well).</li>
+</ol>
+</p>
+
+<p>
+There is the option to keep Xcode 3.0 and Xcode 3.1 Beta that comes with the iPhone SDK on the same machine. I did not choose this option so it replaced my original developers tools (meaning that I did not need to sacrifice extra disk space at the expense of a possibly buggy beta version Xcode 3.1).
+</p>
+
+<p>
+I tried some of the sample apps from the iPhone developer site (it uses a generic URL of http://developer.apple.com/iphone/samples/index.action which checks to see if you are authenticated).
+</p>
+
+<p>
+Here are the ones that I tried:
+
+<ul>
+<li>
+<strong>Kalimba</strong> - Supposed to be a replica of an African thumb piano. We should be able to strike each bar and have a musical note sound. It failed miserably on the iPhone simulator -- sound will not play and the piano refused to rotate to landscape mode. See this <a href="http://discussions.apple.com/thread.jspa?threadID=1433035&tstart=15">thread</a>.  Here's a picture to show what I mean:
+</li>
+<br />
+<a href="http://www.flickr.com/photos/vazexqi/2325087451/" title="Kalimba on the iPhone Simulator by vazexqi, on Flickr"><img src="http://farm4.static.flickr.com/3176/2325087451_cd1f2de533.jpg" width="500" height="404" alt="Kalimba on the iPhone Simulator" /></a>
+<br/>
+<small> This is one of the examples for the iPhone SDK. Unfortunately, it does not seem to work properly on the simulator â€“ sound doesn't work and it refuses to rotate into landscape mode. </small>
+<br />
+<li>
+<strong>Jigsaw</strong> - Just a simple jigsaw puzzle. Works fine.
+</li>
+<br />
+<li>
+<strong>TheElements</strong> - Shows the periodic table with the possibility to view each element's page on wikipedia. When I clicked on the link to wikipedia, the simulator crashed gloriously -- no warnings, no output to console. It just crashed. <em>After some playing around, I discovered that it crashes when you run it immediately after it opens up in the emulator. Instead, if you go to the home screen and then activate TheElements application, then opening a link would work!</em>
+</li>
+<br />
+<li>
+<strong>GLGravity</strong> - Draws the canonical OpenGL teapot and allows you to rotate it by rotating and tilting your iPhone. This refused to run on the simulator -- claiming that it needs to run on an iPhone.
+</li>
+</ul>
+</p>
+
+<p>
+I have to agree that the iPhone SDK has a lot to offer. If you don't believe me, just watch the <a href="http://www.apple.com/quicktime/qtv/iphoneroadmap">video</a>. The demo comes on at about 30 minutes through. It's akin to writing for a mini version of OS X with the addition of an impressive user interface, multi-touch control and internal accelerometers. Games will definitely benefit from this. So it should be easy for most developers to get started once they familiarize themselves with the new human interface guidelines.
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/2325987514/" title="Spore on the iPhone by vazexqi, on Flickr"><img src="http://farm4.static.flickr.com/3023/2325987514_8fcf01ea82.jpg" width="500" height="380" alt="Spore on the iPhone" /></a>
+<br />
+<small>Spore on the iPhone. It uses the accelerometer on the iPhone for controls. </small>
+</p>
+
+<p>
+However, as impressive as the SDK is, it also has some shortcomings which can't be ignored. Here's why (some of these might change when iPhone 2.0 debuts but I doubt it):
+</p>
+
+<ol>
+<li><strong>No garbage collection.</strong>
+<br />
+<a href="http://developer.apple.com/iphone/gettingstarted/docs/creatingiphoneapps.action">Creating an iPhone Application</a>:
+<blockquote>
+Note: iPhone OS does not support memory management using the garbage collection feature that is in Mac OS X v10.5 and later.
+</blockquote>
+Maybe most Objective-C developers love doing manual reference counting but this seems like something that should be addressed. After all, <a href="http://code.google.com/android/">Google's Android</a> platform supports this. Moreover, Objective-C 2.0 already supports it so garbage collection could have been enabled from the beginning.
+<br />
+<br />
+Some might argue that garbage collection adds extra performance overhead. But consider what happens when your app starts leaking memory all over the place. And with all the <a href="http://www.cs.utexas.edu/users/oops/papers.html">rich history</a> that garbage collection has, it's really amazing that companies don't really start to take it seriously.
+<br />
+<br />
+In fact, during the video, they showcased several different developers creating fantastic prototypes for the iPhone in two weeks. I suspect that development and debugging time could have been reduced <em>more</em> if only garbage collection was enabled. =)
+</li>
+<br />
+<li>
+<strong>Crippled simulator</strong>
+<br />
+Not sure if this will change in the future but the current simulator is rather dumb and featureless. You cannot even trigger the hard buttons (like the volume UP/DOWN, silencer, top button). The only button you can activate is the home button -- the one at the bottom of the screen. And no, you can't simulate the features of the accelerometer.
+<br/>
+<br />
+It does however support the two-finger gesture if you hold on the OPTION key on your keyboard.
+<br />
+<br />
+I suspect that this is a ploy by Apple to get people to i) buy iPhones to test on b) subscribe to the $99/year developer deal to get your app on to the iPhone. After all, how are you going to test your next greatest app that relies on the accelerometer if the simulator cannot even handle it.  However, of my three criticisms, this might be the easiest one to fix.
+<br />
+<br />
+Google's Android emulator is currently better but that could be because there <em>isn't an actual phone</em> to run it on yet!
+</li>
+<br />
+<li>
+<strong>$99/year (yes, it's PER YEAR!)</strong>
+<br />
+<a href="http://www.apple.com/pr/library/2008/03/06iphone.html?sr=hotnews">Apple Announces iPhone 2.0 Software Beta</a>
+<blockquote>
+During the beta iPhone SDK program, a limited number of developers will be accepted into Appleâ€™s new iPhone Developer Program and offered the ability to get code onto iPhones for testing. The Standard Program costs $99 (US) per year and gives members an iPhone SDK and development tools; access to pre-release iPhone software; technical support; the ability to get code onto iPhones for testing; and distribution of applications via the new App Store. The Enterprise Program costs $299 (US) per year.
+</blockquote>
+<br/>
+To even get your app <em>for testing</em> onto the iPhone you need the special version of the SDK or a special license. This is weird since that means that I cannot even write an app for <strong>MYSELF</strong> and install it on my phone just for my own <strong>PERSONAL</strong> use.
+<br />
+<br />
+Plus, right now no one can install your app unless you list it on iTunes (which minimally also requires the $99/year contract).
+<br />
+<br />
+You can argue that this annual fee is not really a problem with the SDK but I think it is. After all, without paying the fee, your SDK basically allows you only to experiment and not actually get anything onto your iPhone.
+<br />
+<br />
+I think the $99/year (or $299 for Enterprise) fee is somehow used to do code signing which I think is a weird way to guarantee that your program is non-malicious. I could be wrong.
+<br />
+<br />
+Also, after having to pay $99 would anyone release your app for free??!! I look forward to seeing how many free apps there will be. My prediction is that apps that are somehow tied to a desktop app that costs money (for instance, Transmit, NetNewswire, etc) might be free since the cost is absorbed by the desktop app.
+<br />
+<br />
+It would be interesting to see how it would compete with Android in terms of interested developers. I am not sure if it is a good idea to actually get developers to pay to actually use the development tools.
+<br />
+<br />
+I do like the idea of paying the yearly fee to have Apple list your product for you on iTunes but it would be good to offer developers the choice of distributing their own applications if they want. In fact, just being able to install your <strong>own</strong> app on your <strong>own</strong> phone would be fantastic!
+</li>
+</ol>
+
+<p>
+So while the SDK definitely has a lot to offer, it also has some serious shortcomings that might discourage some developers. But with all things Apple, they certainly won't mind ostracizing some developers in favor of others....
+</p>

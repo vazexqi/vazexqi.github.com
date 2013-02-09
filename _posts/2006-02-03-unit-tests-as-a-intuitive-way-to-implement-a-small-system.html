@@ -1,0 +1,26 @@
+--- 
+layout: post
+typo_id: 155
+title: Unit tests as a intuitive way to implement a small system
+---
+<p>
+Unit testing is not only for making sure that your code works. For people familiar with Kent Beck's <a href="http://brain.cs.uiuc.edu:8080/SEcourse/Danny's+summary+on+Test-Driven+Development">Test-Driven Development</a> this should come as no surprise. Even though I am familiar with it, I have not seen it done nicely yet. In fact, most of time I am still tempted to write the code first and then write the code because they system gets too confused by the unit tests when nothing has been implemented yet.</p>
+<p>
+However, this is not so with Smalltalk. If there is one redeeming factor for Squeak's mouse affinity (maybe that is why they call it Squeak since your mouse practically squeaks from having to move it to every input box), it will be its dynamic programming environment and excellent debugger. Its SUnit Test Runner is also smart enough that it does not choke on code that has not been implemented. Also, it makes it easy to share those test cases with everyone but making it easy to distribute them as projects.</p>
+
+<p>
+It feels so much easier to develop with those tests since it obviates most of the long instructions that come with a machine problem. No longer would you have to wade through paragraphs of vague information when the test cases show you what needs to be done. And the tests let you know where you need to implement the methods too since the debugger takes you to the offensive line of code and shows you the call stack up to the point when you click on it.</p>
+
+<p>
+But the true beauty of Smalltalk is the fact that you not only test the functionality of your methods, but also get a chance to test if your implementation is what is expected of you. While some of the tests only test the end result, most of the time you are also interested in whether you have fulfilled the non-technical requirements, such as your code organization. Smalltalk makes it possible to do so. Smalltalk's dynamic environment, lets you query the methods and classes themselves. Want to ensure that the students do not implement duplicate code? Just query their classes and their methods. I am sure there are other abilities for Smalltalk that would make it even more suitable to check if you have refactored the code or implemented it with some suitable design pattern. </p>
+
+<p>
+Having all the tests for the assignment makes it easy to see when you are actually done. You know what else you have to do and you can proceed with confidence once you have completed a particular subsection. It makes it easier to develop since you do not need to worry whether your current implementation fails part of the requirements.
+</p>
+
+<p>
+Refactoring also becomes a more controlled process once you have tests to check whether your changes actually broke something. Without good tests, refactoring is almost like a gamble.
+</p>
+
+<p>
+And did I mention that seeing that bar turn green once all the tests pass is a really great feeling?</p>

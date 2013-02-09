@@ -1,0 +1,36 @@
+--- 
+layout: post
+typo_id: 183
+title: Vim 7.0
+---
+<p><a href="http://www.linux.com/article.pl?sid=06/05/01/2235242">Linux.com | First look at Vim 7</a>:
+</p>
+
+<blockquote cite="http://www.linux.com/article.pl?sid=06/05/01/2235242" title="Linux.com | First look at Vim 7"> "The final release of Vim 7 is just around the corner, and it brings a number of new features to the venerable editor, including spell checking, omni completion for several programming and markup languages, tab pages, undo branches, and several other features that are worth upgrading for."
+</blockquote>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/140018811/" title="Photo Sharing"><img src="http://static.flickr.com/49/140018811_214b4e8d72.jpg" width="380" height="500" alt="gVim 7.0 Beta" /></a>
+</p>
+
+<p>
+As you can see, there is a tab bar (it can be repositioned). The command to invoke the tab bar is <code>:tabnew</code>. And to cycle through those tabs, use <code>gt</code>. Of course, since I am using gVim, the mouse works fine too.</p>
+
+<p>
+Another feature is spell completion. You can activate it by issuing <code>:setlocal spell spelllang=en_us</code>. There are some other languages but EN_US is the only one I have tried. You can even get a nice spelling suggestion by doing <code>z=</code></p>
+
+<p>
+Finally, there is a new interface for word completion. The same commands are used to invoke it: <code>^N</code>. This feature can now be tied in for some intelligent code completion via <code>omnifunc</code>. Update: To turn this feature on, you can do something like <code>set filetype=on</code> and <code>:filetype plugin on</code>. Enabling those two settings appears to give me some smarter text completion while I was testing it on a HTML page. You invoke the intelligent completion using Ctrl-x Ctrl-o. For instance it knows that the next tag to complete will be the one that I am currently under. The annoying thing is that for the HTML plugin, you can only scroll with the arrow keys (for me, at least) and you cannot continue typing to narrow your search.</p>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/142236147/" title="Photo Sharing"><img src="http://static.flickr.com/56/142236147_3b6a145b4e.jpg" width="499" height="338" alt="Auto completion when you have specified the </ characters" /></a>
+
+<br />
+
+<a href="http://www.flickr.com/photos/vazexqi/142236148/" title="Photo Sharing"><img src="http://static.flickr.com/53/142236148_5a3e550275_o.png" width="499" height="338" alt="Auto completion when only the '<' character has been typed" /></a>
+</p>
+<p>
+If you have been using vim for some time now, this should be a good upgrade. Grab the universal build for the Mac<a href="http://macvim.org/OSX/index.php#Downloading"> here</a>.</p>
+
+<p>
+Update: <a href="http://www.macdevcenter.com">MacDevCenter.com</a> has a nice <a href="http://www.macdevcenter.com/pub/a/mac/2006/07/11/vim-is-easier-than-you-think.html">article</a> detailing how to install Vim 7.0 on your mac. Also, take a look at this <a href="http://amix.dk/index.py/permanentLink?id=130">page</a> that shows some of the new features of Vim in .gif files.</p>

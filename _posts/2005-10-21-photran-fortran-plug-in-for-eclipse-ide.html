@@ -1,0 +1,20 @@
+--- 
+layout: post
+typo_id: 119
+title: "Photran: Fortran plug-in for Eclipse IDE"
+---
+<p>
+I cannot believe that I did not mention anything about this project. I have been working on it since Summer 2005 and we have made significant progress. Of course, most sane people would be wondering why in the world are we encouraging Fortran programmers to continue programming in that obsolete and obscure language. Well, academic issues aside, there is still some reason to support the Fortran language: the sheer number of projects that were previously written in it. Fortran, I believe is the oldest programming language. Lisp came after it.</p><p>So what have we accomplished? By we, I mean my <a href="http://www.pairprogramming.com/">Pair Programming</a> partner and myself. Well, we are in-charge of the editor. There is a <a href="http://wiki.cs.uiuc.edu/photran/Possible+Fixed+Form+Editing+Features">list of tasks</a> that we have to do to support Fixed Form Editing. Briefly, Fixed Form editing is a reminiscence of the days of punch cards where you had to carefully write your code starting at designated columns. Here is a picture of what it looks like:
+<br />
+<a href="http://en.wikipedia.org/wiki/Image:Hollerith_card.jpg"><img src="http://upload.wikimedia.org/wikipedia/en/8/84/Hollerith_card.jpg" alt="Fortran punch card" height="201 px" width="450 px" /></a>
+<br />
+</p>
+<p>So, even though those columns do not really make any sense in a text editor, some of the code has to been maintained just for backwards compatibility. And according to<a href="http://st-www.cs.uiuc.edu/users/johnson/"> Prof. Johnson</a> and <a href="http://www.laputan.org/">Brian Foote</a>, a fixed form source code should be able to compile as valid modern day Fortran code! This makes the task interesting since we have to make it as convenient as possible for the users to edit fixed form code. And, unsurprisingly, most hard core Fortran coders turn to Emacs to help them. So right now, high on our task list is to emulate how Emacs handles fixed form editing. I will confess right now that I am a VIM user and I am not proficient in the Emacs way of things at all, so this is quite a challenge.</p><p>What we managed to come up with so far include a horizontal ruler and vertical lines to indicate important columns. We have also implemented tabbing and auto-indenting to make it easier to code. Additionally, we have also worked on syntax coloring. Fortunately <a href="http://st-www.cs.uiuc.edu/users/johnson/">Jeff</a>, has done a good job by providing us with the proper lexer for this. Here is an explanation why we needed our own lexer:
+<pre>
+	if ( if .gt. if ) then
+	...
+</pre>
+Notice that <code>if</code> is being used as a conditional operator as well as identifiers (the <code>if .gt. if</code>)! This is perfectly legal Fortran code. The compiler will infer what is meant based on the context. This will definitely shock some of you. When I first say this, I was really shocked as well. And I am really glad that modern languages are sane enough not to let keywords be used as identifiers. This lexer will also be important once we try to incorporate refactoring facilities into the plug-in.
+</p><p>Here is a screenshot of what the program looks like currently. This is still a development version so you cannot grab it yet. You may, however, grab the latest beta version from <a href="http://www.eclipse.org/photran/">Eclipse: Photran</a>.
+<div><a href="http://www.flickr.com/photos/vazexqi/54777569/" title="Photo Sharing"><img src="http://static.flickr.com/31/54777569_383fd0deed.jpg" width="500" height="380" alt="Photran" /></a></div></p><p>
+So right now, we have also created an installer for Windows that has Photran, <a href="http://www.mingw.org/">MingW</a> with gdb, g77, g95 and make. This convenient installer should make setting up a Fortran development environment as simple as possible. Everything seems to be working now except for g77. After a few more tests, we should be able to release a beta version.</p>

@@ -1,0 +1,47 @@
+--- 
+layout: post
+typo_id: 226
+title: Refactoring Ruby
+---
+<p><a href="http://www.butunclebob.com/ArticleS.UncleBob.RefactoringParalysis">ArticleS.UncleBob.RefactoringParalysis</a>:
+</p>
+
+<blockquote cite="http://www.butunclebob.com/ArticleS.UncleBob.RefactoringParalysis" title="ArticleS.UncleBob.RefactoringParalysis"> "I've been working on on the Harry Potter problem in Ruby.  I have a version that works, and now I'd like to refactor it.  I'm using Text Mate as my 'ide'.  I find myself in a state of paralysis.  There I things I'd like to change, but I know the cost will be high, so I think and think about them instead of acting.  This is not how I work in Java with IntelliJ.  With IntelliJ I do my thinking by acting!  I change variable names; I extract methods; I create and destroy base classes; in short I refactor madly.  But in Ruby, without a good refactoring tool, I sit and stare at the code.  I know what I have to do.  I just have to break through the fear and start refactoring; and I will.  But I was amazed at how intense the fear of changing code is when you don't have the appropriate tools.  Jetbrains, or someone, you really have to make a refactoring tool for Ruby!!!"
+</blockquote>
+
+<p>
+The only apparent project on refactoring for Ruby is <a href="http://www.kmc.gr.jp/proj/rrb/index-en.html">this</a>. And it has not been updated for almost a year. Moreover, it uses Emacs which probably means that everything has to be done using lisp macros.
+</p>
+
+<p>
+That said, the idea of writing a refactoring browser for Ruby is pretty interesting. And one that I have been thinking of (but not trying to do yet) for almost a year. There aren't that many refactoring browsers for dynamically typed languages. 
+Smalltalk has one (and, mind you, was the first language to have <i>a</i> refactoring browser). </p>
+
+<p>
+So I am going to gather some more information on this subject and propose this as a master's thesis to Prof. Johnson. After all, being with at this university with the pioneers of refactoring means that there is definitely going to be a lot of people with enough experience. And there is always Don Robert's <a href="http://st-www.cs.uiuc.edu/~droberts/thesis.pdf">thesis</a> to help me get started.
+</p>
+
+<p>
+I would also like to know the importance of a refactoring tool for a dynamic and agile language such as Ruby. All the latest refactoring tools concentrate on Java and C# both heavyweight languages in their own class. Last summer, I worked on <a href="http://www.eclipse.org/photran/">Photran</a>: A plug-in for Eclipse that supports the Fortran language and has some refactoring. Even though I did not work on the refactoring part, I can tell that it was really hard work. Even now, the parser for Fortran is not as fast as most people are used to. 
+</p>
+
+<p>
+Some possible problems I can definitely think of:
+<ul>
+	<li>How to get at the syntax tree for Ruby. To make a refactoring browser, I would have to get hold of the syntax tree. I could scheme on this and make it be based on regular expressions but that would make it too rigid. Any slight variation in coding style would probably break it.</li>
+	<li>Which application to write it in? You have to write it in an application that people are already using. I know that a lot of people use Textmate and Emacs but both those editors do not provide any real tools to help in parsing the code.</li>
+	<li>What refactorings should be included? I mean there are a couple of standard options but what are the refactorings that most people use in Ruby? Are those refactorings going to be useful say for Rails?</li>
+	<li>Who would actually use this tool? Is there a market for this? You might argue that Smalltalk was never a major programming language. However, it was pretty big at the time the refactoring browser for it was being developed.</li>
+	<li>Smalltalk is a pure object-oriented language. Ruby allows you to write things  without classes? Would this make a difference? I am not too sure. There is a C refactoring browser written by one of Prof. Johnson's students so refactoring for procedural languages is definitely possible.</li>
+	<li>Is this even doable for a master's thesis? I am definitely going to try to get into the Ph. D program but if I cannot, I want to make sure that this is doable.</li>
+</ul>
+</p>
+
+<p>
+By the way, there definitely is interest in refactoring Ruby on the web:
+<ul>
+	<li><a href="http://jutopia.tirsen.com/articles/2005/10/18/refactoring-for-ruby-a-solution-to-the-first-component">Refactoring for Ruby: A solution to the first component?</a></li>
+	<li><a href="http://jutopia.tirsen.com/articles/2005/10/17/refactoring-for-ruby">Refactoring for Ruby</a></li>
+	<li><a href="http://dogbiscuit.org/mdub/weblog/Tech/Programming/Ruby/RubyMethodRenamed">Refactoring "Support" for Ruby</a></li>
+</ul>
+</p>

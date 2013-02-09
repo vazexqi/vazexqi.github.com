@@ -1,0 +1,23 @@
+--- 
+layout: post
+typo_id: 259
+title: ri/fastri with rubygems
+---
+<p>
+For some time, I was not able to get <code>ri</code> to read the documentation for the gems that I have installed. There seems to be multiple ways of doing this. I found this <a href="http://atomgiant.com/articles/2006/6">site</a> that gives details on the common ways. Some gems are kind enough to automatically install the documentation files by themselves. This makes it possible for <code>ri</code> to detect the documentation for that gem without any further configuration. However, the gems I am most interested in --the Rails gems-- do not do so automatically.</p>
+
+<p>
+The simplest way to get documentation for <b>all</b> your gems is to run <code>sudo gem rdoc --all</code>. Though this is the simplest method, it is also the one that is most fragile. When you run that command, it <b>must</b> finish the process of generating all the documentation for all your gems. A rogue gem that is improperly configured can mess the entire process up. I discovered this the hard way: the terminal would echo the fact that the documentation for the relevant Rails gems (activesupport, activerecord, etc) have been generated but because there was a failure toward the end, none of them were accessible. Most people will be able to run this command just fine and get the documentation for all the gems. However, when it fails, you can try the method below.
+</p>
+
+<p>
+What I am proposing is a more conservative route for generating the documentation: Generate the documentation for each gem on a as-needed-basis. If the gem can automatically generate the documentation for you then you need not run this step at all. For most people, all they need is the documentation for Rails. And if you are using TextMate, having the documentation detected by <code>ri</code> can be most <a href="http://pinds.com/articles/2005/11/14/rails-accessing-rails-documentation-from-textmate">convenient</a>.
+</p>
+
+<p>
+Here is what I did. Open two terminal windows. On one do <code>gem list</code>. This gives you a list of all the gems that you have installed. On the other terminal window, do <code>sudo gem rdoc [name_of_gem]</code> where you replace <i>[name_of_gem]</i> with the gem that you are interested in. You can use wilcards such as <code>active*</code> to match activerecord and activesupport. Do this for the gems that you are interested in. This way you avoid generating redundant documentation for gems that are installed as dependencies for other gems.
+</p>
+
+<p>
+Finally, if you are still using <code>ri</code>, you might want to take a look at <a href="http://eigenclass.org/hiki.rb?fastri+0.1.1"><b>fastri</b></a>. <code>fastri</code> is supposed to be much faster and more intelligent in its searching capabilities. If you are using <code>fastri</code>, you might need to rebuild the index for the server after generating the documentation. This can be done by running <code> fastri-server -b</code>.
+</p>

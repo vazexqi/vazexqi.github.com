@@ -1,0 +1,21 @@
+--- 
+layout: post
+typo_id: 88
+title: Bumped up from Typo-2.0.6 to Typo-2.5.2
+---
+<p>
+There is something a bit peculiar about this implementation of Typo. For instance, the bug about having NULL values in the text-filter column in the article tables i in the typo database has not been resolved. Thus, I had to actually go in and fix that. Fortunately with <a href="http://www.mysqlfront.de/">MySQL-front</a>
+I was able to identify the culprit and followed the instructions <a href="http://rubyforge.org/pipermail/typo-list/2005-July/000344.html">here</a> to fix it.
+</p><p>
+The default theme is now Azure, again. I wished they stick with the Kubrick theme. But the good new is that the way themes are set up now, switching between themes is simple enough.
+</p><p>
+I really like the new static web page cache generation thing. This saves a lot of time from having to dynamically generate files that have been requested before.
+</p><p>
+Anyway, I am going to try to fix the corruption and posix error for files stored in the typo/public/files folder. This has been something that has been bugging me for some time. It seems that I must have screwed something up somewhere because now all my images that I uploaded will not work! This is really really weird.
+</p>
+<p>
+This seems to be pretty serious. I have not been able to fix it yet. Right now, as long as I try to serve any image larger than 40kb in size, it gets truncated. Apache's error logs do not report anything other than a 200 request (which means that the request was good; also the bytes it transmitted corresponds to the actual file size). However, in Safari and other browsers, you get the error of Posix Error: Connection reset by peer! What gives? Some people on the web are having this problem too but theirs seems to be connected to php somewhat.
+</p>
+<p>
+For a simple test, try loading <a href="http://dan0581.urh.uiuc.edu/backpack.gif">this</a> and see if there are any errors.
+</p>

@@ -1,0 +1,73 @@
+--- 
+layout: post
+typo_id: 314
+title: Modifying plugin.xml of Existing Eclipse plugins
+---
+<p>
+I have been taking a deeper look at <a href="http://mercurial.selenic.com/wiki/">Mercurial</a> for some of my projects. And I was interested in looking at its source code. I usually do a lot of Java development and have gotten used to all the nifty navigation features that Eclipse/NetBeans/IntelliJ have to offer such as "Jump to Declaration", "Open Type Herarchy", etc. So I wanted to find a good IDE for going through the Mercurial source code, which is written in Python. Apparently, there isn't a de-facto IDE for Python. But <a href="http://pydev.org/">PyDev</a> comes close.
+</p>
+
+<p>
+Unfortunately â€“ I am not sure whether this was intentional or not â€“ the keyboard shortcuts for PyDev aren't very platform friendly. Instead of the default modifier key (Ctrl on Windows/Linux and &#8984; on Mac) the developers have hardcoded the modifier to Ctrl for all platforms. So to invoke the I would have to use Ctrl + Shift + T instead of &#8984; + Shift + T.
+</p>
+
+<p>
+So how do we change the keybindings? Well, there is an extension point in the Eclipse plugin architecture for specifying the keybindings. Take a look at <a href="http://help.eclipse.org/galileo/index.jsp?topic=/org.eclipse.platform.doc.isv/reference/extension-points/org_eclipse_ui_bindings.html">org.eclipse.ui.bindings</a> And those keybindings are stored as plain text in a plugin.xml file. For PyDev, it would be in the <em>plugins</em> folder of your Eclipse installation. In my case, it was under eclipse-galileo/plugins/org.python.pydev_1.5.0.1251989166/plugin.xml
+</p>
+
+<p>
+So we can edit the plugin.xml file by looking for the 
+<pre>
+      ...
+      &lt;key
+            sequence="Ctrl+Shift+T"
+            contextId="org.python.pydev.ui.editor.scope"
+            commandId="org.python.pydev.editor.actions.pyShowBrowser"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"&gt;
+      &lt;/key&gt;
+      ...
+</pre>
+
+and changing the Ctrl to M1 which stands for the default modifier key on your platform i.e. 
+
+<pre>
+      ...
+      &lt;key
+            sequence="M1+Shift+T"
+            contextId="org.python.pydev.ui.editor.scope"
+            commandId="org.python.pydev.editor.actions.pyShowBrowser"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"&gt;
+      &lt;/key>
+      ...
+</pre>
+
+</p>
+
+<p>
+Unfortunately, we are not done. And it took me some time to figure out the problem. Apparently, Eclipse doesn't read the plugin.xml every time. Instead, it caches a version of it somewhere. So even if we modify the plugin.xml, Eclipse might not know about it.
+</p>
+
+<p>
+What we  have to do is to <em>tell</em> Eclipse to clean its cache. And we can do that by using the  <code>-clean</code> option in its eclipse.ini file. On the Mac, this file in located in Eclipse.app/Contents/MacOS/eclipse.ini (you need to right-click on the Eclipse application and select "Show Package Contents").
+</p>
+
+<p>
+Change the first line so that it read something like this:
+<pre>
+-clean
+-startup
+../../../plugins/org.eclipse.equinox.launcher_1.0.201.R35x_v20090715.jar
+--launcher.library
+...
+</pre>
+</p>
+
+<p>
+Now when Eclipse starts up, it will clean its cache and read the newly modified plugin.xml file. Once we are done with this step, we should remove the <code>-clean</code> option since this causes Eclipse to start up slower. And <strong>who</strong> would want Eclipse to start up any slower than it already does?!
+</p>
+
+<p>
+And this is what the keybindings look like after the changes:
+</p>
+
+<a href="/files/pydev.png" title="PyDev with Mac-friendly Keybindings"><div style="text-align:center;"><img src="/files/pydev.png" alt="PyDev with Mac-friendly Keybindings" border="0" width="375" height="340" /></div></a>

@@ -1,0 +1,43 @@
+--- 
+layout: post
+typo_id: 129
+title: Working on Berkeley Mica2 Mote
+---
+<p>
+My latest project involves making use of what we have learned in our Embedded Systems class and interfacing it with the <a href="http://www.xbow.com/Products/productsdetails.aspx?sid=72">Berkeley Mica2 Mote</a>. The mote is definitely capable of more advanced stuff but right now it is just being used to transmit information wirelessly to one another.</p>
+
+<p align="center">
+<a href="http://www.flickr.com/photos/vazexqi/69598091/" title="Photo Sharing"><img src="http://static.flickr.com/6/69598091_fd7873ee9f_m.jpg" width="240" height="180" alt="Mica2 Mote" /></a>
+<br />
+<small>Mica2 Mote</small>
+</p>
+
+<p> In a nutshell, this project involves two mote and two AVRBoards. One mote and one AVRBoard make a complete node. So we have two nodes in our scenario. One node will measure the angle of a seesaw and send that measurement to the other node. Based on the sent value, the other node will compute a value to be send to the water pumps to either drain or fill water into the seesaw so that it balances itself. The value computed will be based on a simple <a href="http://www.engin.umich.edu/group/ctm/PID/PID.html">PID controller</a> feedback system.</p>
+
+<p align="center">
+<a href="http://www.flickr.com/photos/vazexqi/69591863/" title="Photo Sharing"><img src="http://static.flickr.com/18/69591863_38e3733b17_m.jpg" width="240" height="160" alt="AVRBoard"/></a>
+<br />
+<small>AVRBoard showing the values of the PID controller.</small>
+</p>
+
+<p>Designing the PID controller was already done in a previous lab assignment and was not too hard. What I needed to do was interface the motes with the AVRBoard.</p>
+
+<p align="center">
+<a href="http://www.flickr.com/photos/vazexqi/69598092/" title="Photo Sharing"><img src="http://static.flickr.com/9/69598092_1696b698e3_m.jpg" width="240" height="180" alt="Programming board to interface with the mote" /></a>
+<br />
+<small>Mote programming board with no mote connected.</small>
+</p>
+
+<p>By itself, the motes has no way of connecting to the AVRBoard. Instead what we need is to place the mote on a programming board. This programming board features a serial port and a parallel port. The parallel port is used to "program" the mote; that is we send a .hex file to the mote that tells it how to function. For the first stage of the project, one of the motes will be configured to send out a sine wave and the other will be configured to function as a receiver. The wireless signal is based on an implementation of <a href="http://rfc.dotsrc.org/rfc/rfc1663.html">RFC 1663</a> protocol. The settings for this connection is 57600/8/1/NONE.</p>
+
+<p>
+The main issue I had over the past few days was getting the programming board connected with the AVRBoard. Both of them have a male-type serial port. At first I thought that just having a converter for a standard serial cable would work. However, it does not. I only realize the problem after consulting with my previous project working with the serial port for another class. What I needed was a <a href="http://www.lammertbies.nl/comm/info/RS-232_null_modem.html">null modem</a>. It basically switched the pins that are used for transmitting and receiving so that the communications can go through.</p>
+
+<p align="center">
+<a href="http://www.flickr.com/photos/vazexqi/69598093/" title="Photo Sharing"><img src="http://static.flickr.com/35/69598093_2218880667_m.jpg" width="240" height="180" alt="Completed setup" /></a>
+<br />
+<small>Mote connected placed on the programming board and connected to a serial cable. </small>
+</p>
+
+<p>
+So at this stage, I am able to communicate between the sender mote and the receiver mtoe and plot the result on the AVRBoard. The next stage will involve actually marshalling packets to be send over the wireless network.</p>

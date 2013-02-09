@@ -1,0 +1,72 @@
+--- 
+layout: post
+typo_id: 211
+title: Upgraded to Typo 4
+---
+<p>
+	Typo 4.0 seems to be a major release from Typo 2.6.0. I remember the panic that occurred when Rails 1.1. was released and how it broke my Typo installation. Fortunately, freezing the version of Rails was a good solution that has sustained my blog until today. Anyway, Typo 4.0 was released a couple of days back and there was no major bugs reported for the past few days. So, I took the plunge into upgrading my blog. And in the process moved it over to a new subdomain.
+</p>
+
+<p>
+	Upgrading Typo is a relatively pain free process especially since there is now a ruby gem for first time users. However, there are some issues that deterred me from using the gem. First: railsapphosting.com does not have that gem installed (yet?). Second: the gem wants to use sqlite as the database backend. I much prefer using MySQL since I will save myself the trouble of converting my previous blog entries into sqlite format.
+</p>
+
+<p>
+	Anyway, here is how I upgraded. Some of these steps might not be necessary especially if you have a decent backup of everything. However, I am using the safe route here because I really do not want to lose any of my previous blog entries.
+</p>
+
+<p>
+	<ol>
+		<li>Create subdomain<br />
+			I created a subdomain called blog.vazexqi.com from the CPanel interface. This is probably specific to railsapphosting.com but all other hosts should have some web-based interface for doing this. Anyway, the steps are clearly described <a href="http://wiki.railsplayground.com/railsplayground/show/How+To+Use+Rails+at+RailsPlayground">here
+</a>.</li>
+		<li>Create new database<br />
+			I plan to keep my old database around for the time being so that the original website can still access it. I noticed that Typo 4.0 has a new schema compared to Typo 2.6 so there is no way to share the same database between different installations. Again, the CPanel in railsapphosting.com offers a good way to set up a new MySQL database. Make sure that you remember the database name, username and password. You will need them when you fill in the database.yml file in Typo.</li>
+		<li>Transfer old database to new database<br />
+			There must be an easier way to do this but I did it using two commands.
+			<ol>
+				<li><code>mysqldump -u &lt;username&gt; -p &lt;database_to_export_from&gt; &gt; &lt;filename&gt;.sql</code></li>
+				<li><code>mysql -u &lt;username&gt; -p &lt;database_to_import_into&gt; &lt; &lt;filename&gt;.sql</code></li>
+			</ol>
+			Originally, I wanted to use <a href="http://www.theonline.org/cocoamysql/">CocoaMySQL</a> but it was not able to do it and keep throwing NULL errors at me.</li>
+		<li>Obtain Typo 4.0<br />
+			Get it and untar it into the directory that we created from Step 1. We must be careful not to overwrite the dispatch.* files inside the public folder.</li>
+		<li>Fill in config/database.yml<br />
+			Use the fields from Step 2 above. This should be fairly simple. For the time being, we are going to run it in development mode. So make sure you fill in the right fields in the development slot. Also, fill in the same details for the production mode slot. </li>
+		<li>Do a rake migrate<br />
+			In the Typo folder that you have untarred, execute <code>rake migrate</code>. This will migrate the database from version 2.6 to the newer version. Make sure that there are no errors. </li>
+		<li>Edit config/environment.rb<br />
+			Uncomment the line that allows you to run your rail application in production mode. This is one way of forcing your application into production mode. And it seems like the easiest way.</li>
+		<li>Initial login<br />
+			Since you upgraded from a previous installation, your username/password will still work. Log in to &lt;the_domain_from_step1&gt;/admin. You can tweak around with whatever settings you want. However, the MOST important step is to go to the Themes tab and activate one of the two themes included by default. Without doing this, your blog will not render and will throw a Rails Application Error.</li>
+			<li>Visit your blog<br />
+				Try opening your blog at this stage. It should appear with no problems. Also try posting a new entry.</li>
+			<li>Finishing touches<br />
+				Install a new theme, configure your domain names and do whatever else it takes to make you satisfied with your new Typo blog.</li>
+	</ol>
+</p>
+
+<p>
+In conclusion, upgrading to the latest version of Typo is not as hard as it seems. In fact, it was rather painless for me except for the problems copying my previous database over using CocoaMySQL. </p>
+
+<p>
+One new feature of Typo 4.0 is support for macros. One of those macros allow nicely formatted code! At the moment, it only supports ruby, yaml and xml so for Scheme code I will still have to revert to vi for the 2html.vim. Here is a sample of the syntax-highlighted code blocks:
+
+<typo:code lang="ruby" linenumber="true">
+class Foo
+  def bar
+    "abcde"
+  end
+end
+</typo:code>
+</p>
+
+<p>
+The <a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR&topic_id=1&topic=">Sparklines</a> macro is also cool. Here is an example: <typo:sparkline data="5 10 15 20 5 3 2 4 5 6 7 82 4 4 5 61 4"/>
+</p>
+
+<p>
+Here is a <a href="http://blog.aidenbordner.com/articles/2006/07/24/getting-typo-4-0-0-running-on-dreamhost">link</a> to another site detailing how to get Typo 4.0 to work on DreamHost.</p>
+
+<p>
+<a href="http://wiki.railsplayground.com/railsplayground/show/How+To+Upgrade+to+Typo+4.x">Here</a> is the guide from the railsplayground wiki. Replace the file with wget http://rubyforge.org/frs/download.php/12330/typo-4.0.2.tgz if you are upgrading to Typo 4.0.2 to fix the issue with Rails 1.1.4</p>

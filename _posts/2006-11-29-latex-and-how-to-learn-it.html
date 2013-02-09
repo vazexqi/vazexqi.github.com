@@ -1,0 +1,38 @@
+--- 
+layout: post
+typo_id: 256
+title: Latex and how to learn it
+---
+<p>
+I spent Thanksgiving break getting acquainted with Latex and its capabilities. I have heard good things about Latex and seen the documents produced using it so it was natural for me to be interested. I have been using a lot of HTML to write my blogs as well as some rather lengthy articles (<a href="http://www.cs.uiuc.edu/class/fa06/cs242/lectures/subversion.html">source control with subversion</a> and <a href="http://softwareengineering.vazexqi.com/files/pattern.html">convention over configuration</a>) meant for the web. However, HTML documents do not print too well. It is hard to add the margins, headers and footers and footnotes. Moreover, if I were to write anything with mathematical equations in it, Latex would be the <i>only</i> way to go. <i>Mathematica</i> is not bad but it is not free either.
+</p>
+
+<p>
+Since I was already familiar with HTML, I wanted to find the best way to use that knowledge to get started with Latex. Unlike HTML which can be rendered in any browser, Latex needs to be installed. There are various installations out there but since I already had <a href="http://www.macports.org/">MacPorts</a> installed, I just issued a <code>sudo port install teTeX</code> command. Once I got that installed, I just tried compiling some examples to get things working. Some examples for testing can be found <a href="http://www.windowsdevcenter.com/lpt/a/4670">here</a>.
+</p>
+
+<p>
+When starting with a new language, it is best to have a nice IDE with some convenient features. I remembered when I started with HTML I used to like Macromedia Dreamweaver before it became bloated. For Latex there are some visual editors (like word processors) out there but they do not have any obvious advantage compared to writing the commands by hand. After watching the Latex <a href="http://www.insidehighered.com/workplace/2005/11/30/tips">screencasts</a> for Textmate, I found that I like the features that it offers. So that is what I am using. <a href="http://www.xm1math.net/texmaker/">TexMaker</a> is a nice alternative if you want toolbars and all that. Having a proper editor makes editing and compiling easier. This is useful to have especially if you are tying out new commands.
+</p>
+
+<p>
+After deciding on a editor, it is time to find some decent documentation. There are a lot of built-in commands in Latex in the default package that it can be overwhelming. What I look for in documentations are two things: a detailed reference that I can refer to when I need to get something unusual done and a quick guide that I can flip through to get things done. I found a couple. For detailed reference, I like the <a href="http://sarovar.org/download.php/120/ltxprimer-1.0.pdf">Latex Tutorial - A Primer</a> and <a href="http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf">The Not-So-Short Guide to Latex</a>. For quick reference and to get started I like the guide on <a href="http://en.wikibooks.org/wiki/LaTeX">Wikibooks</a> since it has well divided sections.
+</p>
+
+<p>
+I will browse through the detailed documentation to get a rough idea of the features in the language. I might read some sections in-depth if they interest me. But generally, the idea is to get an overview of the features that are available and <i>what</i> those features are called. Knowing the terms for the features makes searching for them easier in the future.
+</p>
+
+<p>Also, don't forget that the local installation of TeTex also comes with documentation. The key to this is the command <code>tetex <i>&lt;some_package&gt;</i></code>. This is really useful if you want to lookup the documentation and examples on how to use certain packages.</p>
+
+<p>
+With all that setup, the best way to learn is now to experiment and use Latex for most of you writing tasks.
+</p>
+
+<p>
+And finally, once you get into the hang of thing, you discover a few tools that you should have. One useful tool for reading dvi files (most of the local documentation for Latex are in .dvi) is <a href="http://www2.ing.unipi.it/~d9615/homepage/texniscope.html">TeXniscope</a>. For making bibliographies, nothing beats <a href="http://bibdesk.sourceforge.net/">BibDesk</a>. And finally, if you need to embed math equations into presentations, <a href="http://ktd.club.fr/programmation/latexit.php">LaTeXiT</a> is very useful.
+</p>
+
+<p>
+There is still a lot that I need to learn about Latex but at least what I have here can hopefully help other get started. Latex is not for everything. I use Word less and less but when I need to have a paper written, I write the text in Word to get the benefit of its grammar checker. And even with the excellent and professional <a href="http://latex-beamer.sourceforge.net/">Beamer</a> package for Latex, using Keynote for creating presentations is still much easier.
+</p>

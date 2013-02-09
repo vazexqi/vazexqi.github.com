@@ -1,0 +1,35 @@
+--- 
+layout: post
+typo_id: 142
+title: Now, TinyOS on Windows
+---
+<p>
+My previous post on being able to successfully install TinyOS on Red Hat 9 might have been a bit premature. True, I am able to compile applications and upload them through the parallel port and the MIB500 programming board, but I do not seem to be able to get anything from the serial port! I even wrote some simple C programs to test the serial port by using a null modem connected from /dev/ttyS0 to /dev/ttyS1 with a sender running on ttyS0 and a sender on /dev/ttyS1. So, there is nothing wrong with my port even though I was a bit suspicious since I had to enable that port under VMWARE for the guest operating system (there is a setting for this under VMWARE).</p><p>
+In case anyone is curious, to actually verify that your TinyOS installation is complete and your motes are working, there is a series of test in the apps/MicaHWVerify folder. Part 1 involves uploading a binary counter program to the motes that will enumerate the LEDs. Part 2 involves reading the ID of the mote and obtaining the value via the serial port. My setup failed part 2 so there was no need to go on to part 3: verifying that motes can communicate with one another wirelessly.
+</p><p>
+Some google searching revealed that others were having the same problem. There we some suggested solutions but none of them worked for me:
+</p>
+<p><a href="http://www2.ece.jhu.edu/faculty/andreou/498/ToolsAndLabInfo/MICA_Motes/How2Start.htm">New Page 1</a>: 
+<blockquote>
+"In order to test the Mica2 Motes, we will run a Java program that will attempt to read a mote's serial ID. First, connect the programmer to the serial port, and if you're using the MIB500 you should make sure <b>that the parallel port is no longer connected (may cause problems)</b> and that your serial port is set to 57600bps (that is, for Mica2; if you're using Mica or Mica2dot then you should set this to 19200bps), 8 data bits, no parity, 1 stop bit, no flow control."
+</blockquote></p>
+<p>
+<a href="http://mail.millennium.berkeley.edu/pipermail/tinyos-help/2003-December/002639.html"> [Tinyos-help] mica2 -- java hardware_check failed
+   </a>: 
+<blockquote>
+"I went to $TINYOSDIR/tinyos-1.x/tools/java and typed 'make', and then cd  $TINYOSDIR/tinyos-1.x/tools/java/jni and typed 'make install'. Then recompiled 'hardware_check.java' and it's working now. I think(not sure) that happened because the files in the two dirs above are extracted from the tar ball but not installed by default, and these steps are not specified in the manual prior to running 'hardware_check"
+</blockquote></p><p>
+So I tried this on my Windows XP installation, also on VMWARE and it works fine, being able to identify the serial number of the mote and continuing to step 3 of the verification process. I think I am going to stick with Windows for the time being just to avoid having to solve hardware and installation problems. The only reason I was going to use Red Hat was because I had some code from someone else that could only work on Red Hat. I guess porting it over from Linux to Windows might be easier than trying to do the entire development in Linux where there are too many possibilities for errors.</p>
+
+<p>
+Incidentally, the art of programming the motes is more of a hit and miss technique that is also shrouded in taboo and other superstitions (they do seem to work though). The most obnoxious problem that people seem to face is the infamous flash error bug:
+</p>
+
+<p><a href="http://www2.ece.jhu.edu/faculty/andreou/498/ToolsAndLabInfo/MICA_Motes/How2Start.htm">New Page 1</a>: 
+<blockquote>
+"Other people have found that clearing the mote memory by entering
+<br />
+<code>uisp -dprog=dapa  --erase</code>
+<br />
+at the command prompt can solve the flash error problem. If it doesn't, sometimes clearing the memory multiple times in a row or installing Blink.nc onto the node seems to fix the problem. I particularly found that installing TOSBase.nc was often the best solution."
+</blockquote></p>

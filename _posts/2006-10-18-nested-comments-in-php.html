@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 243
+title: Nested comments in PHP
+---
+<a href="http://www.flickr.com/photos/vazexqi/273412195/" title="Photo Sharing"><img src="http://static.flickr.com/117/273412195_84b8bb219e_o.png" width="395" height="378" alt="Nested comments" /></a>
+
+<p>
+This article has two main reasons. The first is to show how to use the foreign key constraints on MySQL 5 and how to do a CASCADE DELETE and how to use PHP to display nested comments. The interesting thing here is that I do not do multiple SQL queries to fetch the children of each message. Instead, I retrieve all the comments for the page and rely on PHP to do the formating and sorting.
+</p>
+
+<p>
+The second reason being that I want to see how resoureces work in Typo because this is a feature that I have not used before. I need to at least know if it is working before I start documenting on it. So I have uploaded the files that show how to design the sql tables and how to do the retrieval in PHP. 
+</p>
+
+<p>
+A subreason would be to try out writing this article from within Typo itself and see how well it goes. 
+</p>
+
+<p>
+Here are the files:
+<ul>
+	<li><a href="/files/comments.html">comments.html</a>: the PHP file that shows how to connect to the database and retrieve the data. And then there is a function that recursively displays the messages in a nested manner.</li>
+	<li><a href="/files/data.html">data.html</a>: the SQL file that shows you how to set up the database in MySQL 5 to make use of referential integrity. It also populates some data into the table so that you can try it out.</li>
+</ul>
+</p>
+
+<p>
+Update: Here are my reactions (writing from within Marsedit)
+</p>
+
+<p>
+The resources that are associated with this post, gets included as an attachment to the RSS feed for the post. This is kind of like an enclosure. Safari's RSS can detect this enclosure fine but the built-in reader in Flock just ignores it. Also, the resources do not appear in the page when viewing the article. So basically the attachment is only useful for RSS readers.
+</p>
+
+<p>
+There is a weird UI bug. You can add additional resources that exists on the server (as attachments) to the post IF you have already associated at least one attachment to the article. If you have not associate any attachment, then you cannot attach an existing resource as an attachment.
+</p>
+

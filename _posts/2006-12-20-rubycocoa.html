@@ -1,0 +1,19 @@
+--- 
+layout: post
+typo_id: 257
+title: RubyCocoa
+---
+<p>
+Since I had some free time this week, I wanted to brush up on some Cocoa programming. However, I have not been using Objective-C for some time and would rather not have to program in it. Instead, I decided to use Ruby via the <a href="http://www.rubycocoa.com/">RubyCocoa</a>. I have always had great difficulties installing RubyCocoa on my machine. It never seems to <i>just work</i>. I recall getting version 0.4.3 to work somehow over Spring but the steps seem to elude me now.
+</p>
+
+
+<p>I tried searching on the web but there was no clear answer. Even the <a href="http://rubycocoa.sourceforge.net/doc/build.en.html">installation instructions</a> for RubyCocoa seems incomplete (and might even be auto-translated from the Japanese version). Anyway, I downloaded the source code for version 0.5 and follow the instructions to do <code>ruby install.rb config</code> and <code>ruby install.rb setup</code>. The installation failed -- it was not able to locate some of the symbols.</p>
+
+<p>So I reread the instructions on the website. There was some mention of using Ruby 1.8.5. and I only had version 1.8.4 installed. Since Ruby 1.8.5 has been out for some time, I decided to upgrade my version. There are various discussions on what needs to be done to get Ruby 1.8.5  to compile on OS X but I stuck with the instructions from <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">HiveLogic</a> and just substituted the latest version Ruby into the instructions. Everything works fine, even <a href="http://tiswww.case.edu/~chet/readline/rltop.html">readline</a>. I had to recompile <a href="http://rmagick.rubyforge.org/">RMagick</a> though since the links were broken after the upgrade. Some might also find the instructions <a href="http://wincent.com/knowledge-base/Building_and_installing_Ruby_1.8.5_on_Mac_OS_X_Tiger">here</a> useful for upgrading.</p>
+
+<p>
+I followed the steps on the RubyCocoa website and tried to build RubyCocoa. It still was not working. Then I realized something. I was actually issuing the following command: <code>sudo ruby install.rb config --build-universal</code>. I removed the build-universal just to try the <b>default</b> settings. And it WORKED! I am not sure how the developers themselves got the universal binary to build but it was not working on my machine. Right now, RubyCocoa is not a universal binary but that matters little. At least it is finally working.
+</p>
+
+<p>It's always the simple things that make life so complicated. It also shows that one should always try the default values for <code>configure</code>. After all this, I really think I should have just stuck with rereading some Objective-C. RubyCocoa is a very nice framework but it takes a lot of guess work to get it working. However, as a consolation, I finally got Ruby 1.8.5 installed.</p>

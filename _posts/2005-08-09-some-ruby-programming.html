@@ -1,0 +1,20 @@
+--- 
+layout: post
+typo_id: 90
+title: Some Ruby programming
+---
+<p>
+Below is one of my <i>bigger</i> ruby projects that I did for fun. The other projects that I have done mostly involves Ruby on Rails. And so far the biggest and most formidable project is getting Typo to work properly with Apache and FastCGI.
+</p><p>
+This problem was proposed on <a href="http://www.rubygarden.org/ruby?StarterProblems">RubyGarden's StarterProblems page</a>. Since I had nothing much to do tonight,  I decided to try it out. I have a vague idea on how to solve the problem after reading it. It involves using some form of depth-first or breadth-first search since you are trying to find a path. Because the problem only requires one solution, and not all the possible paths, the answer is much simpler.
+</p><p>
+So, the first thing I did was run through Irb to figure out what methods were available for Strings and Arrays. My original plan was to treat the maze as a String but be able to access each character as though they are part of an Array. Runnning Ri and Irb over and over was getting a bit tiring. Fortunately, I realized that I have a copy of the PickAxe book with me. The documentation for the standard Ruby library is fantastic!
+</p><p>
+So playing with the syntax of Ruby took me about an hour. In that time, I discovered some very useful features of Ruby. First, if you have an Array that has only 50 elements and you call array[51] on it, you do not get a horrible exception like in Java but you get <i>nil</i>. This is nice because it lets you traverse the maze without worrying too much about null pointer exceptions. Secondly, you should be a little cautious when using the built-in String and Array methods. For instance ["a", "b", "c", "d"].delete("a") returns "a" and not ["b", "c", "d"]. There is of course an advantage to returning the deleted element, but you do have to be careful about such things. Thirdly, you <b><i>must</i></b> remember that Ruby passes things using references so if you want a copy, make sure you explicitly create one.
+</p><p>
+What really threw me off was not my code, but a typo I made while copying Gushi's version of the maze off the website for testing. Somehow, I added an extra space past the newline and that affected all the offset so my recursive function just terminated without reaching the end of the maze. This carelessness of mine wasted 1 hour of my time analyzing my algorithm. But it did at least convince me more that the algorithm does work. Like I said, my algorithm utilizes some form of depth-first search. At each position, I have two sets: one of the potential positions to go, and the other of the positions that I have already visited. To prevent infinite recursion and also to optimize a bit, I never visit the positions that I have visited prior to the current node. The code shows this more explicitly.
+</p><p>
+I did two iterations of the program. The first one being using functional programming. And the second time around, I refactored it to be more object-oriented. Nonetheless, there was not much point in making it object-oriented.
+</p><p>
+Here is <a href="http://homepage.mac.com/vazexqi/docs/ruby/maze_ver2.rb.html">my code</a>, made beautiful through the use of Vim by following the instructions <a href="http://www.chrisruzin.net/index.php/entry/exporting_textmate_code_to_html/">here</a>. Of course, I would have preferred TextMate's coloring but Vim is good enough.
+</p>

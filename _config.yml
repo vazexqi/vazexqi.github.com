@@ -1,0 +1,16 @@
+markdown: rdiscount
+pygments: true
+permalink: /posts/:title
+auto: true
+rdiscount:
+  extensions: [smart]
+title : nick chen
+production_url : http://vazexqi.github.com
+description: ""
+disqus_shortname: vazexqi
+analytics: UA-38272494-1
+author :
+  name : Nick Chen
+  github : vazexqi
+  twitter : vazexqi
+  linkedin : nicholaschen

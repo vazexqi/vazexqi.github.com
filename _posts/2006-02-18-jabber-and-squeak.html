@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 160
+title: Jabber and Squeak
+---
+<p>
+The latest project that my group is working on is a Jabber client for Squeak. We have been toying with this for a couple of weeks now and we finally got it to send and receive messages to another contact on the same server. There are a lot of information on how to actually start a conversation with Jabber and most of them are easy to follow. In fact, <a href="http://wiki.jabber.org/index.php/Programming_Jabber_Clients">here</a> is a link to one of the better resources out here. Although I am not sure if you can actually quote strings in XML with single quotes. I changed all of them to double quotes since that is how I used them in XHTML but you are free to try them with single quotes. If you follow along, you should be able to connect to your Jabber server, authenticate yourself and even send a message to someone else connected to the Jabber server. But how would you actually receive a message from someone?</p>
+
+<p>
+Now that is the interesting part. I was not able to find anything on how to actually receive messages once you have connected to the Jabber server. It does not seem to be an automatic thing. There was an elusive middle step that needed to be done. And this step does not seem to be elaborated on much in any website. So, falling back to the book <a href="http://www.oreilly.com/catalog/jabber/">Programming Jabber</a> by O'Reilly, specifically, <a href="http://www.oreilly.com/catalog/jabber/chapter/ch05.html">Chapter 5</a> which they have so kindly made available online.
+</p>
+
+<p><a href="http://www.oreilly.com/catalog/jabber/chapter/ch05.html">Programming Jabber: Chapter 5: Jabber Technology Basics</a>: 
+<blockquote>
+<p>
+"The <presence/> element is used to convey a Jabber entity's availability. An entity can be available, which means that it's connected and any messages sent to it will be delivered immediately, or it can be unavailable, which means that it's not connected, and any messages sent to it will be stored and delivered the next time a connection is made.
+</p>
+<p>
+For the large part, it is the entity itself, not the Jabber server to which it connects, that controls the availability information. The Jabber server will communicate an entity's unavailabilityif that entity disconnects from the server but will do that only if the entity has communicated its availability beforehand."
+</p>
+</blockquote></p>
+
+<p>
+So, the presence element it not set up by default. Even if your Jabber server identifies you as being online, it does not assume that you are available. And as such, all messages from other people are stored away temporarily. However, all server side messages are still going to be delivered.</p>
+
+<p>
+So how you go about solving this? Reading a couple of paragraphs down shows that all you need to do, in the general case is to send this XML stream to the server:
+<br />
+<code>&lt; presence type="available" /&gt;</code>
+</p>
+
+<p>And then all your previous messages will come flooding through! Took us a while to figure it out but once we did, it kind of made sense. Just wished that all the examples online would have mentioned this explicitly.</p>

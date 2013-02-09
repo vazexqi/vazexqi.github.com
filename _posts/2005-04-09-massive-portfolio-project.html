@@ -1,0 +1,61 @@
+--- 
+layout: post
+typo_id: 62
+title: Massive portfolio project
+---
+<div align="center">
+<a href="http://www.flickr.com/photos/37092324@N00/33494140/" title="Photo Sharing"><img src="http://photos22.flickr.com/33494140_9a412aea48.jpg" width="500" height="398" alt="portfoliogenerator" /></a>
+</div>
+<p>
+This is not meant to be a full documentation of what this program can do. In fact, I have not even written one yet since I doubt that anyone will find any use for it.
+Basically, this is a single project file generator. It generates the necessary HTML for creating a nice looking webpage for your files. Here is a preview for it:
+</p>
+<div align="center">
+<a href="http://www.flickr.com/photos/37092324@N00/33493065/" title="Photo Sharing"><img src="http://photos22.flickr.com/33493065_86b92cd1c2.jpg" width="500" height="386" alt="generatedpage" /></a>
+</div>
+<p>
+So far, it has a simple GUI that probably goes against every HCI rule there is out there. Coding GUI in Java without a GUI editor is not a fun task. Adding a new UI element can easily make the layout look like crap. However, I think it is pretty clear how you would use this project generator.
+</p>
+<p>
+You would code your project first with all the necessary files. Then you will fire up this program, include the Author, Title, Description, etc and also the files. Those files will be links to where the user can actually get to them. After that, you will save this file itself in an XML format so that you can read it again and modify it to include more files, source code, etc. Since including source code is not merely sufficient, I added the ability to generate slides for it. Those slides will be written in the Markdown syntax and then automatically converted to HTML and linked together. By that I mean that there will be Prev | Next links at the bottom right of each slide. The engine to convert from Markdown to HTML is provided by <a href="http://markdownj.petebevin.com">Pete Bevin</a>.
+</p>
+<p>
+That is part one of the project and was completed about a month ago. The second part of the project allows the user to place comments on the individual pages themselves.
+For that I will be using Ruby on Rails. 
+</p>
+<p>
+Using Ruby on Rails makes the project fairly simple. It took me some time to familiarize myself with the new methods of Rails. Currently, Rails is at version 0.11 and the last time I played with it was at version 0.9. There have been some interesting changes but non too drastic that it requires any serious relearning.
+</p>
+<p>
+To get the second part working, we had to set up a MySQL database to store those files. That was not too hard. And using CocoaMySQL made it even simpler. However the main problem came about from the Rails model verification. It seems that every model in Rails should be able to perform some form of referential integrity check using belongs_to and belongs_to_and_has_many. However, I have yet to figure out how to do it. Without figuring out those things, deleting comments violated referential integrity and caused me a lot of headaches.
+</p>
+<p>
+Nevertheless, I am amazed with how easy and fast it was to set up something using Rails. It make it easy to get something up and running so that you can see the results. And the clear separation between model, view and controller makes it hard for you to try to lump everything together like you would do in a PHP program. And that makes it really fun to develop with. Using Textmate helped considerably too.
+</p>
+<p>
+Below are some resources that I have found useful while using Ruby on Rails:
+<ul>
+<li>MySQL</li>
+<ul>
+<li>MySQL Cookbook by O&rsquo;Reilly</li>
+<li><a href="http://dev.mysql.com/doc/mysql/en/">MySQL Reference Manual</a></li>
+</ul>
+<li>Ruby</li>
+<ul>
+<li>Programming Ruby (The Pickaxe book) by Pragmatic Bookshelf</li>
+<li><a href="http://poignantguide.net/ruby/">Why&rsquo;s (Poignant) Guide to Ruby</a></li>
+<li><a href="http://www.ruby-doc.org/docs/UsersGuide/rg/">Ruby&rsquo;s User Guide</a></li>
+<li><a href="http://www.ruby-doc.org/docbar/">Ruby Sidebar for Firefox</a></li>
+</ul>
+<li>Rails</li>
+<ul>
+<li><a href="http://api.rubyonrails.com/">RubyOnRails Documentation</a></li>
+<li><a href="http://rails.homelinux.org/">Four Days on Rails</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2005/01/20/rails.html">ONLAMP.com: Rolling with Ruby on Rails</a></li>
+<li><a href="http://manuals.rubyonrails.com/read/book/5">A Guide to Testing the Rails</a></li>
+</ul>
+</ul>
+</p>
+<p>
+Lastly, though I really like all the documentation and tutorials that people have contributed, I cannot wait for the book on Rails that is supposed to come out soon (within the next 6 months). Having a book that puts everything together using one writing style would make it much easier for the beginner.
+</p>

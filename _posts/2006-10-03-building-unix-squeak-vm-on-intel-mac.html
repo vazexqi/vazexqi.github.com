@@ -1,0 +1,40 @@
+--- 
+layout: post
+typo_id: 238
+title: Building Unix Squeak VM On Intel Mac
+---
+<p><a href="http://lists.squeakfoundation.org/pipermail/vm-dev/2006-March/000553.html">Building Unix Squeak VM On Intel Mac</a>:
+</p>
+
+<blockquote cite="http://lists.squeakfoundation.org/pipermail/vm-dev/2006-March/000553.html" title="Building Unix Squeak VM On Intel Mac"> "Untar the source, cd to Squeak-3.7-7/platforms/unix 
+<br />
+config/configure --without-x (unless you want to fiddle with not found gl.h files in the X11 display lib) 
+<br />
+vi vm-display-Quartz/sqUnixQuartz.m 
+<br />
+change #define USE_SPINLOCK 1 to 0 
+<br />
+make INTERP=interp 
+<br />
+make INTERP=interp Squeak.app"
+</blockquote>
+
+<p>
+Following the instructions above and grabbing the latest Squeak Unix source from <a href="http://www.squeakvm.org/unix/">here</a> since the one on the main Squeak site is outdated at 3.7.7, I successfully built and ran the virtual machine with the latest Squeak image. I have not profiled the sample code to see if there are significant gains but overall the user interface feels more snappy. I wished that I had done this earlier in the year when I had my MacBook Pro.
+</p>
+
+<a href="http://static.flickr.com/82/260380804_7704154791_o.png" rel="lightbox" title="Squeak 3.9"><img src="http://static.flickr.com/82/260380804_7704154791.jpg" width="500" height="375" alt="Squeak 3.9" /></a>
+
+<p>
+Well, some of my favorite packages are not really working yet so I am not sure how comfortable I will be in Squeak 3.9 instead of Squeak 3.8. The three packages that I like are:
+<ul>
+	<li>Shout : for syntax coloring of code</li>
+	<li>Ecompletion :  for code completion</li>
+	<li>Refactoring Browser : for refactoring support obviously</li>
+</ul>
+All three are available from the Squeak package loader but so far I have only gotten Ecompletion to work properly. 
+</p>
+
+<p>
+Update, the latest version of Squeak at the moment seems to be a universal binary. So there is no need to mess around with the compilation above. Besides, sound does not really work with the self compilation. So just grab the Squeak VM from <a href="http://ftp.squeak.org/current_stable/mac/Squeak%203.8.12beta4U.app.zip">here</a>.
+</p>

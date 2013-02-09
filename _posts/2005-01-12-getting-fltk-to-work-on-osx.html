@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 40
+title: Getting FLTK to work on OSX
+---
+<p>
+The computer graphics class that I will be taking requires the use of <a href="http://www.fltk.org">FLTK: The Fast Light  Toolkit</a>. It is a simple user interface toolkit that we will be using mostly for its widgets. I would prefer using Qt but I guess there are some licensing issues with Qt previously--the debate on whether Qt is really open source or not. Anyway, the instructions for building FLTK for OS X was pretty simple:
+</p>
+<p class="message">
+make
+<br/>
+sudo make install
+</p>
+<p>
+However, when you type "make" it tries to link the files needed for the fluid component. <a href="http://www.fltk.org/doc-1.1/fluid.html#10_1">Fluid</a> is:
+<br />
+"The Fast Light User Interface Designer, or FLUID, is a graphical  editor that is used to produce FLTK source code. FLUID edits and saves  its state in .fl files. These files are text, and you can  (with care) edit them in a text editor, perhaps to get some special  effects."
+<br/>
+And that is where it fails. Or rather it takes too long. While linking it uses the /Developer/Tools/Rez program and it just sits there consuming processor power. This went on for the whole night.
+</p>
+<p>
+Turns out the solution is pretty simple. I have not seen this mentioned anywhere else so it could be because I did something to mess up my own system. Change the lines above to these two:
+</p>
+<p class="message">
+sudo make
+<br/>
+sudo make install
+</p>
+<p>
+Another problem is when you try to compile with fltk-config --compile <i>myfile.cpp</i>. You should also use sudo because fltk-config uses /Developer/Tools/Rex in the end to attach the resource fork to the file so that you can launch it from Finder.
+</p>
+<p>
+For more resources on programming openGL on Panther:
+<ul>
+<li><a href="http://www.fltk.org/documentation.php/doc-1.1/intro.html#2_5">Building and installing FLTK under MAC OS X</a></li>
+<li><a href="http://www.geocities.com/rjpoling/MacOS/fltk.html">Using FLTK and OpenGL on Mac OS X</a></li>
+<li><a href="http://www.cs.unca.edu/~reiser/syllabi/graphics04.htm">How to compile GLUT and OpenGL from the command line</a></li>
+</ul>
+</p>

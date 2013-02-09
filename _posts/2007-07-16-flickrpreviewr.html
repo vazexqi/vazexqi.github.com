@@ -1,0 +1,57 @@
+--- 
+layout: post
+typo_id: 277
+title: flickrPreviewR
+---
+<p>
+For the past couple of days I have been creating an application that I think I would use. And maybe some other people might find it useful too (possibly as an example for doing things in RubyCocoa). For the lack of a better name, I decided to call it flickrPreviewR and hopefully I would not be sued.
+</p>
+
+<img src="http://farm2.static.flickr.com/1091/826036668_f527242991.jpg" alt="flickrPreviewR"/>
+
+<br />
+<small>flickrPreviewR screen. It even has the typical flickr logo design from <a href="http://flickr.nosv.org/">flickrlogomakr</a>. The line to the right is the the side of a window that apparently shifted a bit to my other screen and included in the image capture.</small>
+
+<p>
+It all started when Flock released a new version of their browser sometime last week. I downloaded it since I was eager to see what the <i>perpetually-in-beta</i> browser has created this time. This time I was really disappointed. The only reason for my using Flock was its integration with Flickr. I just like to quickly browse photos without having to use Flickr's interface. Unfortunately, this new version of Flock really left a sour taste in my mouth. Its interface is <i>hideous</i> and the newly revamped Flickr integration seems buggy and <b>really slow</b>. What does it need to do that requires that much computation power? It just needs to fetch the damn photos damnit!
+</p>
+
+<p>
+Anyway, this provided the motivation and gave me another reason to play with RubyCocoa. The last time I dabbled with RubyCocoa, I created a version of the RaiseMan application from the book <i>Cocoa Programming for Mac OS X</i> with bindings. Since then, RubyCocoa has had additional changes and I was curious whether it is now easier to develop programs for it. My conclusion: nothing much has changed in terms of the cosmetics of language (there are underlying changes for optimizations, etc), but overall there was nothing new to pick up.
+</p>
+
+<p>
+For the backend of this application, I relied on <a href="http://rubyforge.org/projects/rflickr/">rflickr</a>, the Ruby API kit for accessing flickr. I needed to make some slight changes to the code to accommodate some changes in the flicrk API. rflickr source is bunbled as part of the source code. I did want to not rely on it being a gem since I am not sure how RubyCocoa handles gems and I did not want to add a dependency for the gem; so I just bundled it. flickrPreviewR is under the Creative Commons Attributions License. This might violate the rflickr license and if it does, then let me know and I will see what I can do.
+</p>
+
+<p>
+You can find the set of images on my <a href="http://www.flickr.com/search/?w=37092324%40N00&amp;q=flickrpreviewr&amp;m=tags">flickr account</a>. I do not have a pro account so I cannot create a set for it. You should read the description of each photo if you are planning on using this. As usual, use this at your own risk. I am doing this as a personal application that I would use and as the developer, I am aware of its limitations and I do not push them while using the application.
+</p>
+
+<p>
+One very important limitation that I need to stress is the inability for it to update itself.
+</p>
+
+<blockquote>
+There is a weird quirk with using threads in RubyCocoa and NSNotifications. I have not figured out how to get the view to refresh once all the images have been downloaded. Right now, there is the VERY cumbersome need to click on ANOTHER favorite or photoset to force a refresh. The best way to see if the photos have finished loading is to view the progress bar at the drawer.
+<br />
+<br />
+THIS NEEDS TO BE FIXED once I figure out how.
+</blockquote>
+
+<p>
+Here are some things that I picked up while doing this:
+<ul>
+	<li>Interface Builder is a great tool for quickly laying out the interface. I cannot imagine how I would have done this with some other GUI toolkit. Even with my familiarity with Java, it would taken much longer just to get all the pieces aligned properly.</li>
+	<li><a href="http://www.cocoadev.com/">CocoaDev</a> is <b>the</b> site for almost all the questions that you can have on how to do things in Cocoa. Without CocoaDev, it would have taken me a longer time to get things done.</li>
+	<li><i>Cocoa Programming for Mac OS X</i> is a decent reference book once you know your way around how certain things in Cocoa work. That still does not make it a good book to start learning Cocoa programming.</li>
+	<li>You can save yourself great pains if you make all your classes subclasses of OSX::NSObject explicitly instead of normal Ruby classes. This will save you trouble when you get weird behavior and crashes. Like me, you might want to use normal Ruby classes sometimes because YAML works well with the regular Ruby classes. In that case, make sure that your class is being used as simple data structure with simple functions that do not rely on any of the Cocoa libraries.</li>
+	<li>Threading is hard to do with RubyCocoa and there is little reference on what works and what does not.</li>
+	<li><a href="http://www.rubynoob.com/articles/2006/8/21/how-to-download-files-with-a-ruby-script">Downloading images</a> with Ruby net/http library did not work for me. The image will always end up corrupted. Thus, I had to rely on curl to download the images.</li>
+	<li>WebKit is an excellent piece of work. I used it as the primary backend for displaying the images. To intercept the handlers, I made each preview image be a link an imaginary 'flickr://' protocol. I then overwrote <code>webView_decidePolicyForNavigationAction_request_frame_decisionListener</code> to intercept the call and perform the appropriate actions.</li>
+</ul>
+</p>
+
+<p>
+For those who are interested, the source code is <a href="http://blog.vazexqi.com/files/flickrPreviewR.zip">here</a>. I did not package it as a stand-alone application because I am not <i>sure</i> what you actually need to run this application. You probably need RubyCocoa and the Ruby 1.8.5. So for simplicity, I just provided the project folder for XCode. If you can build it then you can probably run it.
+</p>

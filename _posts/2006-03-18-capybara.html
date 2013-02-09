@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 171
+title: Capybara
+---
+<p>
+In my previous <a href="/articles/2006/02/18/jabber-and-squeak">post</a>, I said that my group was working on implementing a Jabber chat client on Squeak. Well, turns out that there might be a few implementations for Jabber on Squeak already. So having our final project be another Jabber client is kind of risky as the professor pointed out.</p>
+
+<p>
+Instead of scrapping everything that we have written - we got it up to the point where it could login and send messages - we decided to make use of the Jabber protocol to send notifications to other computers. And that is where Capybara enters. Capybara, for those of you unfamiliar with the word, is 
+<blockquote>
+a South American mammal that resembles a giant, long-legged guinea pig. It lives in groups near water and is the largest living rodent
+</blockquote>
+
+The name was chosen as a fun mockery of Squeak and its mouse logo. <i>Who needs a mouse when you have the world's largest rodent?</i>
+</p>
+
+<p>
+So what is Capybara? I have written something about it on the class <a href="http://swiki.cs.uiuc.edu/cs598rej/233">wiki</a> but I thought that I would repeat some of it here in a less technical manner. Moreover, the information on the wiki might not persist over the semester. Here is another attempt at describing Capybara.
+</p>
+
+<p>
+Imagine that you are using downloading a file in Squeak using a FTP client. The file that you are downloading is going to take a couple of minutes to download. You want to be notified of when the file completes its download but you do not want to monitor its progress by keeping watch on it. Enter Capybara. By registering the FTP client with Capybara and hooking up a file complete notification, the user will automatically be notified when a file completes via a discrete message box at the top right corner of the screen.
+</p>
+
+<p>
+Or as another case. Assume that you are using the IRC client in Squeak. If you have ever used IRC before, you know that its "signal to noise ratio" is pretty low. Most of the time you will not be interested in what the other people are saying. However, if someone mentions a word that you are interested in, you would like to be notified of this. Enter Capybara. By registering the IRC application with Capybard and hooking up the detection of words to it, Capybara will send you a notification everytime the word you are interested in appears in the window.
+</p>
+
+<p>
+The two scenarios above are just examples of when you would like to be notified about things that are of interests to you. With a computer capable of multitasking, there are so many events that are going off in the background. We need a way to be notified of those events in a non-intrusive manner. Capybara is our solution for that. The two examples you see above are local to the current computer but there are events that are going on other computers that you would like to know about as well.
+</p>
+
+<p>
+Imagine that you and your colleague are collaborating on a programming effort. You would like to be notified whenever one of you has made a change to a file. By registering the application with Capybara and hooking it up so that whenever any changes are made, a notification is send, both parties know when the file has been modified.</p>
+
+<p>
+So what does this mean for the user? As we have explained, it means that the user has a way to keep track of all the different information. Capybara also provides a way for users to control the propagation of information. No longer interested in what the program has to notify you off? Just turn on notifications for that program in the Capybara preference pane. In real life, being notified of when a new e-mail message arrives is not as important as knowing that you stock is falling rapidly. With this in mind, Capybara supports priorities for its notification messages.</p>
+
+<p>
+What does this mean for a developer? It means that they not need to write their own notification engine. Capybara is application agnostic. Any application that uses our API can hook itself up for notification. No more clumsy user interface. All you need to do is register the application and hook up what to do when that event occurs. And if you really wanted a different notification interface, feel free to write one of your own. Capybara will support custom notifications as plug-ins as long as they support the API.</p>
+
+<p>
+In short, Capybara is a nice framework for both developers and users alike. We do not claim credit for coming up with this idea. Instead this idea was inspired by two useful programs for OS X: <a href="http://growl.info/">Growl</a> and <a href="http://oomz.net/Lanosd/">LanOSD</a>. </p>

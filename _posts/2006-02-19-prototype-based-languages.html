@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 161
+title: Prototype based languages
+---
+<p><a href="http://www.dekorte.com/docs/protos/">steve dekorte - docs - protos</a>: 
+<blockquote>
+"Prototype-based languages are object oriented langauges where a new object instance is 'cloned' from existing live object(a prototype) instead of being constructed by a class. This makes the language simpler by requiring one less data type and solving the infinte regress problem of classes(if you use a class to create an object, what do you use to create a class?). It is also ideal for systems such as GUIs where the pattern of creating one object by copying and modifying another is already handled by the language itself."
+</blockquote></p>
+
+<p>
+This post is a follow-up to my previous <a href="/articles/2006/02/06/smalltalks-footprint-in-object-and-dynamic-languages">post</a> on learning <a href="http://www.iolanguage.com/">Io</a>. What is interesting is that Javascript is supposed to be a prototype based language, and it is one of the only mainstream languages of this type. Amazing! I have used javascript before the days when each browser tried to define its own DOM and other browser-specific features. But I have never actually used any of its prototype features or heard of it. Sure I created a few functions here and there but nothing else. So either the prototype nature of Javascript is so transparent or I was just not taking enough notice of it. In case anyone is interested, I was using <a href="http://www.amazon.com/gp/product/0138419418/002-2181617-5963211?n=283155"><i>Jumping Javascript</i></a> as my source of learning and reference. In spite of all the negative reviews on Amazon, I would say that this was the first book and Javascript was the first programming language that taught me what programming was all about. Weird but true!
+</p>
+
+<p><a href="http://www.mozilla.org/js/">JavaScript</a>: 
+<blockquote>
+"In a nutshell, JavaScript is a dynamic scripting language 
+  supporting
+  prototype based object construction"
+</blockquote></p>
+
+<p>
+One of the <a href="http://www.webreference.com/programming/javascript/gr/column18/index.html">examples</a> that I could find on the object-oriented nature of Javascript:
+<pre>
+// create a base class with one method
+function Base(b)
+{
+   this.b = b;
+}
+Base.prototype.foo = function()
+{
+   alert('foo');
+}
+...
+</pre>
+</p>
+
+<p>
+After reading the article more, I think I <i>might</i> have actually seen this before. Either way, I might continue playing around with Javascript and its class creations or just default to learning Io. The interesting thing about Io is its OpenGL bindings. With those bindings, I can just recreate my OpenGL projects in Io to see the difference between object-oriented programming and prototype-based languages.</p>

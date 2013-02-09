@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>data.sql</title>
+<meta name="Generator" content="Vim/7.0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#333333" text="#ffffff">
+<pre>
+<font color="#fcf305"> 1 </font><font color="#80a0ff">/* Create a new table and delete previous table of the same name if it exists*/</font>
+<font color="#fcf305"> 2 </font><font color="#ffff60"><b>CREATE</b></font> DATABASE <font color="#fc8000">IF</font> <font color="#ffff60"><b>NOT</b></font> <font color="#ffff60"><b>EXISTS</b></font> `database`;
+<font color="#fcf305"> 3 </font>
+<font color="#fcf305"> 4 </font><font color="#ffff60"><b>DROP</b></font> <font color="#fc8000">TABLE</font> <font color="#fc8000">IF</font> <font color="#ffff60"><b>EXISTS</b></font> `comments`;
+<font color="#fcf305"> 5 </font>
+<font color="#fcf305"> 6 </font><font color="#ffff60"><b>CREATE</b></font> <font color="#fc8000">TABLE</font> `comments` (
+<font color="#fcf305"> 7 </font>  `id` <font color="#fc8000">smallint</font>(<font color="#ffa0a0">5</font>) unsigned <font color="#ffff60"><b>NOT</b></font> <font color="#fc8000">NULL</font> auto_increment,
+<font color="#fcf305"> 8 </font>  `parent_id` <font color="#fc8000">smallint</font>(<font color="#ffa0a0">5</font>) unsigned,
+<font color="#fcf305"> 9 </font>  `message` text <font color="#ffff60"><b>NOT</b></font> <font color="#fc8000">NULL</font> <font color="#fc8000">default</font> <font color="#ffa0a0">''</font>,
+<font color="#fcf305">10 </font>  `category` <font color="#fc8000">smallint</font>(<font color="#ffa0a0">5</font>) unsigned <font color="#ffff60"><b>NOT</b></font> <font color="#fc8000">NULL</font>,
+<font color="#fcf305">11 </font>  PRIMARY KEY (`id`),
+<font color="#fcf305">12 </font>  <font color="#fc8000">INDEX</font> (`category`),
+<font color="#fcf305">13 </font>  FOREIGN KEY (`parent_id`) REFERENCES `comments`(`id`) <font color="#fc8000">ON</font> <font color="#ffff60"><b>DELETE</b></font> CASCADE
+<font color="#fcf305">14 </font>) <font color="#fc8000">TYPE</font>=INNODB <font color="#ffff60"><b>COMMENT</b></font>=<font color="#ffa0a0">'List of comments'</font>;
+<font color="#fcf305">15 </font>
+<font color="#fcf305">16 </font>
+<font color="#fcf305">17 </font><font color="#80a0ff">/* Populate with some data*/</font>
+<font color="#fcf305">18 </font>
+<font color="#fcf305">19 </font><font color="#80a0ff">/* Try deleting a parent of a nested category and all its subchildren will be automatically deleted*/</font>
+<font color="#fcf305">20 </font>
+<font color="#fcf305">21 </font><font color="#ffff60"><b>INSERT</b></font> <font color="#fc8000">INTO</font> comments <font color="#fc8000">VALUES</font> (<font color="#ffa0a0">1</font>,<font color="#fc8000">NULL</font>,<font color="#ffa0a0">&quot;Text test category 1&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">22 </font>(<font color="#ffa0a0">2</font>,<font color="#fc8000">NULL</font>,<font color="#ffa0a0">&quot;Text test category 2&quot;</font>, <font color="#ffa0a0">2</font>),
+<font color="#fcf305">23 </font>(<font color="#ffa0a0">3</font>,<font color="#fc8000">NULL</font>,<font color="#ffa0a0">&quot;Text test category 3&quot;</font>, <font color="#ffa0a0">3</font>),
+<font color="#fcf305">24 </font>(<font color="#ffa0a0">4</font>,<font color="#fc8000">NULL</font>,<font color="#ffa0a0">&quot;Text test category 4&quot;</font>, <font color="#ffa0a0">4</font>);
+<font color="#fcf305">25 </font><font color="#ffff60"><b>INSERT</b></font> <font color="#fc8000">INTO</font> comments <font color="#fc8000">VALUES</font> (<font color="#ffa0a0">5</font>,<font color="#ffa0a0">1</font>,<font color="#ffa0a0">&quot;Text test category 1.1&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">26 </font>(<font color="#ffa0a0">6</font>,<font color="#ffa0a0">1</font>,<font color="#ffa0a0">&quot;Text test category 1.2&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">27 </font>(<font color="#ffa0a0">7</font>,<font color="#ffa0a0">1</font>,<font color="#ffa0a0">&quot;Text test category 1.3&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">28 </font>(<font color="#ffa0a0">8</font>,<font color="#ffa0a0">1</font>,<font color="#ffa0a0">&quot;Text test category 1.4&quot;</font>, <font color="#ffa0a0">1</font>);
+<font color="#fcf305">29 </font><font color="#ffff60"><b>INSERT</b></font> <font color="#fc8000">INTO</font> comments <font color="#fc8000">VALUES</font> (<font color="#ffa0a0">9</font>,<font color="#ffa0a0">5</font>,<font color="#ffa0a0">&quot;Text test category 1.1.1&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">30 </font>(<font color="#ffa0a0">10</font>,<font color="#ffa0a0">5</font>,<font color="#ffa0a0">&quot;Text test category 1.1.2&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">31 </font>(<font color="#ffa0a0">11</font>,<font color="#ffa0a0">5</font>,<font color="#ffa0a0">&quot;Text test category 1.1.3&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">32 </font>(<font color="#ffa0a0">12</font>,<font color="#ffa0a0">5</font>,<font color="#ffa0a0">&quot;Text test category 1.1.4&quot;</font>, <font color="#ffa0a0">1</font>);
+<font color="#fcf305">33 </font><font color="#ffff60"><b>INSERT</b></font> <font color="#fc8000">INTO</font> comments <font color="#fc8000">VALUES</font> (<font color="#ffa0a0">13</font>,<font color="#ffa0a0">6</font>,<font color="#ffa0a0">&quot;Text test category 1.2.1&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">34 </font>(<font color="#ffa0a0">14</font>,<font color="#ffa0a0">6</font>,<font color="#ffa0a0">&quot;Text test category 1.2.2&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">35 </font>(<font color="#ffa0a0">15</font>,<font color="#ffa0a0">6</font>,<font color="#ffa0a0">&quot;Text test category 1.2.3&quot;</font>, <font color="#ffa0a0">1</font>),
+<font color="#fcf305">36 </font>(<font color="#ffa0a0">16</font>,<font color="#ffa0a0">6</font>,<font color="#ffa0a0">&quot;Text test category 1.2.4&quot;</font>, <font color="#ffa0a0">1</font>);
+</pre>
+</body>
+</html>

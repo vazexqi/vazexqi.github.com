@@ -1,0 +1,44 @@
+--- 
+layout: post
+typo_id: 176
+title: The Mac will run Windows..
+---
+<p>
+using dual-boot or <a href="http://www.kernelthread.com/publications/virtualization/">virtualization</a> technology. That is my prediction. Well, it's no longer a prediction since both options are available right now. However, dual-booting and virtualization are a few of the key features that the next version of OS X will tout. This might have been one of the reasons for switching over to the Intel platform. As far as I know, virtualization support is now being <a href="http://www.intel.com/technology/computing/vptech/">incorporated</a> into the latest Intel chipsets. In fact, the Core Duo chips already support this feature.
+</p>
+
+<p>
+Anyway, I did not try <a href="http://www.apple.com/macosx/bootcamp/">Boot Camp</a> since I felt that having to restart my machine just to use Windows is not a a good option at the moment. There are other <a href="http://www.macworld.com/2006/04/firstlooks/bootcampfl/index.php">people</a> who have reported success with this setup and the <a href="http://www.furrygoat.com/2006/04/boot_camp_day_1.html">scores</a> for running Windows on a MacBook Pro are pretty impressive overall. However all that might change if some game comes out. After all, why else would someone actually <i>use</i> Windows? Speaking of games, there is a short <a href="http://www.macworld.com/weblogs/gameroom/2006/04/bootcampgames/index.php?lsrc=mwrss">article</a> on how this might affect the Mac game industry.
+</p>
+
+<p>Anyway, I spent the whole night trying to install Fedora Core 5 on <a href="http://www.parallels.com/">Parallels</a>. Every step was easy and there were not weird contrived instructions like what <a href="http://openosx.com/wintel/index.html">Open OSX Wintel</a> had me do. I strongly suggest not buying Wintel and instead just get your hands on <a href="http://www.kberg.ch/q/">Q</a>. If you are wondering, I did not buy that product; my friend bought it and I just used it. In fact, Parallels behaved similarly to <a href="http://vmware.com/">VMWare</a> and I was able to get it setup quickly. However, even after trying to install Fedora Core 5 for 3 times, it would not work. Trying the suggestions on the <a href="http://forum.parallels.com/thread27.html">Parallels forum</a> did not help. The installation completed successfully but the post installation failed dumping the <a href="http://homepage.mac.com/vazexqi/images/dump.png">following</a> to the console. I posted to the support forums and am eager to hear what they have to say.</p>
+
+<p>
+Fedora Core 5 is not officially <a href="http://www.parallels.com/en/products/guest_os/">supported</a> yet on Parallels so that could be why the installation was failing. So I decided to try Fedora Core 4. Installation went quickly and I was up and running within 30 minutes or so. Here are some screenshots. Networking is working nicely using the ethernet connection. I will try the wireless connection in the next few days. The only thing not working right now is sound, but that is probably not a big factor. Even two finger scrolling works for me. The speed is on par (if not faster) to that of VMWAre on a a Dual Xeon 1.5 GHz with 1 GB RAM. </p>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/124546913/" title="Photo Sharing"><img src="http://static.flickr.com/52/124546913_2890733248.jpg" width="500" height="382" alt="Fedora Core 4 on Parallels" /></a>
+<br />
+<a href="http://www.flickr.com/photos/vazexqi/124546914/" title="Photo Sharing"><img src="http://static.flickr.com/38/124546914_7664c52837.jpg" width="500" height="382" alt="Games in Fedora Core 4 on Parallels" /></a></p>
+
+<p>
+Update: It now runs Fedora Core 5! Thanks to the replies I got from the Parallels forum. Interesting enough, the problem seems to occur with having more than 512 MB of RAM allocated for the guest OS. I did not bother trying other amounts, but I know that it works with 516 MB but fails with 600 MB, 700 MB, 768 MB and 1148 MB.
+</p>
+
+<p>
+Updated (April 17, 2006): If you follow the thread <a href="http://forum.parallels.com/thread451.html">here</a> you should be able to bump the memory up to 1024 MB as the thread claims. I have tried it and Fedora Core 5 runs fine for me at 768 MB. It's definitely snappier than limiting it to 512 MB of RAM.
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/vazexqi/124859623/" title="Photo Sharing"><img src="http://static.flickr.com/37/124859623_871bd2710b.jpg" width="500" height="382" alt="Fedora Core 5" /></a>
+</p>
+
+<p>
+Anyway, the MacBook Pro has turned out to be a very interesting purchase. In fact, with all these new technologies coming up, Apple might actually be on the winning side. Apple might actually gain a lot more publicity from all the noise generated from being able to boot into multiple OS's. And noise generate is always good. I believed that Apple's stock rose after the incidents that occur these past few days.</p>
+
+<p>
+The $50 price tag for Parallels is not too much to pay for something that works as good as advertised. In fact, unless OS X 10.5 has something built-in, Parallels would probably be able to make some $$ from Mac users. After all, right now, there is no serious competition yet. VMWare is still Linux and Windows based so Parallel has gotten a good start. Moreover, for people using a combination of Windows machines, Macs and Linux boxes, Parallels will be an excellent option. Unless you want to tinker with something like <a href="http://fabrice.bellard.free.fr/qemu/">Qemu</a> or <a href="http://www.cl.cam.ac.uk/Research/SRG/netos/xen/">Xen</a>.
+</p>
+
+<p>
+Without stretching the idea too far, the MacBook Pro might well become the ideal development environment with virtualization. Imagine being able to test your app on Windows, Mac and Linux at the same time.</p>

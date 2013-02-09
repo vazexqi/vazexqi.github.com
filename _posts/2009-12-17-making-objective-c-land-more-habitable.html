@@ -1,0 +1,106 @@
+--- 
+layout: post
+typo_id: 316
+title: Making Objective-C Land More Habitable
+---
+<p>
+Over these past few months, I have been working on a long-term class project using OS X technologies in both Objective-C and <a href="http://developer.apple.com/safari/library/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/ObjCFromJavaScript.html">Javascript</a>. Overall, the experience was pretty good (except for the Javascript part) -- and I suspect much easier compared to having to use Java. Using Java would require us to hunt down various libraries and then filter through them since there are probably 10++ different libraries for each thing that we need to do. So using OS X was a good choice.
+</p>
+
+<p>
+However, there are a few tools that I wished I had known earlier....
+</p>
+
+<h2>GHUnit</h2>
+<p>
+Unit testing using Cocoa is pretty complicated. In fact, it's unnecessarily more complicated than Java, Ruby or Smalltalk. It's <em>only</em> less complicated than unit testing C++ (which doesn't say much)! There are <strong>two</strong> things that particularly irk me:
+<ul>
+<li><strong>Not seeing green/red!</strong> - You have to actually <strong>read</strong> the text in the build log to see which of your tests pass and fail. This is completely ridiculous - it's so easy to miss a failing test case because of this. Anyone who has used the <a href="http://en.wikipedia.org/wiki/XUnit">Xunit</a> testing framework family is accustomed to seeing <span style="background: green; color: white;">green</span> for passing tests and <span style="background: red; color: white;">red</span> for failing tests.
+</li>
+
+<li><strong>Not being able to debug your unit tests</strong> - You have to perform some boilerplate <a href="http://chanson.livejournal.com/120740.html">steps</a> on your own. Such steps should be automated for you!</li>
+</ul>
+</p>
+
+<p>
+Fortunately, <a href="http://rel.me/2009/02/21/unit-testing-for-mac-os-x-and-iphone-ghunit/">GHUNit</a> comes along. And at least solves those <strong>two</strong> problems. It has become my choice for unit testing in Cocoa and all my future projects will use it. It's released under a very liberal open source <a href="http://github.com/gabriel/gh-unit/blob/master/LICENSE">license</a> so using it in your own project shouldn't be a problem. Apple and the Xcode team should integrate this directly into Xcode.
+</p>
+
+<div style="text-align:center;">
+<a href="https://bytebucket.org/vazexqi/healthmonitor/wiki/Images/GHUnitTest.png?token=6d5d3f18ec25f1df9844ce05c6cafbf0eb05b4f1" title="View 'Create an External Build System project' on Flickr.com">
+<img src="https://bytebucket.org/vazexqi/healthmonitor/wiki/Images/GHUnitTest.png?token=6d5d3f18ec25f1df9844ce05c6cafbf0eb05b4f1" alt="GHUnit in action" border="0" width="50%" /></a>
+<br/>
+<small>GHUnit in action</small>
+</div>
+
+<h2>F-Script</h2>
+<p>
+The cocoa libraries are nice. But sometimes the documentation can be a bit confusing. So, the best way to find out what a method or class does it to write some code for it and try it out. But honestly, would you like writing a small program each time to try a method or class out?
+</p>
+
+<p>
+That's when you need <a href="http://www.fscript.org/">F-Script</a> which allows you to call run Objective-C like you would run a scripting language. Need to find out how that NSString method behaves? Just type in into the F-Script REPL workspace. You can even play around with <a href="http://www.fscript.org/documentation/LearnFScriptIn20Minutes/index.htm">Core Image</a> easily in the F-Script workspace! 
+</p>
+<div style="text-align:center;">
+<a href="http://www.fscript.org/images/screenshots/shell.jpg">
+<img src="http://www.fscript.org/images/screenshots/shell.jpg" alt="GHUnit in action" border="0" width="50%" /></a>
+<br/>
+<small>F-Script shell in action</small>
+</div>
+
+<p>
+But wait! F-Script has even more to offer. Using <a href="http://pmougin.wordpress.com/2009/08/29/f-script-anywhere-on-snowy/">F-Script <em>Anywhere</em></a> allows you to inject the F-Script environment into any Cocoa application. That way you can quickly figure out and play around with other people's application!
+</p>
+
+<p>
+The only thing you need to do is spend about 20 minutes learning the F-Script syntax which is very similar to Smalltalk's - so it only took me about 5 minutes.
+</p>
+
+<h2>Clang Static Analyzer</h2>
+<p>
+One area where Java really shines is the abundance of high-quality tools for static analysis. Using these tools allow you to avoid a lot of silly mistakes before you even compile or run your Java code.
+</p>
+
+<p>
+Previously, Objective-C was definitely lacking in this area. However, the <a href="http://clang-analyzer.llvm.org/">Clang Static Analyzer</a> hopes to change that. In fact, if you are using the latest version of Xcode under Snow Leopard, it should be <a href="http://developer.apple.com/mac/library/featuredarticles/StaticAnalysis/index.html">integrated</a> already. Here's the static analyzer in action:
+</p>
+
+<div style="text-align:center;">
+<a href="https://developer.apple.com/library/mac/#/legacy/mac/library/featuredarticles/StaticAnalysis/FeaturedArticle.html">
+<img src="https://developer.apple.com/legacy/mac/library/featuredarticles/StaticAnalysis/Art/uninitialized.jpg" alt="Unintialized Variable Error" border="0" width="50%" /></a>
+<br/>
+<small>Uninitialized Variable Error</small>
+</div>
+
+<p>
+For our particular project, we needed to use OS X Leopard so followed <a href="http://clang-analyzer.llvm.org/scan-build.html">these</a> steps to get the static analyzer to work. Even though it took a few more steps, the extra trouble is worth it since it catches a lot of garbage collection issues that we might have missed otherwise.
+</p>
+
+<p>
+The Clang Static Analyzer is based on the <a href="http://llvm.org/">LLVM</a> compiler infrastructure developed here the University of Illinois at Urbana-Champaign.
+</p>
+
+<h2>BWToolkit</h2>
+
+<p>
+Interface Builder is awesome. It definitely beats any other interface builder that I have tried. However, it can be too <em>basic</em> at times. It works very well, if you are doing a simple UI. But it lacks the palettes for some of the more advanced (but pretty commonplace) UI that you see in Mail.app, iCal.app, etc.
+</p>
+
+<p>
+That's when <a href="http://www.brandonwalkin.com/blog/2008/11/13/introducing-bwtoolkit/">BWToolkit</a> comes in. It offers a plethora of different palettes which makes designing your UI extremely easy. And you can use all of them using drag-and-drop from Interface Builder.
+</p>
+
+<div style="text-align:center;">
+<a href="http://brandonwalkin.com/blog/images/transparent3.png">
+<img src="http://brandonwalkin.com/blog/images/transparent3.png" alt="BWToolkit" border="0" width="50%" /></a>
+<br/>
+<small>BWToolkit's suite of controls for HUD windows</small>
+</div>
+
+<p>
+It's released under the liberal BSD license so you don't need to worry about using it for your projects. GHUnit itself uses it and that's actually how I discovered this wonderful toolkit.
+</p>
+
+<hr />
+
+Overall, OS X has a lot to offer in both <a href="http://developer.apple.com/mac/library/documentation/MacOSX/Conceptual/OSX_Technology_Overview/About/About.html">libraries</a> and <a href="http://developer.apple.com/tools/">tools</a>. And when it falls short, some other developer out there is usually passionate enough to create and share their tools with you. It just takes <em>too</em> long sometimes to find those tools. So hopefully, this list will be useful to some other aspiring OS X developer.

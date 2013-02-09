@@ -1,0 +1,42 @@
+--- 
+layout: post
+typo_id: 258
+title: Rubyfication of Raise Manager
+---
+<p>
+I spent a couple of hours transforming the RaiseMan application from <a href="http://www.bignerdranch.com/products/cocoa1.shtml"><i>Cocoa Programming for Mac OS X (2nd Edition)</i></a>. In the RubyCocoa examples folder, there is a version of this but it is based on the first edition of the book. My version includes key-value-binding, undo and redo and also alert panels. I also implemented some of the end-of-chapter exercises that I felt were useful. I skipped the part on Localization though.
+</p>
+
+<p>
+Rereading the book makes me think of how much I do not like it. There is very little rationale behind each of the examples. Most of the time, the author just says do this or that. And his anecdotes are pretty annoying (I am not sure where he got his stories from). I felt that the book could have been better if the author spent more time explaining why things are done that way instead of listing the API and describing what it does (it's almost identical to the documentation). 
+</p>
+
+<p>
+Things actually made more sense to me this time around because I was exposed to some design patterns and could see the rationale behind the way of doing things. I am not sure if a beginning programmer would appreciate the way of doings things just from reading this book. I have heard better things about <a href="http://www.cocoaprogramming.net/"><i>Cocoa Programming</i></a> but that book is old and has not been updated. I have not read that book yet so I cannot offer my opinions on it.
+</p>
+
+<p>
+Anyway, here are somethings I learned from this effort that may be useful to people:
+<ul>
+	<li>Before starting, you should read this <a href="http://rubycocoa.sourceforge.net/doc/programming.en.html">page</a> on RubyCocoa to get acquainted with the conventions. You can choose to use <code>somemethodwithargument0_withargument1_withargument2(arg0,arg1,arg2)</code> or <code> somemethodwithargument0(arg0, :withargument1, arg1, :withargument2, arg2) </code>. Once you have decided on one, it is best to stick with it.</li>
+	<li>Since you cannot drag-and-drop your MyClass.h (we don't have one, we only have MyClass.rb) into Interface Builder to get it to update any new ib_outlets, you need to do this by hand. The easiest way I can think of is to click on the "Classes" tab on the nib file, locate your MyClass and right click to add actions or outlets. That being said, Interface Builder is pretty good for creating user interfaces. The separation between code and user interface is pretty clean and it is not too hard to get things to work the way you want it to.</li>
+	<li>For key-value-binding to work on an array, use <code>kvc_array_accessor</code>. For an example, look at my <b>MyDocument.rb</b> file. More information on key-value-bindings can be found in <b>oc_import.rb</b> in the RubyCocoa source.</li>
+	<li>Always, always, always, build and run regularly. There is virtually no good debugging support for RubyCocoa. Sometimes the error message can tell you which file (and in the optimistic case, which line the error occurred at). But in general, it is going to be cryptic. By testing early and frequently, you can at least narrow the error down to the last edit that you made.</li>
+	<li>Remember to qualify your ib_outlets when you used them with the '@' symbol. For instance, if you have <code>ib_outlet :some_object</code> then in your methods, you refer to that object as <code>@some_object</code>. I am not sure why I keep forgetting this but it has been the cause of many problems.</li>
+	<li>Remember to always prefix Cocoa classes with <code>OSX::</code>. You can avoid this by using <code>include OSX</code>. Also be careful that you check the spelling for the Cocoa classes (you need the NS prefix, etc). Misspellings have bitten me quite a few times.</li>
+	<li>Read <b>oc_attachment.rb</b> in the RubyCocoa source code to find out how you can use Ruby idioms like [], []=, etc for accessing arrays and dictionaries. Also decide if you want to use those notations or just stick with <code>objectForKey(), etc.</code></li>
+	<li>There are some idiosyncrasies with <code>OSX::NSRunAlertPanel</code>. You cannot do Ruby string substitution in the arguments. If you need string substitution, you can do it using the special @ symbol as such: <code>choice = OSX::NSRunAlertPanel("Delete", "Do you want to delete %@ records?","Delete","Cancel",nil, selected.size).  </code> <br />
+ </li>
+</ul>
+</p>
+
+<p>
+One problem that I had was that I was not able to build it for release. I had to build it for debug. I think there could be something wrong with the way the project is setup. Anyway, the file is available from <a href="/files/RubyRaiseMan.tgz">here</a>. 
+</p>
+
+<p>
+<b>Update:</b> I just installed RubyCocoa 0.9 from Subversion. Instructions can be found <a href="http://rubycocoa.sourceforge.net/doc/unstable/">here</a>. I can now successfully built it as a universal binary. The next test I did was to run this RaiseManager application. I was greeted by a successful build... but the application could not create new employees. The error logs report that there is something wrong with the NSUndoManager but I suspect that it has something to do with key-bindings since there is supposed to be some change to how that is done in RubyCocoa 0.9. I will have to take a look at that. On the bright side, RubyCocoa is approaching the 1.0 mark after so many years!
+</p>
+
+<p>
+<b>Update (Jan 3, 2007):</b> The latest version from the Subversion repository has addressed the issues that I reported above. The current working version (revision 1325) was checked in today by Laurent. Suffice to say that there are major additions from RubyCocoa 0.5 that are worth checking out. It would be good to see how RubyCocoa plays with the new Objective-C 2.0 that is included with Leopard. On a side-note, there is a new Ruby/Objective-C bridge out by Tim Burks <a href="http://www.rubyobjc.com/">here</a>. </p>

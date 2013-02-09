@@ -1,0 +1,26 @@
+--- 
+layout: post
+typo_id: 303
+title: Updated to Typo5
+---
+<p>
+So I <em>discovered</em> that my web host just upgraded to Rails 2. How did I make the discovery? Well, both my blogs were <strong>malfunctioning</strong>. And when a rails web application malfunctions, it is usually a good idea to check if they had upgraded it. Previous experience with Typo should have taught me that but sometimes I forget such things.
+</p>
+
+<p>
+I should definitely <a href="http://support.tigertech.net/freeze-rails">freeze</a> the rails version right now so that I don't encounter such problems in the future.
+</p>
+
+<p>
+Anyway, I grabbed the latest version of <a href="http://typosphere.org/">Typo</a> and installed it. I must say the latest version really looks <a href="http://typosphere.org/articles/2007/08/26/screenshots">slick</a>. I chose to use the same Scribbish theme for this blog but there are two new themes that are pretty nice too. 
+</p>
+
+<p>
+One caveat is that some of the plug-ins have been removed from the base Typo installation. This caused me some problems as I migrated my blog over. I could have just installed the old plug-ins following the instructions from <a href="http://typosphere.org/articles/2007/08/26/typo-plugins-directory">here</a> but I decided to stay fresh. I am not sure whether there is an easier way to do this, but I basically went into the database and remove the sidebars table:
+<br />
+<code>DELETE from sidebars;</code>
+</p>
+
+<p>
+I am going to upgrade the <a href="http://softwareengineering.vazexqi.com">softwareengineering.vazexqi.com</a> blog in the next few hours so it should be back up by tonight.
+</p>

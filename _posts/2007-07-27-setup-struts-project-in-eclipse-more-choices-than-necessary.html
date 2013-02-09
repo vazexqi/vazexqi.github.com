@@ -1,0 +1,42 @@
+--- 
+layout: post
+typo_id: 280
+title: Setup Struts project in Eclipse - more choices than necessary
+---
+<p>
+One would expect that that given the popularity of Eclipse that there would be an easy way to setup Struts with it. However, this does not seem to be the case. There are various resources on how to use some non-standard Eclipse installation (EasyEclipse, MyEclipse) or some outdated plug-in (StrutsConsole, EasyStruts). But it is really hard to find one on how to use a standard Eclipse installation. The definition of what is a standard Eclipse installation is <b>debatable</b> since there are just so <i>many</i> different combinations of it. 
+</p>
+
+<p>
+In fact, here is a list:
+<ul>
+	<li><a href="http://www.ibm.com/developerworks/library/os-ecstruts/">Developing Struts with Easy Struts for Eclipse</a></li>
+	<li><a href="http://www.laliluna.de/first-steps-using-struts-tutorial.html">First Struts Tutorial using Eclipse, MyEclipse</a></li>
+	<li><a href="http://www.laliluna.de/first-steps-using-struts-tutorial.html">How to setup a basic Struts project using Eclipse IDE</a> - this one actually comes pretty close to what I need but it is outdated.</li>
+	
+</ul>
+</p>
+
+<p>
+However, in my case, I would like just like to use a simple installation that just enables me to launch my Struts application from within Eclipse. I don't really need any of the more complicated features. If I needed those features, I would be using IntelliJ which has great integration with Struts (and almost everything else that you usually use Java with e.g. Hibernate, Spring, etc)  built-in. 
+</p>
+
+<p>
+Fortunately, I found <a href="http://www.mail-archive.com/user@struts.apache.org/msg63546.html">this thread</a> after some searching. The instructions are a bit terse but you can definitely follow along with some trial and error. Just make sure that you have one of the supported servers installed. In my case, I was using the <a href="http://tomcat.apache.org/">Apache Tomcat</a> server but there are adapters for other servers as well. Also, make sure that you follow (or to be more specific, <i>obey</i>) the folder structure imposed. It's a pretty conventional and there should not be a reason to not put things in their recommended folders.
+</p>
+
+<p>
+All that is required is to have the Web Tools Platform (<a href="http://www.eclipse.org/webtools/main.php">WTP</a>) plug-in installed. My past experience with installing the Web Tools Platform had me downloading a whole bunch of required plug-ins before it could work. Needless to say, it was not a pleasant experience. So I was happy to see that they have released all-in-one package for the WTP project <a href="http://download.eclipse.org/webtools/downloads/drops/R2.0/R-2.0-200706260303/">here</a>. This is definitely a time-saver. The WTP is a comprehensive project that is maturing toward the usability and stability that one associates with the Eclipse Java Development Tools (<a href="http://www.eclipse.org/jdt/">JDT</a>).
+</p>
+
+<p>
+Now that everything is working - after much time-wasting - I believe that I have reconfirmed my view that having too many choices is not always good! It's really annoying when all you are trying to do is get some prototype up quickly and you are not able to do that because you have to make a decision between product A, B or C. Sure you can go ahead and read the comparisons and user reviews but most of it is not going to make that much sense to you if you have never used similar products before. And the reason you have never used them before is because you are just beginning to create your first prototype!
+</p>
+
+<p>
+I find the situation of having too many choices to be really prevalent in the Java world. I am not against having different choices but I know that when I am just beginning to use some new tool, I would really like everything bundled together so that it just works out of the box! I don't want to select product AA only to be told that before I can use product AA I need to install <i>either</i> product A.1 or product A.2! Just give me a working combination that I can quickly use to see if my prototype can even work in the first place!
+</p>
+
+<p>
+And don't get me started on the XML configuration files that are necessary before you can begin running that Java application....
+</p>

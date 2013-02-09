@@ -1,0 +1,39 @@
+--- 
+layout: post
+typo_id: 157
+title: asCamelCase for Smalltalk's String
+---
+<p>
+Something that might be useful when you are doing meta-programming in Smalltalk and want to quickly create a method name in camelCase from several words. The following was colorized using Vim's <code>:runtime! syntax/2html.vim</code></p><p>Put this as String &gt;&gt; asCamelCase (inside the converting protocol, if you like)</p>
+<div style="background: #000000; color: #ffffff">
+<pre>
+<font color="#00ffff"> 1</font>  asCamelCase
+<font color="#00ffff"> 2</font>     <font color="#00ffff"><b>&quot;Return a copy of the receiver with leading/trailing blanks removed</b></font>
+<font color="#00ffff"> 3</font>  <font color="#00ffff"><b>   and consecutive white spaces condensed. Also the string is camelCased&quot;</b></font>
+<font color="#00ffff"> 4</font>  <font color="#ffff00">   | trimmed lastBlank |</font>
+<font color="#00ffff"> 5</font>     trimmed := <font color="#ffff00"><b>self</b></font> withBlanksTrimmed.
+<font color="#00ffff"> 6</font>     ^ String
+<font color="#00ffff"> 7</font>        streamContents: [<font color="#ffff00">:stream |</font>
+<font color="#00ffff"> 8</font>           lastBlank := <font color="#ffff00"><b>false</b></font>.
+<font color="#00ffff"> 9</font>           trimmed <font color="#ffff00"><b>do:</b></font> [<font color="#ffff00">:c |</font> (c isLetter and: [lastBlank])
+<font color="#00ffff">10</font>                    <font color="#ffff00"><b>ifTrue:</b></font> [stream nextPut: c asUppercase]
+<font color="#00ffff">11</font>                    <font color="#ffff00"><b>ifFalse:</b></font> [c isLetter
+<font color="#00ffff">12</font>                          <font color="#ffff00"><b>ifTrue:</b></font> [stream nextPut: c]].
+<font color="#00ffff">13</font>                 lastBlank := c isSeparator]]
+</pre>
+</div>
+<p>
+Some test cases and their expected results:
+</p>
+<div style="background: #000000; color: #ffffff">
+<pre>
+<font color="#00ffff">1</font>  testCamelCase
+<font color="#00ffff">2</font>     <font color="#ffff00"><b>self</b></font> assert: <font color="#ff40ff"><b>'t'</b></font> asCamelCase = <font color="#ff40ff"><b>'t'</b></font>.
+<font color="#00ffff">3</font>     <font color="#ffff00"><b>self</b></font> assert: <font color="#ff40ff"><b>''</b></font> asCamelCase =<font color="#ff40ff"><b>''</b></font>.
+<font color="#00ffff">4</font>     <font color="#ffff00"><b>self</b></font> assert: <font color="#ff40ff"><b>'this should be camel cased'</b></font> asCamelCase = <font color="#ff40ff"><b>'thisShouldBeCamelCased'</b></font>.
+<font color="#00ffff">5</font>     <font color="#ffff00"><b>self</b></font> assert: <font color="#ff40ff"><b>'this'</b></font> asCamelCase = <font color="#ff40ff"><b>'this'</b></font>.
+<font color="#00ffff">6</font>     <font color="#ffff00"><b>self</b></font> assert: <font color="#ff40ff"><b>'this  should also     be in camel case'</b></font> asCamelCase = <font color="#ff40ff"><b>'thisShouldAlsoBeInCamelCase'</b></font>.
+<font color="#00ffff">7</font>     ^<font color="#ffff00"><b>self</b></font>
+</pre>
+</div><p>
+This method was inspired by the chapter on meta-programming in <a href="http://www.iam.unibe.ch/~ducasse/FreeBooks/ByExample/">Smalltalk by Example</a> (links to free e-book version).</p>

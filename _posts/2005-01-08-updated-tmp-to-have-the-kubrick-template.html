@@ -1,0 +1,19 @@
+--- 
+layout: post
+typo_id: 35
+title: Updated /tmp to have the kubrick template
+---
+<p>
+/tmp has been updated to use the kubrick template. Main instructions to convert kubrick from Wordpress to MovableType comes from <a href="http://www.josuesalazar.com/kubrick-on-mt/">Jose Salazar.com</a>. However, his instructions were not too complete and left some problems. I will list them in the next paragraph. But first, take a look at it: <a href="http://dan0597.urh.uiuc.edu/tempsite">/tmp</a>.
+</p>
+<p>
+<ul>
+<li>There were only templates for some of the pages. Jose provided files for the main page and individual entries. So I was left to configure the rest of the pages on my own. For a large site such as this there are a lot more pages to change since it involves redefining the entire CSS and page template.</li>
+<li>His use of &lt? //Header ?&gt tags confused the php parser and cause the page not to display. It took some time to realize this. This would not be a problem if we are using .html extensions for the entries. Replacing those &lt? and &gt tags with &lt!-- and &gt rid me of the problem. </li>
+<li>There was no template for the search page. Fortunately, there were instructions on how to do this on the MovableType documentation: <a href="http://www.movabletype.org/docs/mtmanual_public.html">public search</a>. There were more changes that had to be made because the search template resides under a .cgi file so any .php that might reside in Jose's original code had to be parsed. </li>
+<li>There were a lot of uncleaned code in the files that Jose provided. It will take me some time to clean them up. </li>
+</ul>
+</p>
+<p>
+Other than those quirks, the site looks fresher. I will change the default blue background to something more interesting in the future. However, I do not plan to change the template for this page unless I have a lot of time on my hands. Instead, I will continue to rely on the styles from <a href="http://www.movablestyle.com">movablestyle.com</a>.
+</p>

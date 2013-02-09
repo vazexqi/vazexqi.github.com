@@ -1,0 +1,85 @@
+--- 
+layout: post
+typo_id: 274
+title: Debugging Tree Grammars in ANTLRWorks
+---
+<p>
+The current version of <a href="http://www.antlr.org/works" title="ANTLRWorks: The ANTLR GUI Development Environment">ANTLRWorks</a> does not support tree grammar debugging directly. However, there is a way to get it to work using remote debugging. The <a href="http://www.antlr.org/wiki/pages/viewpage.action?pageId=1977" title="How do I broadcast debug events to multiple listeners? - ANTLR 3 - ANTLR Project">ANTLR FAQ for debugging</a> has some information on setting up remote debugging but it does not show the remaining steps for tree debugging.
+</p>
+
+<p> 
+	<div style="background: #000000; color: #ffffff">
+	<pre>
+	<font color="#fcf305"> 1 </font><font color="#ff80ff">import</font> java.io.*;
+	<font color="#fcf305"> 2 </font><font color="#ff80ff">import</font> org.antlr.runtime.*;
+	<font color="#fcf305"> 3 </font><font color="#ff80ff">import</font> org.antlr.runtime.tree.*;
+	<font color="#fcf305"> 4 </font><font color="#ff80ff">import</font> org.antlr.runtime.debug.*;
+	<font color="#fcf305"> 5 </font>
+	<font color="#fcf305"> 6 </font><font color="#80a0ff">/*</font>
+	<font color="#fcf305"> 7 </font><font color="#80a0ff">Sample file that shows how to connect to AntlrWorks</font>
+	<font color="#fcf305"> 8 </font>
+	<font color="#fcf305"> 9 </font><font color="#80a0ff">Remember to change the following to suit your own project</font>
+	<font color="#fcf305">10 </font><font color="#80a0ff"> - XMLGrammarLexer</font>
+	<font color="#fcf305">11 </font><font color="#80a0ff"> - XMLGrammarParser</font>
+	<font color="#fcf305">12 </font><font color="#80a0ff"> - XMLTree</font>
+	<font color="#fcf305">13 </font>
+	<font color="#fcf305">14 </font><font color="#80a0ff">*/</font>
+	<font color="#fcf305">15 </font>
+	<font color="#fcf305">16 </font><font color="#60ff60"><b>public</b></font> <font color="#60ff60"><b>class</b></font> TreeTest {
+	<font color="#fcf305">17 </font>
+	<font color="#fcf305">18 </font>  <font color="#60ff60"><b>public</b></font> <font color="#60ff60"><b>static</b></font> <font color="#60ff60"><b>void</b></font> main(String args[]) <font color="#60ff60"><b>throws</b></font> Exception {
+	<font color="#fcf305">19 </font>      CharStream input = <font color="#ffff60"><b>new</b></font> ANTLRFileStream(args[<font color="#ffa0a0">0</font>]);
+	<font color="#fcf305">20 </font>      XMLGrammarLexer lex = <font color="#ffff60"><b>new</b></font> XMLGrammarLexer(input);
+	<font color="#fcf305">21 </font>
+	<font color="#fcf305">22 </font>      <font color="#80a0ff">// MODIFY: change document to the root rule </font>
+	<font color="#fcf305">23 </font>      ParseTreeBuilder builder = <font color="#ffff60"><b>new</b></font> ParseTreeBuilder(<font color="#ffa0a0">&quot;document&quot;</font>);
+	<font color="#fcf305">24 </font>
+	<font color="#fcf305">25 </font>      <font color="#80a0ff">// create a debug socket proxy to ANTLRWorks</font>
+	<font color="#fcf305">26 </font>      <font color="#80a0ff">// MODIFY: change the name of the grammar file</font>
+	<font color="#fcf305">27 </font>      DebugEventSocketProxy AW = <font color="#ffff60"><b>new</b></font> DebugEventSocketProxy(<font color="#ffa0a0">&quot;/Users/vazexqi/Antlr/handGeneratedXMLGrammar/XMLTree.g&quot;</font>);
+	<font color="#fcf305">28 </font>      AW.handshake();
+	<font color="#fcf305">29 </font>
+	<font color="#fcf305">30 </font>      DebugEventHub hub = <font color="#ffff60"><b>new</b></font> DebugEventHub(builder, AW);
+	<font color="#fcf305">31 </font>
+	<font color="#fcf305">32 </font>      CommonTokenStream tokens = <font color="#ffff60"><b>new</b></font> CommonTokenStream(lex);
+	<font color="#fcf305">33 </font>      XMLGrammarParser parser = <font color="#ffff60"><b>new</b></font> XMLGrammarParser(tokens);
+	<font color="#fcf305">34 </font>      XMLGrammarParser.document_return root = parser.document();
+	<font color="#fcf305">35 </font>
+	<font color="#fcf305">36 </font>      CommonTreeNodeStream nodes = <font color="#ffff60"><b>new</b></font> CommonTreeNodeStream((Tree)root.tree);
+	<font color="#fcf305">37 </font>      XMLTree walker = <font color="#ffff60"><b>new</b></font> XMLTree(nodes, hub);
+	<font color="#fcf305">38 </font>      <font color="#ffff60"><b>try</b></font> {
+	<font color="#fcf305">39 </font>          <font color="#80a0ff">// MODIFY: change to the rule that you want to follow</font>
+	<font color="#fcf305">40 </font>          walker.document();
+	<font color="#fcf305">41 </font>      } <font color="#ffff60"><b>catch</b></font> (RecognitionException e) {
+	<font color="#fcf305">42 </font>          e.printStackTrace();
+	<font color="#fcf305">43 </font>      }
+	<font color="#fcf305">44 </font>
+	<font color="#fcf305">45 </font>  }
+	<font color="#fcf305">46 </font>}
+	</pre>
+	</div>
+</p>
+
+<p>
+	The original file is available from <a href="/files/TreeTest.java">here</a>.
+</p>
+
+<p>And when you generate the relevant files for your grammar, you must use the <code>- debug </code> option as such:
+<pre>
+	<code>
+  java org.antlr.Tool XMLGrammar.g
+  java org.antlr.Tool -debug XMLTree.g
+	</code>
+</pre>
+	
+Notice that you should not use the <code>-debug</code> option for the normal grammar file (the one that contains the parser/lexer). If you use the <code>- debug</code> option then it will try to debug the XMLGrammar.g file <em>in addition</em> to the XMLTree.g file and cause this error: 
+<pre>
+	<code>
+  error(10):  internal error: org.antlr.runtime.debug.DebugParser.reportError(DebugParser.java:88): java.net.BindException: Address already in use 
+	</code>
+</pre>
+</p>
+
+<p>
+Compile the necessary java files and run the program using <code>java TestTree someFile</code>. Then in ANTLRWorks, select Debugger > Debug Remote....
+</p>

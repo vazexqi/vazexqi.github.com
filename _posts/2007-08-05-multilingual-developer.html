@@ -1,0 +1,69 @@
+--- 
+layout: post
+typo_id: 282
+title: Multilingual Developer
+---
+<p><a href="http://martinfowler.com/bliki/OneLanguage.html">MF Bliki: OneLanguage</a>:
+</p>
+
+<blockquote cite="http://martinfowler.com/bliki/OneLanguage.html" title="MF Bliki: OneLanguage"> "For many developers, the one-language notion is a sign of lack of professionalism. This is best exemplified by the Pragmatic Programmers' advice to learn a new language every year. The point here is that programming languages do affect the way you think about programming, and learning new languages can do a lot to help you think about solving problems in different ways. (It's important to learn languages that are quite different in order to get the benefit of this. Java and C# are too similar to count.)"
+</blockquote>
+
+<p><a href="http://catb.org/~esr/faqs/hacker-howto.html">How To Become A Hacker</a>:
+</p>
+
+<blockquote cite="http://catb.org/~esr/faqs/hacker-howto.html" title="How To Become A Hacker"> "LISP is worth learning for a different reason - the profound enlightenment experience you will have when you finally get it. That experience will make you a better programmer for the rest of your days, even if you never actually use LISP itself a lot. (You can get some beginning experience with LISP fairly easily by writing and modifying editing modes for the Emacs text editor, or Script-Fu plugins for the GIMP.)
+<br />
+It's best, actually, to learn all five of Python, C/C++, Java, Perl, and LISP. Besides being the most important hacking languages, they represent very different approaches to programming, and each will educate you in valuable ways."
+</blockquote>
+
+<p>
+For simplicity, let's assume that there are two types of programmers out there: 1)those who are only extremely proficient in one language (most likely C++, Java or C#) and know <i>everything</i> about the language including the obscure corner cases of its implementation 2) those who know multiple programming languages and enough of each to be able to write applications with it with some form of reference by their side. Now, these are two extreme ends of the gamut and any programmer worth his or her pay will definitely be able to use multiple languages.
+</p>
+
+<p>
+Imagine that you are trying to solve a programming problem. You go ask a developer from category 1). He replies that you should try to use language feature #x together with library #z and that you should be careful of some of the dependencies -  make sure that you use version 2.1 even if it is in the unstable branch since previous versions cannot work with library #z. Now, you go ask a developer from category 2). He replies that he has seen this problem in one of the languages that he knows and that it is called the "some person's name problem". He explains what the gist of the problem is, some solutions that people have proposed and what he thinks is the best approach to the problem without suggesting a specific language or library (he gives a few that you could try but never ever just one). 
+</p>
+
+<p>
+Which developer would you prefer? If you go with developer 1), you get the exact language feature and library to use to solve your problem. You might of course run into problems later but for the most part you can get started immediately. If you go with developer 2), you are now able to understand the problem better, possibly google the "some person's name problem" and be able to form you own conclusions on the matter. With 1) you get an immediate solution but with 2) you get a solution that you can potentially apply again and again in different environments.
+</p>
+
+<p>
+Of course, the choice of which developer to go with depends on your current situation. The gist of the example above, is that by knowing a few more languages, you are able to distill the actual problem (the "some person's name problem"). From my experience this comes from the fact that most languages are able to solve certain problems better. Furthermore, if you ever read the literature, you will discover that programming languages were invented to address certain inadequacies in other programming languages. Programming languages are turing-complete so you can solve all the solvable problems (problems that do not reduce to the halting problem) with them. 
+</p>
+
+<p>
+Consider the simple <a href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a> algorithm. I remember learning about this in my introductory CS class. The explanation was easy to understand but when we had to actually implement it in Java, the beauty of the algorithm was lost amidst all the <i>noise</i> that the programming language had. Contrast this to the naive - it's naive because it uses list concatenation which is slow -  Haskell implementation below:
+</p>
+
+<p><a href="http://www.haskell.org/haskellwiki/Introduction#Quicksort_in_C">Introduction - HaskellWiki</a>:
+</p>
+
+<blockquote cite="http://www.haskell.org/haskellwiki/Introduction#Quicksort_in_C" title="Introduction - HaskellWiki"> 
+<code>
+qsort [] = [] 
+<br/>
+qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++ qsort (filter (>= x) xs)"
+</code>
+</blockquote>
+
+<p>
+While you do need to know a bit of Haskell syntax to comprehend the snippet above, once you do, it becomes almost ethereally clear and concise. The Haskell snippet expresses not only the implementation but also the algorithm itself clearly. The time that you invested in learning a <i>different</i> language like Haskell pays off because it allows you to think about the problem and how to solve it. In the Haskell implementation you solve it using list comprehension whereas in the Java/C version you manipulate data structures with indices or pointer arithmetic. Don't worry too much about the syntax since it is just a way to express the underlying idea. 
+</p>
+
+<p>
+I claim that the ability to think about the problem itself is an important skill. In the simplest case, it allows you to formulate a query to feed into google. You will be amazed at how many people do not know how to formulate a good query to feed into google. 
+</p>
+
+<p>
+But isn't it a waste to know so many languages but not be able to use them together? Sure, most languages are able to interface with C because C is still the language to use when you need performance (Fortran programmers will probably disagree since they live in their own world of super high performance computing where the laws of normal CS no longer apply to them). So while the bridge from C to "your favorite language" is pretty good, the bridge from "your favorite language" to "another language that you need" is not that good. 
+</p>
+
+<p>
+Things are beginning to change of course. I think that the advent of projects like the <a href="http://en.wikipedia.org/wiki/Common_Language_Runtime">CLR</a> and <a href="http://www.infoq.com/news/2007/07/jlr-project">JLR</a> will be able to make multilingual programming possible. There might be other implementations out there but admit it, the Java Virtual Machine and the .NET virtual machine are the two most popular ones right now. 
+</p>
+
+<p>
+As far as I know, right now the way to use different languages would be to create libraries in one language and then export it. You can then use that library in either Java or one of the .NET core languages. Even the JVM supports Javascript and Ruby, I don't think that you can use them together yet. 
+</p>

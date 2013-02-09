@@ -1,0 +1,60 @@
+--- 
+layout: post
+typo_id: 146
+title: This is not another Java vs. Ruby post
+---
+<p><a href="http://weblog.hypotheticalabs.com/?p=59">Why Ruby Shouldn&rsquo;t Be Your Next Programming Language (Maybe)</a>: 
+<blockquote>
+"For example, consider a developer just starting his programming career. The first language he learns is C. The benefit he receives is 100%. Prior to learning C he lacked the vocabulary necessary to reason about computing and develop programs. In a few years he decides to pick up Java. He learns about OOP, distributed systems, and garbage collection. The benefit for learning Java is let's say 50%. He didn't learn as much as his first exposure to programming but he still learned a number of new concepts. He then dabbles in Linux and decides to learn Perl. His benefit for learning Perl is 25%. He still learned a few new ideas and reinforced existing concepts but not as much as when he learned Java nor nearly as much as when he first learned C. Finally he decides to investigate all this Ruby On Rails hype so he picks up Ruby. He learns a few new concepts and gains exposure to a fully dynamic programming environment. His benefit for learning Ruby is 12.5%. And so the progression goes for each new Algol-based language."
+</blockquote></p>
+
+<p>(Via <a href="http://digg.com/programming/_Why_Ruby_Shouldn&rsquo;t_Be_Your_Next_Programming_Language_(Maybe).">Digg</a>.)</p>
+
+<p>My point from the article above: if you learn programming languages from the same family of languages, you are not going to gain much of a paradigm shift in terms of programming. According to the article above, the syntax and semantics of C/ Java/ Perl are similar enough that you can easily pick up one language from another. While I might not necessarily agree with the examples above, I strongly agree that learning C++ and then Java will not make you a better programmer. It just gives you another programming <b>language</b> under your belt, not some new programming <b>methodology</b> under your belt. It's the same with Java and C#. The two languages (at least the current version of C# since future versions will have some nifty features such as closures and LINQ that will distinguish it from Java) are so similar that the only added benefit you gain from learning the other is the number of libraries available at your disposal.</p>
+
+<p>When I first saw Perl, I was really impressed that you could easily construct an array without all the useless typing of " " by using something like %w{Alpha Bravo Charlie}. The idea of creating the %w to actually return an array of strings was a shortcut to me. That means that somewhere out there, someone else thought that it was a complete waste of time to have to do something type something out like this {"Alpha", "Bravo", "Charlie"}; Notice all the useless " ", ',' and ';' Now, some of you might argue that <i>my</i> IDE takes care of that for me. But why? Why not make it part of the language? Are you worried that <i>some</i> people are not able to comprehend such syntax? So, for such people, you decide to <b>limit</b> your language?</p>
+
+<p><a href="http://opal.cabochon.com/~stevey/blog-rants/language-trickery-ejb.html">Language Trickery and EJB</a>: 
+<blockquote>
+"In any case, I've been getting the impression that many Java programmers become uncomfortable when people start talking about features offered by other languages. Not just the Java engineer on the mailing list today, but lots of Java programmers. The majority, maybe."
+</blockquote></p>
+
+<p>So, is it safe to claim that some languages out there are better? <b>That those who actually know those languages are better than your average self-proclaimed programmers?</b> I think so. Read on.</p>
+
+<p><a href="http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html">The Perils of JavaSchools - Joel on Software</a>: 
+<blockquote>
+"Instead what I'd like to claim is that Java is not, generally, a hard enough programming language that it can be used to discriminate between great programmers and mediocre programmers. It may be a fine language to work in, but that's not today's topic. I would even go so far as to say that the fact that Java is not hard enough is a feature, not a bug, but it does have this one problem."
+</blockquote></p>
+
+<p>In the article above, Spolsky points out how some schools are substituting Java as the default programming language for all courses. While there is nothing wrong with Java per se, Java does hide somethings that computer scientists should know about: low-level bit manipulation and memory addressing. Want to do bit-twiddling in Java? It is going to be harder to actually implement it than to understand what bit-twiddling is all about. (Funny anecdote: I made this same stupid mistake. I wanted to represent a byte in Java. What did I do? I created a <i>class</i> for Byte? What the heck was I thinking? Do you realize that a byte takes up 8 bits in memory but a class takes up so so much more??!!) Want to know about how your machine implements the Von Neumman model of computers (data and code are both inside computer memory)? Err, that is going to be hard too since Java does not really let you deal with memory addresses.</p>
+
+<p><a href="http://www.joelonsoftware.com/articles/TestYourself.html">Test Yourself - Joel on Software</a>: 
+<blockquote>
+"By the time I got to Penn for my first year of college, I thought I was already a pretty good programmer. Completely self-taught, I had written two major systems in Turbo Pascal ... one of them was a complete inventory system for a small factory, while the other scheduled all the production at one of Israel's largest bakeries.
+
+It took me until the midterm exams to realize I wasn't as smart as I thought. I completely screwed up some questions, because I still didn't get pointers and I still didn't get recursion.
+
+Never one to hold a grudge, I share those midterm questions with you... see if you can do better than I did <b>freshman</b> year."
+</blockquote></p>
+
+<p>
+They are basic concepts that anyone claiming to be a computer science student should know. At this point, it might be best to remind you that computer science student != normal programmer. Go take the test and see if you agree. No matter what language you program in, you should be able to see the subtle requirements of each question.
+	<ul>
+		<li>
+		A normal programmer is someone who churns out programs (they might or might not be great; for instance as an extreme example, you could print 1 2.... in a loop, or you could do it by typing each line out by yourself). A computer science should be someone who can look at a problem and propose different solutions. A computer scientist knows the term polymorphism not only as a buzzword but as a high-level concept that can be used to create better programs.</li>
+		<li>
+		A programmer might be proficient in one (or maybe two languages) but a computer scientist knows about the techniques of each language so that he or she does not program in that language but programs into that language. Just because your language does not support blocks or closures, does not mean that you cannot fake it to make your programs simpler.</li>
+		<li>
+		A programmer will switch to a different framework/language capriciously, believing that it is the limitation of the framework/language that the task at hand cannot be accomplished. A computer scientist knows that all programming languages are Turing equivalent and what you can do in one, you can do in another. It just how hard it is to actually do it. It is not impossible, maybe just harder.
+		</li>
+		<li>
+		(I could not resist). A programmer is someone who depends on the IDE to tell them what to do since the programming language of their choice has so many libraries and functions that they need. All they have to do is find them. While they do try to avoid doing so, computer scientists are able to whip up a quick algorithm that accomplishes the same task good enough without wasting time hunting down the documentation on how to use those libraries or functions in the first place.
+		</li>
+	</ul>
+</p>
+
+<p>See, I told you that this was not another Ruby vs. Java article. It was just pure coincidence that my examples included Ruby and Java. I don't really care if you learn Ruby or Java but I advocate that if you are serious about programming, you had better learn C (or assembly language, but C is low level enough), then some object-oriented programming language (does not really matter if they are <i>pure</i> or semi) and maybe pick up a functional language from the Lisp family to actually be able to think differently.</p>
+
+<p>With those skills, you can be sure that no matter what new programming language they throw your way, you would be able to pick it up easily. And you would be in a better position to justify what new language is worth learning and what it not going to make much of a difference to your programming style.</p>
+
+<p>Related readings: <a href="http://www.paulgraham.com/paulgraham/avg.html">Beating the averages by Paul Graham</a> and <a href="http://www.catb.org/~esr/faqs/hacker-howto.html">How to be a Hacker by Eric Raymond</a>.</p>

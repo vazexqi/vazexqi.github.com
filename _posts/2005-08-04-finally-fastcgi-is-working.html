@@ -1,0 +1,13 @@
+--- 
+layout: post
+typo_id: 83
+title: Finally FastCGI is working
+---
+<p>
+Update: Seems that fastCGI is not as stable as I had hoped it would be. Sometimes the damn thing just crashes and has to restart itself. I am sure there is a non-obvious simple solution to this (probably by adding some line to http.conf or dispatch.fcgi). The good news is that if there is an error, just reload the page and fastcgi will kick back in with a new instance of itself. The bad news: this is really a pain.
+</p>
+</p>
+<p>By following the instructions <a href="http://wiki.rubyonrails.com/rails/show/HowtoSetupApacheWithFastCGIAndRubyBindings">here</a> I managed to get my typo web blog running on Apache-fcgi. I must say the speed improvements are really noticeable even though it required some rather weird instructions such as not installing mod_ruby or mod_sql. 
+</p><p>
+Now the speed is really comparable to that of MovableType. Even the admin pages load faster. And Marsedit does not suffer from any lag whenever I post a new article. The only way that this could be faster would be to have lighttpd with fcgi installed. When the windows version of that comes out, you can bet that I will be installing it.
+</p>

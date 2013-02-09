@@ -1,0 +1,50 @@
+--- 
+layout: post
+typo_id: 260
+title: Refactoring-aware XML configuration files
+---
+<p>Lots of Java frameworks rely on configuration files to function. These configuration files are usually written in XML (which I still strongly believe is <b>not</b> human <em>writable</em>). Whilst the IDE usually provides nice auto-completion features for these configuration files, it is not able to reflect refactoring changes made to the Java source files. For instance, if the XML file refers to <code>com.vazexqi.sample.Class</code> and I rename it to <code>com.vazexqi.sample.Class2</code>, the XML file is not updated. I wish to study the feasibility of adding refactoring awareness for these configuration files in the Eclipse IDE. For starters, I will try to hack around with the <a href="http://tools.hibernate.org/">Hibernate Tools</a> plugin.</p>
+
+<p>In case anyone is interested in following along, here are some of the steps that I have taken to get started.</p>
+
+<h4>Getting Hibernate Tools</h4>
+
+<p>I use the Help &gt; <em>Find and Install...</em> feature in Eclipse to install Hibernate Tools. The site URL for Hibernate Tools is http://download.jboss.org/jbosside/updates/development/. There is nothing there for your web browser to load; it contains a site.xml for Eclipse to discover new features. Over the past few days I have had some trouble accessing the site so be patient if you cannot reach it as well. There are three major dependencies that Hibernate Tools has: Visual Editor, Eclipse Modeling Framework and Web Tools Platform (WTP). When you first try to install Hibernate Tools, it will warn you of those dependencies. So you will need to go grab the relevant plugins first. The three of them are listed under Callisto Discovery Site. After installing Hibernate Tools, it is a good idea to find out what features its XML editor provides. I followed the <a href="http://www.hibernate.org/hib_docs/v3/reference/en/html/tutorial.html">tutorial</a> on the <a href="http://www.hibernate.org/152.html">Hibernate</a> website.</p>
+
+<p>There is no need to grab JBoss Eclipse IDE, just Hibernate Tools will do.</p>
+
+<p>The XML editor is based on the one from the WPT plug-in. The original WTP XML editor supports completion based on the XML schema (either DTD or XSD; I don't think it supports <a href="http://relaxng.org/">RELAX NG</a>). Hibernate Tool extends it so that it supports completion for Java class names for the relevant attributes in a XML tag. Completion is suggested via the normal key sequence: CTRL + space.</p>
+
+<p>I played around with Hibernate to discover what features the XML editor supports. This will help me when I need to hack it into submission.</p>
+
+<h4>Getting Hibernate Tool source code</h4>
+
+<p>To ensure that the version of Hibernate Tools you installed does not interfere with the source code when testing, you should disable it. The easiest way to do so, is to go to Help &gt; <em>Manage Configuration</em> and select Hibernate Tools from the list on the left hand side of the screen. Click disable. You should be prompted to restart Eclipse. When you restart Eclipse, it will no longer load Hibernate Tools. If you need to load it again, you can always follow the steps again but this time select "enable" for Hibernate Tools. You need to select the third icon from on the toolbar to see the disabled plugins. </p>
+
+<p>To start hacking away you need to get the source code from the JBoss CVS repository. There are some instructions <a href="http://www.hibernate.org/268.html">here</a>.</p>
+
+<p>I used a slightly different route. I switched to the CVS Repository Exploring view and browsed the CVS repository at anoncvs.forge.jboss.com:/cvsroot/jboss. I then selected the following packages (individually) from HEAD/jbosside:
+<ul>
+	<li>org.jboss.ide.eclipse.freemarker.feature</li>
+	<li>org.hibernate.eclipse.updatesite</li>
+	<li>org.hibernate.eclipse.test.feature</li>
+	<li>org.hibernate.eclipse.releng</li>
+	<li>org.hibernate.eclipse.feature</li>
+	<li>org.jboss.ide.eclipse.freemarker</li>
+	<li>org.hibernate.eclipse.mapper</li>
+	<li>org.hibernate.eclipse.jdt.ui</li>
+	<li>org.hibernate.eclipse.jdt.apt.ui</li>
+	<li>org.hibernate.eclipse.help</li>
+	<li>org.hibernate.eclipse.console.test</li>
+	<li>org.hibernate.eclipse.console</li>
+	<li>org.hibernate.eclipse</li>
+</ul>
+</p>
+
+<p>The freemaker packages are not really required but without it I get some configuration errors when I run Hibernate Tools and try to manage it with Help &gt; <em>Manage Configurations</em>.</p>
+
+<p>At this stage, you should be able to run the packages above as a single Eclipse application. Make sure that the WPT plug-ins are enabled since there is a dependency for it.</p>
+
+<p>Over the next few days I will be looking at the source code and seeing how Hibernate Tools offer completion for Java class names. From here I will try to find out how the information is embedded (it cannot be in the DTD or XML schema since that form has to remain compatible with other applications that use it). Next, I will try to register the plugin to receive notifications whenever a refactoring (rename, move, pull-up, etc) has been done and modify the referenced Java classes in the XML file.</p>
+
+<p>Hopefully after this I will get a better idea on how to develop a general framework that will allow support for different types of configuration files.</p>

@@ -1,0 +1,32 @@
+--- 
+layout: post
+typo_id: 265
+title: Sessions in vim
+---
+<p>
+I have not been updating this blog much this couple of weeks because I have not discovered anything particularly interesting. However, today I have discovered something interesting about text editing, especially in Vim.
+</p>
+
+<p>
+For those of you who have not read <a href="http://www.moolenaar.net/habits.html"><i>Seven Habits of Effective Text Editing</i></a>, you can always check out the <a href="http://video.google.com/videoplay?docid=2538831956647446078">video</a> that shows the newer features in Vim 7 for effective text editing. It was nice to see the creator of  Vim talk about it passionately (but not being insular to alternative text editors like Emacs). He has good tips for using Vim effectively but the concepts can be extended to whatever decent editor you are using. Sometimes all you need is just Notepad but there are times when something more powerful is necessary.
+</p>
+
+<p>
+Sometime during the talk he mentioned about one of the most interesting feature for Vim that I never knew existed: sessions! If you have used the latest version of Firefox then you have a basic idea of what sessions are. When you quite your browser and then reopen it, it will restore all the windows and tabs that were open. Those windows are tabs make up your browsing session. Being able to store this session is really convenient. A lot of times I had to edit a whole bunch of files together and it would be to good to "remember" those files and the buffers.
+</p>
+
+<p>
+Fortunately, Vim has that. You can read more of it in the manual in Vim itself(:h sessions) or this online <a href="http://www.vim.org/htmldoc/usr_21.html#21.4">version</a>. Basically it boils down to setting the layout, opening the files that you need and then executing <code>:mksession someSession.vim</code>. That command saves the session in the file someSession.vim in the current working directly (you can see the current directly by typing <code>:pwd</code>). Then you can restore this session using <code>:source someSession.vim</code> from within Vim or using <code>vim -S someSessions.vim</code> from the command line. Really convenient!
+</p>
+
+<p>
+But you do not need to use sessions just for remembering the files that were open. You can use a session as a template. There might be a particular layout that you like to use. For instance, having the explorer bar open on the left side of the screen. You can store this setting in a session and then open it when you want to work.
+</p>
+
+<p>
+Another related feature is the view feature. Like sessions, views remember the settings for windows but it only does so the current one. I am not sure how useful views would be but the feature is there for those who need it.
+</p>
+
+<p>
+If only other editors (<i>hint</i>...Textmate) out there supported something like this.
+</p>

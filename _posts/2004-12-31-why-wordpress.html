@@ -1,0 +1,40 @@
+--- 
+layout: post
+typo_id: 27
+title: Why WordPress?
+---
+<p><a href="http://www.rousette.org.uk/blog/archives/2004/04/11/why-wordpress/">but she's a girl... &raquo; Why WordPress?</a>: "Movabletype (MT) and WordPress (WP) have a lot of similarities (indeed, many of the new features I&rsquo;ve included in my new design could have been accomplished with MT), but one fundamental difference: MT produces static web pages, and WP produces dynamic ones. This difference is an important one; every time the content of the page needs to change in a static system (which can happen quite frequently with a weblog with comments, trackbacks and so on), the entire page needs to be rebuilt. If you have monthly and category archives, those pages need to be rebuilt too. Rebuilding is pretty speedy when you have a small number of posts, but it gets slower as time goes on and you accumulate more content. However, with a dynamic system, the changes are made the instant someone reloads the page."</p>
+
+<p>
+This puts a new perspective on things and I would like to see how it goes with WordPress. I might just go and experiment with it when I am free. So far, I can attest that using MovableType is certainly more slick than using bloxsom. After all, I am someone who is easily taken in by a nice user interface.
+</p>
+
+<p>
+Updated: I just notice that this version of movable types supports dynamic and static hosting as mentioned on the main page of <a href="http://www.movabletype.org">movabletype.org</a>. This is worth investigating because my current configuration seems to be limited to static as I was following the instructions on <a href="http://maczealots.com/tutorials/movabletype/">maczealots.com</a>
+</p>
+
+<p>
+Updated: My blog has now been configured to do dynamic publishing for the archived pages.
+<br/>
+<br/>
+<a href="http://www.movabletype.org/docs/mt31.html#dynamic%20pages">mt31 - Guide to the New Features in Movable Type 3.1</a>: "The most prominent new feature in Movable Type 3.1 is the dynamic page functionality, allowing you to combine static page generation with dynamic pages on a per-template basis. This allows you to balance the publishing and traffic for your weblog, and gives you the best of both worlds: you can turn on static page generation for frequently-requested pages like your site index and feeds, and use dynamic pages for your monthly, individual, and other archive pages. This completely eliminates the need to manually rebuild your files; when you update the design of your archive templates, for example, the design of your site will immediately be updated without requiring you to rebuild."
+</p>
+
+<p>Here are the steps necessary to do it under OS X 10.3. I figured this out after wasting time trying to debug the whole thing.
+<ol>
+I am sure not all the steps are necessary but I have only done it in this order:
+<br/>
+<br/>
+<li>I converted all my pages to .php instead of html because in the future I will be using .php. 
+<a href="http://www.entropy.ch/software/macosx/php/">http://www.entropy.ch/software/macosx/php/</a> is a good place to get the installer. Then follow the steps at <a href=
+"http://www.elise.com/mt/archives/000451html_or_php.php">http://www.elise.com/mt/archives/000451html_or_php.php</a></li>
+
+<li>The next thing I did was to go into /etc/httpd/httpd.conf to enable .htaccess. You can find the details on google. Make sure you do sudo apachectl restart as well for the changes to take effect.</li>
+
+<li>Next you need to install the php modules that <a href="http://maczealots.com/tutorials/movabletype/">this tutorial</a> left out. When you download the MovableType package and untarred it, there is a folder called php inside. Drag this folder into /Library/WebServer/CGI-Executables 
+Then in that same directory do sudo 755 php</li>
+
+<li>With steps 2 and 3 taken care of, you can follow the steps at the official MovableType site:
+<a href="http://www.movabletype.org/docs/mt31.html#dynamic%20pages">http://www.movabletype.org/docs/mt31.html#dynamic%20pages</a></li>
+</ol>
+</p>

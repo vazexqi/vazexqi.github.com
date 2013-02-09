@@ -1,0 +1,49 @@
+--- 
+layout: post
+typo_id: 223
+title: Installed Lightbox 2.02
+---
+<p>
+Lately, I have been seeing all those cool effects on other people's blog that shade the entire web page in dark grey while the picture that the visitor just clicked is displayed prominently in the middle. Not only is that really cool, it's pretty useful as well especially if you just want to view a larger image without leaving the page. In other words, I think it is efficient use of screen estate.
+</p>
+
+<p>
+Also, I just realized that Typo 4 actually ships with a version 1.0 of Lightbox. The effects are simpler as compared to version 2.02. You can get a nice preview of it <a href="http://www.huddletogether.com/projects/lightbox2/">here</a>. So, here are the steps I took to upgrade Lightbox.
+
+<ol>
+
+<li>Grab the latest version of Lightbox from <a href="http://www.huddletogether.com/projects/lightbox2/">here</a>.</li>
+<li>Unzip the file to get all the good stuff.</li>
+<li>FTP/SFTP to your Typo 4 blog and navigate to your /public folder. Replace the lightbox.js file in /public/javascripts with the one you just downloaded. Do the same for the lightbox.css file in /public/stylesheets </li>
+<li>Also, upload the images found in the folder you just unzipped to /public/images. You need to upload all the images except image-1.jpg and thumb-1.jpg. </li>
+<li>Navigate to /themes/&lt;your theme &gt;/layouts. Modify default.rhtml so that you includes the following 4 lines (if they are not there already) 
+<br />
+<code>
+	&lt;%= javascript_include_tag "prototype" %&gt;
+	<br />
+	&lt;%= javascript_include_tag "scriptaculous" %&gt;
+	<br />
+	&lt;%= javascript_include_tag "lightbox" %&gt;
+	<br />
+	&lt;%= stylesheet_link_tag "/stylesheets/lightbox.css" %&gt;
+</code>
+</li>
+</ol>
+</p>
+
+<p>
+As an added bonus, you can also use the built-in filter for Typo to quickly generate the html to overlay the image. This is the easiest way to try out Lightbox. Here is a sample that loads an image from Flickr. The magic number is the UID for the picture on Flickr.
+<br />
+<code>
+&lt;typo:lightbox img="201524385" thumbsize="medium" displaysize="original" alt="Jacking up the car" /&gt;
+</code>
+<br />
+Just a quick reminder. If you do not have a Flickr Pro account, you should not set the displaysize parameter above to "original" since you do not have that feature. Instead set it to "large" or something else.
+</p>
+
+<p>
+For more help, refer to the documentation at http://&lt; your blog &gt;/admin/textfilters/macro_help/lightbox</p>
+
+<p>
+Right now, if you click on any of the images on this main page you will be able to see the effects. I am not going to update the previous images I have posted since that will take too much time.
+</p>

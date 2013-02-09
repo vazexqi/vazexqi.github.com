@@ -1,0 +1,31 @@
+--- 
+layout: post
+typo_id: 58
+title: My Java version of PixelNHance
+---
+<div align="center">
+<a href="http://www.flickr.com/photos/37092324@N00/33494138/" title="Photo Sharing"><img src="http://photos22.flickr.com/33494138_5624757c09.jpg" width="500" height="336" alt="pixelnhance" /></a>
+</div>
+<p>
+This is my latest creation for my cs498 class. The basic requirement was to create a program that is capable of loading an image file and then perform some geometric transformations on it. After that, write the modified image to a new file. The project was to be done in Java. (This was a good idea since other GUI toolkits do not enjoy the large audience that Java AWT and Swing have).
+</p>
+<p>
+Anyway, I did some extra things such as adding a tabbed pane and adding filter capabilities to the program. It was not that hard since most of the code for the normal filters such as sharpen, blur, invert, posterize were already available online. The picture that you see above has its original image applied with a invert filter.
+</p>
+<p>
+The inspiration for the layout of the program came from a program called PixelNHance by <a href="http://www.caffeinesoft.com/">Caffeine Software</a>. Fortunately, the company discontinued this program and I think I am allowed to "emulate" some of its filters. As you can see in the picture above, there is a line that shows how the original and the modified image look. I really like this feature since you can compare the transformation side by side.
+</p>
+<p>
+There are still some rough edges to the program. For instance, I am not able to perform certain sequences of filters. Performing those "dangerous" sequences will cause my program to hang. I believe that it has entered into some illegal state of execution. That will be my hunch for debugging it.
+</p>
+<p>
+Anyway, I learned a few things about programming GUI in Java.
+<ul>
+<li>It is not wise to call removeAll(). This removes all the containers too. You probably want to call getContentPane().removeAll().</li>
+<li>Sometimes it is necessary to go a few calls up to retrieve the right parent container. You might need to do myComponent.getParent().getParent().getParent().getParent()</li>
+<li>To really get the component to repaint itself, sometimes calling repaint() is not sufficient. You may need to call invalidate(), validate(), repaint() in that order</li>
+</ul>
+</p>
+<p>
+Interestingly, I am also curious what is the "right" way to program UI in Java. I have not seen a large UI program for Java. Is it better to use anonymous inner classes as action listeners? Or is it better to create private inner classes? Is it better to lump all the UI into one main class or try to break them into different subclasses even though they are pretty similar? These are the questions I have. And so far there is no article that answers them.
+</p>

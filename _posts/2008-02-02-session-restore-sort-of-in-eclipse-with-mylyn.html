@@ -1,0 +1,104 @@
+--- 
+layout: post
+typo_id: 297
+title: Session restore (sort of) in Eclipse with Mylyn
+---
+<p>
+<small>This was something that I really wanted to blog about for a long time...</small>
+</p>
+
+<p>
+Last year I wanted to know a way to save <em>sessions</em> in Eclipse like I could for Firefox. For instance, Firefox allows you to save the open tabs and windows into a new session and restore that session in the future. That way if you ever need to recall a set of tabs for reference, they can be easily activated by restoring the saved session.  
+</p>
+
+<p>
+In fact, any decent, editor or IDE should the option to save sessions. Heck, <a href="http://www.vim.org/tips/tip.php?tip_id=1037">Vim</a> and <a href="http://www.phys.ufl.edu/docs/emacs/emacs_423.html">Emacs</a> have this feature out-of-the-box. Sessions are really useful when you have to work on groups of related files at the same time but don't want to have to remember which they are.
+</p>
+
+<p>
+So why was there apparently no way to do this in Eclipse? Initially, I thought that <a href="http://wbeaton.blogspot.com/2005/11/leanin-on-working-sets.html">Working Sets</a> might be the solution. However, they only allowed you to <strong>group</strong> files into sets. They don't actually remember the editors that are opened and what state you were in. So Working Sets were not even a poor man's implementation of sessions.
+</p>
+
+<p>
+Then epiphany struck! We could use the <a href="http://www.eclipse.org/mylyn/">Mylyn</a> plug-in to accomplish this. In fact, as you shall see, Mylyn can do even better than just saving sessions - it infers them automatically based on what you are doing! Mylyn comes installed standard now on Eclipse 3.3 and higher. In fact, the Mylyn view is even shown by default; it's not activated though. 
+</p>
+
+<p>
+Anyone who does not use sessions has a) an incredible memory, b) an inhumane ability to do context switching between tasks AND c) the luxury of not having to close his IDE ever. <strong>Or</strong> the developer just doesn't know that such an excellent tool exists out there...
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2237337520" title="View 'The Mylyn View' on Flickr.com"><img src="http://farm3.static.flickr.com/2200/2237337520_8904796f46.jpg" alt="The Mylyn View" border="0" width="500" height="377" /></a>
+<br />
+<strong>This is Mylyn</strong>
+<br />
+<small>I have readjusted my perspective a bit so that everything can fit nicely in a 800x600 window. The picture above shows the Mylyn view with some sample local tasks.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2236546165" title="View 'Activate a previous context' on Flickr.com"><img src="http://farm3.static.flickr.com/2001/2236546165_8f5ef58a29.jpg" alt="Activate a previous context" border="0" width="500" height="377" /></a>
+<br />
+<strong>Activating a previous session</strong>
+<br />
+<small>I am activating a previous session. By default, Mylyn automatically remembers the last context that you were in before closing the editor and will restore that.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2237337558" title="View 'The editors from a previous context are restored' on Flickr.com"><img src="http://farm3.static.flickr.com/2395/2237337558_23cfccea58.jpg" alt="The editors from a previous context are restored" border="0" width="500" height="377" /></a>
+<br />
+<strong>Previous session restored</strong>
+<br />
+<small>You can see that Mylyn remembers the files that were opened in that session and has restored them in the editors. The current active task (see the Task List view) has a blue bullet next to it. In the Package Explorer view, you can even see the other files that I might have referred to in a previous session but did not open in any editor.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2236546213" title="View 'Creating a new local task' on Flickr.com"><img src="http://farm3.static.flickr.com/2259/2236546213_7e8d634ab3.jpg" alt="Creating a new local task" border="0" width="500" height="377" /></a>
+<br />
+<strong>Creating a new local task (context)</strong>
+<br />
+<small>Mylyn allows you to create local task for your own use. With the proper server, you can also create sharable tasks in a Bugzilla or JIRA repository. That way, you can share the same session with yourself when you are <strong>working on a different machine</strong> or <strong>with your other teammates</strong> so that they can take a look at the same things that you are looking at.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2237337616" title="View 'Editing a local task' on Flickr.com"><img src="http://farm3.static.flickr.com/2278/2237337616_bbd0aa050d.jpg" alt="Editing a local task" border="0" width="500" height="377" /></a>
+<br />
+<strong>Editing a local task (context)</strong>
+<br />
+<small>You can easily associate other metadata with each task. In fact, Mylyn was originally created to be a task-oriented system. It allows you to split your work into little tasks to help you focus.</small>
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/37092324@N00/2236546269" title="View 'Reveal all files or focus on active task' on Flickr.com"><img src="http://farm3.static.flickr.com/2264/2236546269_f67d511b41.jpg" alt="Reveal all files or focus on active task" border="0" width="500" height="377" /></a>
+<br />
+<strong>Deciding to show everything or just the active task</strong>
+<br />
+<small>You can easily switch between showing <em>all</em> the files in the Package Explorer or focusing on the active task by clicking on the Mylyn button.</small>
+</p>
+
+<p>
+Mylyn has a <strong>whole</strong> bunch of other features. Some of the interesting ones include:
+<ul>
+<li>
+The ability to share a context with different tasks. You can clone the current context and <em>paste</em> it into a different task.
+</li>
+<li>
+It cleverly <em>remembers</em> what editors and files that you have accessed and stores those into its session.
+</li>
+<li>
+It intelligently <em>forgets</em> editors and files that you have not looked at for extended periods.
+</li>
+<li>
+You are always in control - you can override the behavior easily and promote/demote certain files from sessions.
+</li>
+<li>
+It records how long you spent on each task so that you can actually report that figure with certainty.
+</li>
+<li>
+It's well integrated with different perspective and views in Eclipse. And it is constantly being improved upon.
+</li>
+</ul>
+</p>
+
+<p>
+Mylyn is great for helping you focus on your programming tasks. It stays out of your way for the most part but is easily accessible when you need it. Once you start using it, you really wished that every IDE out there (including the venerable IntelliJ) supported it.
+</p>

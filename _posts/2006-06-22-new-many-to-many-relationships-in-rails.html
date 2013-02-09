@@ -1,0 +1,14 @@
+--- 
+layout: post
+typo_id: 191
+title: New many-to-many relationships in Rails
+---
+<p>This <a href="http://www.cincomsmalltalk.com/blog/blogView?showComments=true&amp;entry=3328384435">post</a> on a Smalltalk blog caught my attention. So, I headed over to the link and listened to the podcast. Mind you, I do subscribe to the <a href="http://podcast.rubyonrails.org/">Ruby on Rails podcast</a> but have not been religiously listening to each episode. Maybe I will from now on.</p>
+
+<p>Anyway, something in that particular podcast piqued my interest. No, it wasn't the part about how similar Ruby is to Smalltalk. I came to that conclusion myself when learning Smalltalk after learning and using Ruby for some time. More interesting was the mention of a new construct for mapping many-to-many relationships. The venerable <code>has_and_belongs_to_many</code> now has a new sibling, appropriately called <code>has_many :through</code>.</p>
+
+<p>I was running into some problems using <code>has_and_belongs_to_many</code> for my grading application. I wanted to join two tables using a relationship and I wanted to assign attributes on that relationship as well. It's kind of like the normal E/R diagram that you have showing a relationship on two entities with attributes on the relationship itself. Usually, what one would do is to create a table to represent the relationship and then add some fields to the table. Unfortunately, the previous release of Rails did not have nice support for adding attributes to the relationship. Refer to column "When a Join wants to Be a Model" page 232 of <a href="http://pragmaticprogrammer.com/titles/rails/index.html">Agile Web Development with Rails</a> to see the previously suggested way of handling this scenario.</p>
+
+<p>Anyway, to cut a long story short, the latest version of Rails introduces the ability to clearly represent the join table using <code>has_many :through</code>. No longer would you use the un-object oriented way of <code>push_with_attributes</code> to add attributes to the join table. This makes my life so much easier and is a nice change to have in Rails. Moreover, the second edition of the Agile Web Development with Rails book already features this method.</p>
+
+<p>In the mean time, there is a nice article about all this at: <a href="http://blog.hasmanythrough.com/articles/2006/04/20/many-to-many-dance-off">Many-to-many Dance-off</a></p>

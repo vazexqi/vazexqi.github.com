@@ -1,0 +1,38 @@
+--- 
+layout: post
+typo_id: 54
+title: If this is the reason that Eclipse is so slow on OS X...
+---
+<p>
+I have mentioned before that I am not too impressed by the speed of the Eclipse IDE. However I have always thought that it was because of my slower processor. Today, I came across this <a href="http://cld.blog-city.com/read/1126337.htm">article</a> by Charles Ditzel. Ditzel works for Sun so it is unlikely that his article might be a little bias. But it does contain some truth to it. And for a more serious comparison between SWT and Swing, Ditzel has also written a nice introduction <a href="http://cld.blog-city.com/read/15428.htm">here</a>.
+</p>
+<p>
+SWT has been toted as a better subset of Swing. It does not have all the capabilities of Swing but what it has is supposed to be simpler and cleaner. Personally, I have not developed anything using SWT yet since doing so does not benefit me much. To me SWT and Swing just look plain ugly. When I use them, I do so because they are "portable". If I am going to do any serious GUI application, I need to use the default toolkit for the OS. Any Java application written in Swing or SWT just does not look as sleek as a native Cocoa application. I believe that Windows user feel the same way about Swing applications.
+</p>
+<p>
+Furthermore, there is no way that Swing will ever come to the speed of the native GUI toolkit. So, if I were to consider developing serious GUI stuff, it mandates using the native OS toolkit. Also, using the native toolkit makes it look identical to what other GUI applications look like on the OS. I have yet to see a really successful commercial product for the normal end user that is written in Swing or SWT. Some might claim that <a href="http://azureus.sourceforge.net">Azureus</a> comes close to that. Frankly, I disagree. Azureus looks plain ugly. The only advantage for using a platform-independent GUI toolkit is to make developing applications easier for open-source projects.
+</p>
+<p>
+For the time being, I have not tried apple's bindings for using its GUI with Java. I am not sure how complicated it is going to be. But I am digressing...
+</p>
+<p>
+So anyway, the reason that I am not so satisfied is because Ditzel claims that SWT is optimized for Windows and runs sluggish on the Mac and Linux. That is just plain horrendous.
+</p>
+<p>
+If time permits, I might take a look at Eclipse's other competitors:
+<ul>
+<li><a href="http://www.netbeans.org/index.html">NetBeans</a></li>
+<li><a href="http://www.intellij.com/idea/">IntelliJ IDEA</a></li>
+</ul>
+</p>
+<p>
+But of course, I will not ditch Eclipse just because it is running SWT. It was just nice to know SWT is probably the cause of its sluggishness and not my machine. And Eclipse has some nice features not found in other IDEs:
+<ul>
+<li>You get plug-ins for almost all the popular languages (Python, Ruby, C)</li>
+<li>You get great re-factoring capabilities with Java.</li>
+<li>You will definitely see more developers writing plug-ins for Eclipse since it has excellent support for those.</li>
+</ul>
+</p>
+<p>
+As a side note, my class mate, Kyle, pointed out to me that the name Eclipse was chosen because it was supposed to "eclipse" out the Sun and thus block all other competition. A handy fact to know.
+</p>

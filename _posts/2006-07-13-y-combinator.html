@@ -1,0 +1,10 @@
+--- 
+layout: post
+typo_id: 200
+title: Y-combinator
+---
+<p>
+The Y-Combinator is something that has taken up a significant portion of my life these past few days. There are a lot of examples online describing it. However, most of them have not been presented in an intuitive sense (maybe because the Y-combinator is rather counterintuitive?). Also, most of them have not really explain the need for the Y-combinator when using Scheme/Lisp/etc. since we already have stuff like <code>(define...), (letrec...)</code> at our disposal.</p>
+
+<p>
+Anyway, the explanation given inside the book <em>The Little Schemer</em> was pretty interesting though I believe that it can be made clearer. As aforementioned, the intent of the Y-combinator could have been presented. Nonetheless, the best derivation of the Y-combinator that I can find on the web belongs to this <a href="http://dangermouse.brynmawr.edu/cs245/ycomb_jim.html">page</a>. Since I have spent the past few days mulling over this, I -- rather presumptuously-- feel that I can do a good job at trying to explain the derivation of the Y-combinator. This derivation is not going to be very formal but will hinge on making things as intuitive as possible. And even if no one else benefits from this derivation, I have the satisfaction of trying to write this clearly to enlighten myself in the future should I need to derive this again. Most of the work here will be inspired and influenced by the link above.</p>

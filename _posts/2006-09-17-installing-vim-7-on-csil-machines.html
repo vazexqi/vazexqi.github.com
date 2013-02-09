@@ -1,0 +1,37 @@
+--- 
+layout: post
+typo_id: 233
+title: Installing Vim 7 on CSIL machines
+---
+<p>
+Vim 7 has been released for a few months but the machines in the CSIl labs here still have the older 6.3 version. Now, there is nothing wrong with version 6.3. Except that it does not have tabs, does not have built-in spelling checker, does not have that nice omni-complete feature and not to mention that it does not work well with my .vimrc file since I tuned it for version 7.
+</p>
+
+<p>
+Here's what you need to do. This is not specific to the CSIL machines and should work with any linux installation.
+<ol>
+	<li>Create a directory called downloads in your home directory using <code>mkdir download</code>
+		</li>
+	<li>Grab the latest vim source from <a href="ftp://ftp.vim.org/pub/vim/unix/vim-7.0.tar.bz2">here</a> and stick it into the download directory. Just use Firefox or Konqueror to browse to that site.</li>
+	<li>Untar the file by running <code>tar jxvf vim-7.0.tar.bz2</code></li>
+	<li>Do <code>cd vim70/src</code></li>
+	<li>You have to modify the Makefile a bit to get it to install in your home directory. Look for the line (around line 853) that has says "prefix = $(HOME)". Uncomment it. This will install Vim in folder /bin in your home directory,</li>
+	<li>Do <code>cd ..</code> to get back to the vim70 directory. Then do <br />
+		<code>
+			./configure <br />
+			make <br />
+			make install
+		</code>
+		</li>
+	<li>There should not be any errors and it takes less than 5 minutes to compile on the newer csil-core machines.</li>
+	<li>The final step is to get your newly installed version of Vim to run instead of the old one. Add the lines set path = ($path $HOME/bin ) to your .cshrc file. You can edit the .cshrc file by doing <code>cd ; vim .cshrc</code>
+		</li>
+	<li>Do <code>source .cshrc</code>.</li>
+	<li>Now you can type vim or gvim in the terminal and it will run the new Vim 7.0</li>
+</ol>
+</p>
+
+<p>
+Now that you have Vim 7.0 installed, go <a href="http://blog.vazexqi.com/articles/2006/05/03/vim-7-0">look</a> at what you can with it. Also, grab some color schemes from <a href="http://www.cs.cmu.edu/~maverick/VimColorSchemeTest/index.html">here</a> to make the syntax highlighting slightly nicer. Another good tool to have for code editing is the <a href="http://www.geocities.com/yegappan/taglist/installation.html">taglist</a> plugin</p>.
+
+<a href="http://static.flickr.com/91/245912063_71095cfaf6_o.png" rel="lightbox" title="Taglist in action"><img src="http://static.flickr.com/91/245912063_71095cfaf6.jpg" width="500" height="314" alt="Taglist in vim" /></a>

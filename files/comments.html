@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>comments.php</title>
+<meta name="Generator" content="Vim/6.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#333333" text="#ffffff">
+<pre>
+<font color="#ffff00"><b> 1</b></font>  <font color="#ff6060"><b>&lt;?php</b></font>
+<font color="#ffff00"><b> 2</b></font>
+<font color="#ffff00"><b> 3</b></font>    <font color="#00ffff"><b>/* </b></font>
+<font color="#ffff00"><b> 4</b></font>  <font color="#00ffff"><b>  Prints the comments recursively. The only down side is that the array is</b></font>
+<font color="#ffff00"><b> 5</b></font>  <font color="#00ffff"><b>  potentially being traversed through each recursive call.</b></font>
+<font color="#ffff00"><b> 6</b></font>  <font color="#00ffff"><b>  */</b></font>
+<font color="#ffff00"><b> 7</b></font>
+<font color="#ffff00"><b> 8</b></font>    <font color="#8080ff"><b>function</b></font> printNestedComment<font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>parent</b></font>, <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font><font color="#ff6060"><b>)</b></font> <font color="#ff6060"><b>{</b></font>
+<font color="#ffff00"><b> 9</b></font>      <font color="#ffff00"><b>foreach</b></font> <font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font> <font color="#ffff00"><b>as</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comment</b></font><font color="#ff6060"><b>)</b></font> <font color="#ff6060"><b>{</b></font>
+<font color="#ffff00"><b>10</b></font>        <font color="#ffff00"><b>if</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>parent</b></font> <font color="#ffff00"><b>==</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comment</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>parent_id</b></font>'<font color="#ff6060"><b>])</b></font> <font color="#ff6060"><b>{</b></font>
+<font color="#ffff00"><b>11</b></font>          <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>html</b></font> <font color="#ffff00"><b>.=</b></font> '<font color="#ff40ff"><b>&lt;ul&gt;</b></font>' <font color="#ffff00"><b>.</b></font> &quot;<font color="#ff6060"><b>\n</b></font>&quot;;
+<font color="#ffff00"><b>12</b></font>          <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>html</b></font> <font color="#ffff00"><b>.=</b></font> '<font color="#ff40ff"><b>&lt;li&gt;</b></font>' <font color="#ffff00"><b>.</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comment</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>message</b></font>'<font color="#ff6060"><b>]</b></font> <font color="#ffff00"><b>.</b></font> '<font color="#ff40ff"><b>&lt;/li&gt;</b></font>' <font color="#ffff00"><b>.</b></font> &quot;<font color="#ff6060"><b>\n</b></font>&quot; ;
+<font color="#ffff00"><b>13</b></font>          <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>html</b></font> <font color="#ffff00"><b>.=</b></font> printNestedComment<font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comment</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>id</b></font>'<font color="#ff6060"><b>]</b></font>, <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font><font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>14</b></font>          <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>html</b></font> <font color="#ffff00"><b>.=</b></font> '<font color="#ff40ff"><b>&lt;/ul&gt;</b></font>' <font color="#ffff00"><b>.</b></font> &quot;<font color="#ff6060"><b>\n</b></font>&quot;;
+<font color="#ffff00"><b>15</b></font>        <font color="#ff6060"><b>}</b></font>
+<font color="#ffff00"><b>16</b></font>      <font color="#ff6060"><b>}</b></font>
+<font color="#ffff00"><b>17</b></font>
+<font color="#ffff00"><b>18</b></font>      <font color="#ffff00"><b>return</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>html</b></font>;
+<font color="#ffff00"><b>19</b></font>    <font color="#ff6060"><b>}</b></font>
+<font color="#ffff00"><b>20</b></font>
+<font color="#ffff00"><b>21</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>host</b></font> <font color="#ffff00"><b>=</b></font> '<font color="#ff40ff"><b>127.0.0.1</b></font>';
+<font color="#ffff00"><b>22</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>user</b></font> <font color="#ffff00"><b>=</b></font> '<font color="#ff40ff"><b>user</b></font>';
+<font color="#ffff00"><b>23</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>password</b></font> <font color="#ffff00"><b>=</b></font> '<font color="#ff40ff"><b>password</b></font>';
+<font color="#ffff00"><b>24</b></font>
+<font color="#ffff00"><b>25</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>database</b></font> <font color="#ffff00"><b>=</b></font> '<font color="#ff40ff"><b>database</b></font>';
+<font color="#ffff00"><b>26</b></font>
+<font color="#ffff00"><b>27</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>link</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ffff"><b>mysql_connect</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>host</b></font>, <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>user</b></font>, <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>password</b></font><font color="#ff6060"><b>)</b></font>
+<font color="#ffff00"><b>28</b></font>            <font color="#ffff00"><b>or</b></font> <font color="#00ffff"><b>die</b></font> <font color="#ff6060"><b>(</b></font>'<font color="#ff40ff"><b>Could not connect: </b></font>' <font color="#ffff00"><b>.</b></font> <font color="#00ffff"><b>mysql_error</b></font><font color="#ff6060"><b>())</b></font>;
+<font color="#ffff00"><b>29</b></font>
+<font color="#ffff00"><b>30</b></font>    <font color="#00ffff"><b>mysql_select_db</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>database</b></font><font color="#ff6060"><b>)</b></font> <font color="#ffff00"><b>or</b></font> <font color="#00ffff"><b>die</b></font> <font color="#ff6060"><b>(</b></font>'<font color="#ff40ff"><b>Could not select database</b></font>'<font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>31</b></font>
+<font color="#ffff00"><b>32</b></font>    <font color="#00ffff"><b>// You should make use of prepared statements as here:</b></font>
+<font color="#ffff00"><b>33</b></font>    <font color="#00ffff"><b>// <A HREF="http://www.databasejournal.com/features/mysql/article.php/3599166">http://www.databasejournal.com/features/mysql/article.php/3599166</A> . </b></font>
+<font color="#ffff00"><b>34</b></font>    <font color="#00ffff"><b>// I am not using it because I do not have PHP 5 installed </b></font>
+<font color="#ffff00"><b>35</b></font>
+<font color="#ffff00"><b>36</b></font>    <font color="#00ffff"><b>// This is a convoluted example to show how to prevent SQL injections</b></font>
+<font color="#ffff00"><b>37</b></font>    <font color="#00ffff"><b>// Get the parameter passed in through the URL</b></font>
+<font color="#ffff00"><b>38</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>query</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ffff"><b>sprintf</b></font><font color="#ff6060"><b>(</b></font>&quot;<font color="#ff40ff"><b>SELECT * FROM comments WHERE category='%s'</b></font>&quot;,
+<font color="#ffff00"><b>39</b></font>               <font color="#00ffff"><b>mysql_real_escape_string</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>_REQUEST</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>category</b></font>'<font color="#ff6060"><b>]))</b></font>;
+<font color="#ffff00"><b>40</b></font>
+<font color="#ffff00"><b>41</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>raw_result</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ffff"><b>mysql_query</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>query</b></font><font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>42</b></font>
+<font color="#ffff00"><b>43</b></font>    <font color="#00ffff"><b>// Stick this in an array of associative arrays (hash)</b></font>
+<font color="#ffff00"><b>44</b></font>    <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ff00"><b>Array</b></font><font color="#ff6060"><b>()</b></font>;
+<font color="#ffff00"><b>45</b></font>
+<font color="#ffff00"><b>46</b></font>    <font color="#ffff00"><b>while</b></font> <font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>row</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ffff"><b>mysql_fetch_array</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>raw_result</b></font>, MYSQL_ASSOC<font color="#ff6060"><b>))</b></font> <font color="#ff6060"><b>{</b></font>
+<font color="#ffff00"><b>47</b></font>      <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font><font color="#ff6060"><b>[]</b></font> <font color="#ffff00"><b>=</b></font> <font color="#00ff00"><b>array</b></font><font color="#ff6060"><b>(</b></font>
+<font color="#ffff00"><b>48</b></font>                              '<font color="#ff40ff"><b>id</b></font>' <font color="#ffff00"><b>=</b></font><font color="#ffff00"><b>&gt;</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>row</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>id</b></font>'<font color="#ff6060"><b>]</b></font>,
+<font color="#ffff00"><b>49</b></font>                              '<font color="#ff40ff"><b>parent_id</b></font>' <font color="#ffff00"><b>=</b></font><font color="#ffff00"><b>&gt;</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>row</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>parent_id</b></font>'<font color="#ff6060"><b>]</b></font>,
+<font color="#ffff00"><b>50</b></font>                              '<font color="#ff40ff"><b>message</b></font>' <font color="#ffff00"><b>=</b></font><font color="#ffff00"><b>&gt;</b></font> <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>row</b></font><font color="#ff6060"><b>[</b></font>'<font color="#ff40ff"><b>message</b></font>'<font color="#ff6060"><b>])</b></font>;
+<font color="#ffff00"><b>51</b></font>    <font color="#ff6060"><b>}</b></font>
+<font color="#ffff00"><b>52</b></font>
+<font color="#ffff00"><b>53</b></font>    <font color="#00ffff"><b>// Start with the comment that has no parent (NULL parent)</b></font>
+<font color="#ffff00"><b>54</b></font>    <font color="#00ffff"><b>echo</b></font> printNestedComment<font color="#ff6060"><b>(</b></font><font color="#00ff00"><b>NULL</b></font>, <font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>comments_array</b></font><font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>55</b></font>
+<font color="#ffff00"><b>56</b></font>    <font color="#00ffff"><b>// Free the results</b></font>
+<font color="#ffff00"><b>57</b></font>
+<font color="#ffff00"><b>58</b></font>    <font color="#00ffff"><b>mysql_free_result</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>raw_result</b></font><font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>59</b></font>
+<font color="#ffff00"><b>60</b></font>    <font color="#00ffff"><b>mysql_close</b></font><font color="#ff6060"><b>(</b></font><font color="#ffff00"><b>$</b></font><font color="#00ffff"><b>link</b></font><font color="#ff6060"><b>)</b></font>;
+<font color="#ffff00"><b>61</b></font>
+<font color="#ffff00"><b>62</b></font>  <font color="#ff6060"><b>?&gt;</b></font>
+</pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+--- 
+layout: post
+typo_id: 271
+title: Changing the way programmers program
+---
+<p>
+I was fortunate enough to attend a very interesting talk by Professor Brad Myers of Carnegie Mellon University on the topic of <a href="http://webtools.uiuc.edu/calendar/Calendar?ACTION=VIEW_EVENT&amp;calId=994&amp;skinId=47&amp;DATE=4/9/2007&amp;eventId=43546">natural programming</a>. Natural programming is a broad term and there can be a lot of spurious claims about what is <i>natural</i> so Myers actually narrows what the term means by using user studies on programmers. By doing so, he was able to actually observer the real behavior of programmers instead of naively relying on what intuition might say otherwise.
+</p>
+
+<p>
+Myers managed to cover a lot of ground (it is a shame that the lecture was not recorded but fortunately a lot of the topics he touched on can be found at the CMU HCI! <a href="http://www.hcii.cmu.edu/">website</a>). Here are some of my thoughts on some topics which really intrigued me. Hopefully I provide enough context so that people who did not go to the talk can actually understand what I am trying to say.
+</p>
+
+<p>
+<ul>
+	<li><b>User studies</b> Myers's group did not waste time trying to come up with sophisticated tools to record how programmers work. They did not create some heavy-weight plugin for the IDE. Instead, they used a video recorded and/or a screen capture device. This leads to a lot of data that has to be analyzed but at least <i>everything</i> is captured. I think that in such studies, it is really important to record everything that the user is doing. Contrast this to using your own recording plug-in tool. Your tool probably records what you are interested in only (meaning your tool is probably biased) and ignores the rest. Therefore, you are not able to truly observer the real behavior of the programmers. The downside of using the video capture tool would be the sheer amount of man power that is required to analyze and distill the information.</li>
+	<li><b>Starting small</b> A lot of people were skeptical of the results shown in the lecture. Most of the examples have been done using what some would call a toy environment. For instance, there was a demo of WHYLINE using the <a href="http://www.alice.org/">Alice</a> environment. The results of the WHYLINE was pretty impressive but there were a lot of questions on whether the results would be beneficial to a <i>real</i> programming environment. First of all, it is pretty important to realize that something like this has never been done before. So there is no data to suggest whether this will succeed or fail. The only way to find out is to construct a system to test it. When you are doing research in uncharted territory, you usually start small and then build up on your previous results. I believe that it is important to realize the importance of the paradigm shift brought upon by Myers research. His WHYLINE approach might not extend directly to other programming environments but at least he has shown that there exists viable alternatives to how we have been debugging for the previous decades. </li>
+	<li><b>Improving the text editor</b>. The text editor in most IDEs are really abysmal. They only support the most minimal of word editing operations. I really like the clustering idea that Myers presented (he did not actually use the term <i>clustering</i> but I feel that it is a suitable term). Programming activities seldom involve just one file. Usually it involves reading a couple of files and making small changes to them. There are at least two things that makes this form of editing complicated in current IDEs. First, it is very hard to locate the relevant files because there might not be direct dependencies between the files. For instance, most functionalities of a program are scattered across multiples files that might not exist in the same form (some parts could be documentation files, some configuration files, some files that are in different languages). Second, once you do locate the relevant files, how do you keep the relation between those files clear. For instance, how can you <i>tell</i> or <i>record</i> in your IDE that those files are related so that the next time you work on a similar task, you would like your IDE to show those related files again and more importantly remind you of what the relation between those files were.</li>
+</ul>
+</p>
+
+<p>
+HCI is a broad topic and not everything about it interests me. There are certain parts of it that strike me as being too vague but there are other parts like improving the programming environment that seem really interesting and doable. The topic of natural programming is becoming more important because (based on the data Myers showed) in the next couple of years, everyone who uses a computer will undoubtedly be doing some form of programming no matter how simple. 
+</p>
+
+<p>
+The computer has become powerful enough that it will be able to support a lot of things that people did not think were possible many years ago. It is visionary research like this that will help us make full use of future computers. I'll definitely be monitoring what Myers's group can come up with next.
+</p>

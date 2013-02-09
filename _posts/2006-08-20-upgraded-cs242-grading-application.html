@@ -1,0 +1,23 @@
+--- 
+layout: post
+typo_id: 222
+title: Upgraded CS242 grading application
+---
+<p>
+This was something that I wanted to do since the beginning of summer but could not really do back in Malaysia because of the slow internet connection which I <i>enjoyed</i> there. The grading application worked fine but there were some minor features that needed to be implemented. For instance, my initial idea of having each criterion be a checkbox did not turn out as useful as I expected. True, sometimes it is easier to just check something off but sometimes there is really a need to assign some points to that criterion. Also, being able to assign specific points from a range makes it easier to tally the points and determine which student gets the A in class.</p>
+
+<p>
+Another feature I added was the summary page that will display everyone's marks for each assignment. I really wished I had this feature last semester especially when we were trying to determine who did all the assignments at the end of the class. To implement this feature, I used multiple parameters in the URL. This turned out to be pretty ugly so I used the routes.rb to map the connections into prettier URLs. More on that can be found <a href="http://www.ruby-forum.com/topic/76861">here</a>. Using routes.rb is pretty useful and I can see myself using it in the future. Moreover, I was able to rerouter cs242.vazexqi.com to cs242.vazexqi.com/login/login automatically without relying on http-headers or javascript.</p>
+
+<p>
+A minor improvement was the use of a variable width CSS file. Last semester, as the number of projects increased, the number of tabs would also increase making the layout look unprofessional. Using the variable width CSS file, the entire interface stretches to the size of your browser window and is no longer constrained to a mere 800 pixels.</p>
+
+<p>
+I deployed the final application by using <code>svn export</code> to remove all the hidden .svn files. Rails actually has a neat deployment application called Capistrano but I have not had the time to experiment with it yet. </p>
+
+<p>
+This time around, I am also more careful and have setup a cron job to backup the MySQL database as suggested <a href="http://wiki.railsplayground.com/railsplayground/show/How+To+Automatically+Backup+Your+MySQL+Databases">here</a>.
+</p>
+
+<p>
+I did not implement any nifty AJAX features yet. Probably that is something worth looking into as well. I really wish that I could get the application working with FastCGI since it is running rather slowly using normal CGI. However, I have not had any success with FastCGI and I do not feel like having the application die on the students every now and then this semester.</p>

@@ -1,0 +1,31 @@
+--- 
+layout: post
+typo_id: 269
+title: Better performance from Java IDEs
+---
+<p>
+I have been using <a href="http://www.eclipse.org/">Eclipse</a> as my primary Java IDE for some time now. I like most of the features that it offers. However, to get the best performance you have to forgo everything you know about <i>low memory requirement</i> software. Eclipse is not one of those. In fact it is a memory hog. 
+</p>
+
+<p>
+In fact, if you just use Eclipse straight out the box, you are probably going to feel that is the most sluggish IDE around. This sluggishness is not limited to Eclipse only though (more on this below). So, to get the best performance, you have to weak the settings for the amount of memory that it uses to counteract the effects of Java's garbage collection. 
+</p>
+
+<p>
+In OS X, you want to hunt for the file <code>eclipse.ini</code>. You can find this file in <code>Eclipse.app/Contents/MacOS/eclipse.ini</code>. To get to that folder, you need to right-click on Eclipse and select "Show Package Contents". Find the lines that read -Xms&lt;some_number&gt; and -Xmx&lt;some_number&gt;. The former number represents the minimum heap space size and the latter refers to the maximum heap space size. Change the numbers to something more <i>reasonable</i> like 256 for the minimum memory and 512 for maximum memory. If you run Eclipse now you will <b>feel</b> the difference.</p>
+
+<p>
+Just a couple of days ago, I downloaded <a href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a> touted as the most <i>intelligent</i> Java IDE. Well, it does live up to its name. The error and warning messages convey clearer meanings compared to the ones in Eclipse. However, using it out-of-the-box was a bit of an experience. IntelliJ IDEA has a very conservative initial heap space allocation - a meager 32MB. That is definitely not enough. After a couple of minutes of using IntelliJ, it was already doing its garbage collection! 
+</p>
+
+<p>
+So, it is time to tweak the VM. In OS X, hunt for the file <code>IntelliJ IDEA &lt;some_version&gt;.app/Contents/MacOS/info.plist</code>. <code>info.plist</code> is a XML file that you can open in a text editor. Look for near the end of the file for the <code>VMOptions</code> key and change its string value to something like <a href="http://piotrga.wordpress.com/2006/12/12/intellij-and-garbage-collection/">this</a>. Unix and Windows users can refer to <a href="http://confluence.atlassian.com/display/DOC/Allocate+more+memory+to+IDEA">this page</a> to get the location of the configuration file.
+</p>
+
+<p>
+Note that the developers of IntelliJ also agree that the default memory settings are not always the best for your larger projects. Therefore, they have also posted an >a href="http://blogs.jetbrains.com/idea/2006/04/configuring-intellij-idea-vm-options/">article</a> on their blog that details the settings that they use. An important fact that they point out is that allocating a lot of RAM to IntelliJ is not always the best choice since the garbage collector might have to potentially free up a whole bunch of stuff all at once.
+</p>
+
+<p>
+IntelliJ has a lot of non-commercial plug-ins available but the <i>better</i> and more complicated ones are usually commercial. These commercial plug-ins can cost more than an academic license for IntelliJ. Their exorbitant cost is one good reason why I will still have to use Eclipse for certain tasks. Another reason is the total number of plug-ins: Eclipse has <i>way</i> more plug-ins than IntelliJ. The last time I checked, there were <a href="http://www.eclipseplugincentral.com/">827 plug-ins</a> for Eclipse and <a href="http://plugins.intellij.net/">370 plug-ins</a> for IntelliJ. That is more than twice the amount so if you are looking for a plugin for some language you are more likely to find as an Eclipse plug-in.
+</p>

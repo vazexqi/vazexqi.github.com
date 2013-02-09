@@ -1,0 +1,23 @@
+--- 
+layout: post
+typo_id: 140
+title: "Installing TinyOS on Red Hat 9: Time consuming task"
+---
+<p><a href="http://www.crhc.uiuc.edu/~mjmille2/howtos/installing-tinyos-for-telos-on-linux/">Matthew J. Miller's HOWTO: Installing TinyOS</a>: 
+<blockquote>
+"You can try installing TinyOS from RPMs as suggested on the TinyOS website.  If this works for you, I suggest that you leave the office immediately and go buy a lottery ticket.  Based on my experience, the more likely scenario is that you'll be on the verge of hurling a laptop through a window after a couple of days of trying to troubleshoot via the TinyOS mailing lists"
+</blockquote></p>
+
+<p>
+Unfortunately I cannot perform the act of defenestration on my machine since doing so could actually kill someone at the bottom of my dorm! Imagine a 20-pound dual Xeon server crashing down on you. Indeed I am grateful that I stumbled across this page by just searching on Google for the phrase "installing tinyos on linux". Installing <a href="http://www.tinyos.net/">TinyOS</a> on Linux is a necessary part of my Mica2 Mote project since I have to write the application layer for the motes itself.</p>
+
+<p>
+Anyway, the <a href="http://www.tinyos.net/tinyos-1.x/doc/install.html">instructions</a> from the TinyOS website were deceptively simple and involved nothing more than installing a couple of RPMs. I was to discover that this is not the case. Fortunately I was using <a href="http://www.vmware.com/">VMWare</a> and had made <a href="http://www.vmware.com/support/ws5/doc/ws_preserve_using_sshot.html">snapshots</a> of my first clean installation. The first time I installed it, the installation just decided to hang the machine and I had to reboot. After rebooting, I could not even log into the machine. The second time around I was more careful but the same mishap happened again. In the end I gave up entirely on the RPMs and ended up compiling everything almost entirely by source (with the exception of the Java RPMs of course). By the way, it seems that trying to compile the Java source files in the tinyos folder is the most elusive step, one that can permanently leave you with a non-working machine.</p>
+
+<p>
+Anyway, the ordeal of trying, failing, rolling back to a previous snapshot and trying again took up nearly 2 days! In the end I almost gave up on installing it on Linux since I can easily install TinyOS on windows (amazingly, the installer for Windows works fine on a clean installation of XP). However, luck was on my side and I managed to solve the problem by installing the latest version of the <a href="http://nescc.sourceforge.net/">nesC</a> compiler as suggested by Miller above.</p>
+
+<p>How did I find out that everything was working? Well, I could compile the sample application without any errors, upload it to the Mica2 Mote via a parallel cable and finally get to see the red LED blink every second. I would say that would definitely count as being successful after fiddling with it for 2 days!</p>
+
+<p>
+Now all I have to do is become proficient enough with TinyOS and nesC</p>

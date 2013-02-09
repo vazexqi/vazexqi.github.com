@@ -1,0 +1,29 @@
+--- 
+layout: post
+typo_id: 227
+title: Parsing Ruby
+---
+<p><a href="http://www.sapphiresteel.com/IntelliSense-and-Parsing-Ruby">SapphireSteel :: IntelliSense and Parsing Ruby</a>:
+</p>
+
+<blockquote cite="http://www.sapphiresteel.com/IntelliSense-and-Parsing-Ruby" title="SapphireSteel :: IntelliSense and Parsing Ruby"> "However, it did strike me that what I was doing was generating a successive approximation to a Ruby parser. The actual C Ruby parser is a combination of Matz's meanderings and bug fixes over the years - and it's neither pretty nor elegant. I can get closer and closer to the real thing but the amount of effort required to do that increases. For example, the one construct I won't deal with at present is nested <i>here</i> documents. For various technical reasons, they are hard hard work to implement. And how many people use them, anyway? I've only come across two examples so far in all those 2600 files."
+</blockquote>
+
+<p><a href="http://jutopia.tirsen.com/articles/2005/10/18/refactoring-for-ruby-a-solution-to-the-first-component">Refactoring for Ruby: A solution to the first component?</a>:
+</p>
+
+<blockquote cite="http://jutopia.tirsen.com/articles/2005/10/18/refactoring-for-ruby-a-solution-to-the-first-component" title="Refactoring for Ruby: A solution to the first component?"> "The great thing with <a href="http://www.zenspider.com/ZSS/Products/ParseTree/">ParseTree</a> is that it's guaranteed to parse all Ruby code as it actually steals the AST directly from the interpreter. The problem with ParseTree is that it discards everything that is not interesting to actually executing the Ruby code. Things like formatting, comments and so on may not be interesting to the Ruby interpreter but it certainly is interesting to humans reading and writing the code. So we don't want to loose all that interesting (to us) stuff when we execute a refactoring."
+</blockquote>
+
+<p>
+So far, there are two solutions to the parsing question. First, use ParseTree. But as stated above, your lose all the useful information such as comments and formatting. The other would be to use Antlr, write your own little grammar that would preserve those comments and formatting. I have not used Antlr before, and like the first quote above mentioned, getting the entire grammar for Ruby to work is not easy. There are some weird nuances that need to be detected.</p>
+
+<p>
+I know that some <a href="http://rubyforge.org/projects/rubygrammar">people</a> are working on the Antlr grammar for Ruby. However, the project seems pretty abandoned. I might be able to get something out of it as a starting point though. For a fairly large language like Ruby, the <a href="http://rubyforge.org/plugins/scmsvn/viewcvs.php/grammars/antlr-v3/trunk/ruby.g?revision=57&root=rubygrammar&view=markup">cases</a> are rather extensive.
+</p>
+
+<p>
+The other possibility would be to look at JRuby's implementation of a parser and see what we can get out of that. I really do not want to have to write the grammar for Ruby.</p>
+
+<p>
+Update: Seems like I found something that might be useful: <a href="http://seclib.blogspot.com/2006/02/first-release-of-rubyfront.html">RubyFront</a>: Ruby parser powered by Antlr. And they have been kind enough to include the ruby.g file that contains the grammar. And the good news, it parses everything, including the notorious here docs.</p>

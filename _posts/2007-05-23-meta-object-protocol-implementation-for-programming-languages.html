@@ -1,0 +1,50 @@
+--- 
+layout: post
+typo_id: 273
+title: Meta-Object Protocol implementation for programming languages
+---
+<p>
+The past week I had the opportunity to play around with <a href="http://groovy.codehaus.org/">Groovy</a>. Groovy is an "agile dynamic language for the Java Platform". In short, you can think of Groovy as adding dynamic features to the Java language with some syntactic sugar to the Java syntax. Like <a href="http://jruby.codehaus.org/">JRuby</a> and <a href="http://www.jython.org/Project/index.html">Jython</a>, Groovy runs on the JVM and plays well with Java code.
+</p>
+
+<p>Groovy offers functionality similar to that of Ruby, Python and other dynamic languages. Of course, Groovy has its own way of doing things but some of the most interesting things that I have seen are: </p>
+
+<ul>
+<li>Integrated support for XML processing <i>directly</i> via <a href="groovy.codehaus.org/GPath">GPath</a> (akin to XPath)</li>
+<li>Support for <a href="http://en.wikipedia.org/wiki/Multiple_dispatch">multimethods</a>. The <i>type</i> of an object is determined at run-time. This leads to the interesting behavior that even if you write <code>Object foo = "Hello"</code>, foo actually has the type <code>String</code> instead of <code>Object</code>.</li>
+<li>Option to declare the type for variables. Though not required, you have the option of declaring the static type of an object. The only other system that I have seen that offers this option is <a href="http://www.strongtalk.org/">Strongtalk</a>.</li>
+</ul>
+
+<p>
+While Groovy is certainly an interesting and useful language (personally, any language that reduces the verbosity of Java is <b>useful</b>), what is more interesting is the way in which the dynamic features are done. Groovy relies on an internal implementation of the <a href="http://en.wikipedia.org/wiki/Metaobject">Metaobject Protocol</a>. As far as I know, the term <i>Metaobject Protocol</i> was first made popular in the book <a href="http://books.google.com/books?id=3X5Gnudn3k0C&amp;pg=PP1&amp;ots=Zp8zmKv1bR&amp;dq=The+Art+of+the+Metaobject+Protocol&amp;sig=_Od_XIOKiLknUkeV6ZlbAJAzSoU"><i>The Art of the Metaobject Protocol</i></a>.  You can read more about this concept from any of the previous links but in a nutshell, designing a programming language so that it conforms to some Metaobject Protocol is a <i>good</i> thing. It allows the programmer (and not only the designer) to change the semantics of the language so that it can not only modify the current features of the language but also incorporate <i>new</i> features easily.
+</p>
+
+<p>
+This might seem like an absurd thing to do if you are used to programming in more traditional languages like C which does not even offer the ability for <a href="http://en.wikipedia.org/wiki/Reflection_%28computer_science%29">reflection</a>. However, the ability for actually modifying the programming language itself is becoming more useful. Modifying does not only mean adding some form of syntactic sugar on top of the existing language but also the ability to add <i>new</i> features to the programming language itself. For instance, the <code>foreach</code> control structure could be viewed as some form of syntactic sugar. <code>foreach</code> could be easily implemented as a macro that is expanded before execution into the normal <code>for</code> loop or <code>while</code> loop. On the other hand, adding object-oriented features on top of a "non-object-oriented" language would be viewed as adding a new feature (and not just syntactic sugar) to the language itself. This was what was done with <a href="http://en.wikipedia.org/wiki/Common_Lisp_Object_System">CLOS</a> in Lisp.
+</p>
+
+<p>
+One could always argue that there is no need for such a feature to be an inherent part of the programming language. A valid argument against implementing something like the Metaobject Protocol is the issue of speed and performance. Having the infrastructure to modify the behavior of the programming language is going to have some form of overhead on the execution of the program. Furthermore, the ability to change the programming language would lead to problems with a proliferation of different versions of the same programming language with subtle differences. Moreover, one might also argue that if a feature is that important, why not just add it in the next version of the programming language. That is exactly the case with Java and C#; newer editions keep adding features to the language.
+</p>
+
+<p>
+While those arguments are certainly valid, the ability to be able to modify the semantics of the programming language should not be discounted. As computers get faster, the speed overhead from having the Metaobject Protocol built-in to the language is negligible save for the most performance intensive machines. And how many people actually want to wait for the designers of the programming language to add some new feature? The desired feature might not be important for everyone and might not be added to the core of the language. Should that be a reason why it is not there if your application actually requires it? For instance, as the ability to express domain knowledge clearly in programming languages become more important, more and more forms of domain-specific languages are surfacing. These domain-specific languages provide a concise way to express essential concepts of the domain which might otherwise be hidden through the syntax and semantics of a traditional programming language. No sane programming language designer is going to design multiple domain languages and give them multiple names such as C-Telecommmunication, C-Accounting, C-Transactions<sup><a href="#fn1">1</a></sup>.
+</p>
+
+<p>
+While the idea of having a full-fledged Metaobject Protocol might be too idealistic for some, some of the newer ideas in the software engineering world are taking advantage of a more moderate form of it. The designers of programming languages can certainly vary the degree of dynamic behavior. For instance, Ruby does not have a fully modifiable underlying semantics but it does provide <i>enough</i> for programmers to accomplish most of what needs to be done. 
+</p>
+
+<p>
+In conclusion, I feel that more and more languages would incorporate some form of the Metaobject protocol. Dynamic languages are becoming increasingly prominent in the software engineering world today and the logical next step would be to expand on their dynamic behavior to improve on the extensibility<sup><a href="#fn2">2</a></sup>. It should be possible for <b>both</b> programming language designers and programmers to modify and/or features to the programming language in a hygienic way without resorting to ugly hacks.
+</p>
+
+<small>
+For an example use of the Metaobject Protocol in Groovy, take a look at <a href="http://www-128.ibm.com/developerworks/java/library/j-pg09205/"> Pratically Groovy: Of MOPs and mini-languages</a>.
+</small>
+
+<hr />
+
+<p id="fn1"><sup>1</sup> An alternative would be to design your own language from scratch if it is simple enough. Tools like <a href="http://www.antlr.org/">Antlr</a> and even <a href="http://fsl.cs.uiuc.edu/index.php/K:_a_Rewrite-based_Framework_for_Modular_Language_Design%2C_Semantics%2C_Analysis_and_Implementation">Maude</a> have made this process less painful. Even then, designing a language from scratch -- albeit being fun -- requires a lot more devotion than modifying an existing language. </p>
+
+<p id="fn2"><sup>2</sup> Some features might also be extremely hard if not impossible to add to an exiting system whether or not it has an Metaobject Protocol. For instance, (I think) having the ability to do <a href="http://www.cs.rice.edu/~taha/MSP/">multi-stage programming</a> might require extensive changes to the language itself and is not accomplishable with just some hacking on the language itself. </p>

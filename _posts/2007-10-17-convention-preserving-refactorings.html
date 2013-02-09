@@ -1,0 +1,48 @@
+--- 
+layout: post
+typo_id: 291
+title: Convention Preserving Refactorings
+---
+<p><a href="http://www.artima.com/weblogs/viewpost.jsp?thread=217080">Refactoring Dynamic Code</a>:
+</p>
+
+<blockquote cite="http://www.artima.com/weblogs/viewpost.jsp?thread=217080" title="Refactoring Dynamic Code"> "These tools, along with the relatively small amount of Ruby code required to implement the desired features, made life easy during the first few iterations. With each new feature, however, the amount of refactoring required to keep the codebase clean increased. Although Rails' adherence to the DRY principle helped reduce duplication, each refactoring had to change numerous code artifacts. Some of the changes, admittedly, were needed to keep the code in line with Rails' convention-over-configuration philosophy.
+<br />
+Renaming an entity class, for instance, requires renaming the corresponding database tables, including other columns and indexes referencing the model's table, renaming the model class, changing the corresponding controller, helper classes, and every reference to the entity class in the views, as well as renaming the directory containing the view classes and templates. And, of course, you have to similarly rename the associated tests and all references to the model, controller, and views in the tests and fixtures."
+</blockquote>
+
+<p>
+One of the advantages of being under Prof. Ralph Johnson is that we are <em>indoctrinated</em> to think of programming as a series of program transformation. From the humble HelloWorld program (just think of when you are reediting the program to add some comments or change what gets printed out to the console) to more complex programs out there, almost everything can be viewed as a series of transformations.
+</p>
+
+<p>
+<em>Refactoring</em> is as a form of program transformation. Refactoring is a process where you restructure your code without affecting its observable behavior -- where behavior is defined pretty loosely. Why would anyone want to do something like this? If you have never done refactoring before this might seem like a worthless task. After all, if you aren't modifying the behavior of the program, you aren't adding new features to it. And features are what the customer cares about, right?<sup>1</sup>
+</p>
+
+<p>
+Well, turns out that you refactor to make your code easier to understand. Code that is easier to understand is also easier to modify. So essentially, refactoring helps prepare your program for the next feature, and the next feature, and the next feature... that you want to add; making those features easier to add.
+</p>
+
+<p>
+Certain refactorings can now be automated through an intelligent IDE. And IDEs have generally done a very good job of it -- until you being to cross the traditional language barrier. For instance, look at Rails. Rails is a framework that relies on Ruby, erb, Javascript, SQL, etc. When you perform a refactoring on your Ruby code does that refactoring percolated correctly through the entire program? If you rename a method in your Ruby code, will it change the name of the method to the new one everywhere that it was called before? Would it also be able to change the method call inside the erb file?
+</p>
+
+<p>
+Furthermore, because Rails relies on the <em>convention-over-configuration</em> idea, it is desirable that your refactoring preserves those conventions as well. So now, your refactoring tool not only needs to know Ruby but it must be configured to understand the Rails framework itself! Renaming your Rails model should also make the appropriate changes to the controller and your erb file just because the framework expects them to be related <em>by name</em> in a predetermined manner. Failing to do so would actually cause your program to fail.</p>
+
+<p>
+If another framework comes along, your tool has to be <em>taught</em> to function for that framework too. And a programmer might choose to use numerous frameworks together. How would you ensure that the refactoring tool would work for any combination of frameworks?
+</p>
+
+<p>
+The point of this post is to illustrate the <strong>need</strong> for multi-language refactoring support. We can think of complex frameworks as basically an extension of the language itself. Frameworks have their own set of conventions to be followed. Following those conventions is essential for a framework such as Rails. For other frameworks, following those conventions would be desirable to make the code easier to reason about.
+</p>
+
+<p>
+So the main challenge is how to capture those rules that a framework specifies so that our refactoring tool can understand them and make the appropriate changes toward the entire code base. 
+</p>
+
+<hr />
+<small>
+<sup>1</sup> You can actually think about adding features as another form of program transformation but it is not really viewed as a refactoring since adding a feature is not behavior preserving.
+</small>

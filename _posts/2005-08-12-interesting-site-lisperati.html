@@ -1,0 +1,30 @@
+--- 
+layout: post
+typo_id: 100
+title: "Interesting site: Lisperati"
+---
+<p>
+Finally finished going through the <a href="http://www.lisperati.com/casting.html">Casting SPELs in Lisp</a> tutorial. Really interesting to find something along the lines of <a href="http://poignantguide.net/ruby/print.html">why's poignant guide to ruby</a> complete with its own illustrations and metaprogramming (macros in Lisp). It is also similar to what <a href="http://www.amazon.com/exec/obidos/tg/detail/-/1592000738/ref=pd_sbs_b_1/102-9302624-8528131?%5Fencoding=UTF8&amp;v=glance">Python Programming for the Absolute Beginner</a> does for Python. 
+</p>
+<p>
+Another next thing about this tutorial is the use of <a href="http://www.franz.com/">Allegro Common Lisp</a> via <a href="telnet://prompt.franz.com">telnet</a>. This would make it really convenient for people who do not wish to install Lisp on their machines.
+</p>
+<p>
+It gives a nice introduction to what you can do in Lisp. However, I am not sure if someone who does not know Lisp (or any other functional language) can appreciate this tutorial. The author, Conrad Barski, seems to skim over some thing that I view as important. For instance while using <code>mapcar</code> he explains it tersely as:
+<blockquote>
+"mapcar simply applies another function to every object in the list..."
+</blockquote>
+Most programming languages do not provide the luxury of using something similar to <code>mapchar</code> as an underlying characteristic of the language. You could hack it in but most people would not do it this way since the language itself does not expose this functionality.
+</p>
+<p>
+Conrad's explanation of macros is a bit short too. A bit too short for people to actually grasp the power of it. He also makes <code>defspel</code> as an <i>alias</i> to <code>defmacro</code> because he believes that most people who think they know macros are being delusional about it. Or as he says it:
+<blockquote>
+"Often, when I try to explain the concept of macros to somebody who has only used other languages, I'll get a response like "Oh yeah! There's macros like that in C++, too!". The moment this happens, it becomes very difficult to explain "true macros", because of the semantic load on the word "macro". After all, "true macros" really are a lot like C++ macros, in that they are a way to talk to the compiler with modified code..."
+</blockquote> 
+</p>
+<p>
+I have not been using Lisp long enough to decide whether the liberal use of list (this sounds a bit ironic since Lisp is all about <i>lists!</i>) to store information is a good idea. For this simple example it seems decent enough since you can easily remember that the second list in the <code>location</code> list tells you where to go next. If we were to do this in Java, using arrays to store such things could easily put you as having <i>Primitive Obsession - not using objects for "little" things</i> as coined by Martin Fowler in <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0201485672/102-9302624-8528131?v=glance">Refactoring</a>.
+</p>
+<p>
+Anyway, this short tutorial did expose me to some Lisp concepts which I have not encountered in the Little Lisper (one of the best books possible on Lisp, I think). And it was rather fun to see how one would use Lisp to create a text based game.
+</p>

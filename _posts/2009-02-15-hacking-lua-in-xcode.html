@@ -1,0 +1,121 @@
+--- 
+layout: post
+typo_id: 313
+title: Hacking Lua (in Xcode)
+---
+<p>
+I have always been fascinated by <a href="http://en.wikipedia.org/wiki/Comparison_of_application_virtual_machines">application virtual machines</a>. And I have been trying to find a simple but well-documented one to work on for fun. There is a proliferation of Javascript VMs out there but they are pretty big (V8 is the latest kid on the block and it's about 100 000 lines of C++, not my favorite language) and aren't as well documented.
+</p>
+
+<p>
+There are some smaller ones like <a href="http://code.macournoyer.com/tinyrb/">tinyrb</a> and <a href="http://www.tinypy.org/">tinypy</a> but the goal of such projects aren't really clear. I am not sure how much of Ruby/Python they are trying to support. They are great for hacking on if you have some experience with VMs already and can contribute to the design/implementation. But otherwise, it can be pretty hard to comprehend what is going on.
+</p>
+
+<p>
+Both tinyrb and tinypy did mention that they were trying to emulate the Lua VM. So I decided to check it out. The Lua VM (like the <a href="http://www.parrot.org/">Parrot VM</a>) is a register-based VM, which is pretty unusual since most VMs are stack-based. Its use of registers instead of a stack makes it more fascinating to study.
+</p>
+
+<p>
+And I like what I have seen so far. There is good documentation on <em>multiple</em> levels: the language itself, the architecture of the VM and plenty of examples. Also, the code is in C which is less messy than C++. The Makefile is simple and isn't using any cryptic tricks. And Lua itself seems like a simple language to learn.
+</p>
+
+<p>
+So my plan is to dive into the source for Lua and then see what can be done to improve tinyrb. But first, I need to set up an environment to develop in.
+</p>
+
+<p>
+I could certainly continue to use vim/TextMate, but I have been using Xcode more because I am doing some iPhone development and have gotten use to some of its features. And I like its built-in debugger which saves me from having to interact with gdb directly for the common tasks. In fact, I am not sure if there are <em>better</em> C/C++ IDEs for OS X. The Eclipse CDT project is the closest that I can think of but I haven't used it much.
+</p>
+
+
+<p>
+So here are my steps for doing this: from getting the source into Xcode and also starting a debugging session. I am using the All-in-one look for Xcode so your UI might look different.
+</p>
+
+<p>
+Grab the source for Lua-5.1.4 from <a href="http://www.lua.org/ftp/lua-5.1.4.tar.gz">http://www.lua.org/ftp/lua-5.1.4.tar.gz</a>. Unarchive it. For this article, I will be unarchiving it in ~/Xcode.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3282596714" title="View 'Create an External Build System project' on Flickr.com"><div style="text-align:center;"><img src="http://farm4.static.flickr.com/3602/3282596714_e4bea7e203.jpg" alt="Create an External Build System project" border="0" width="500" height="372" /></div></a>
+
+<p>
+Fire up Xcode and create a new External Build System project. I called my project Lua. You can put the project wherever you want. It doesn't need to be in the same directory where you unarchived the Lua source code since we will be <em>referencing</em> the source files anyway. 
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775589" title="View 'Add the existing Lua files' on Flickr.com"><div style="text-align:center;"><img src="http://farm4.static.flickr.com/3289/3281775589_e28284b40e.jpg" alt="Add the existing Lua files" border="0" width="500" height="363" /></div></a>
+
+<p>
+Right-click on the project and add the <em>entire</em> directory where you unarchived the Lua source code. In my case it would be ~/Xcode/lua-5.1.4.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3282596760" title="View 'After adding the files' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3426/3282596760_5cd1fca875.jpg" alt="After adding the files" border="0" width="" height="" /></div></a>
+
+<p>
+This is what it looks like after adding all the files.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775761" title="View 'Make changes to the Makefile for OS X' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3248/3281775761_3d00ee18bf.jpg" alt="Make changes to the Makefile for OS X" border="0" width="" height="" /></div></a>
+
+<p>
+Next, we need to edit <strong>two</strong> of the Makefiles. First, we need to edit the top level Makefile in ~/Xcode/lua-5.1.4. Change <strong>line 8</strong> to PLAT= macosx since we are targeting the OS X platform. Then, we need to make changes to the Makefile in ~/Xcode/lua-5.1.4/src. Change <strong>line 17</strong> to MYCFLAGS+= (we want the + symbol). Change <strong>line 108</strong> to 	$(MAKE) all MYCFLAGS+=-DLUA_USE_LINUX MYLIBS="-lreadline" (again, we want the + symbol). In fact, by default, it should have the + symbol so that we can easily accumulate our own settings. I suspect that this is a careless omission in the Makefile for Lua.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775837" title="View 'Changing the parameters of the Lua target' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3156/3281775837_ebc0be8f0d.jpg" alt="Changing the parameters of the Lua target" border="0" width="" height="" /></div></a>
+
+<p>
+We need to make some changes to the Target configuration for our Project. So navigate to the Lua target in your Groups &amp; Files (it's the left navigation pane). And double-click the Lua target. Then edit it so that it resembles the image above. Notice the line that says "Settings show Debug" near the top of the window; we are changing the settings for Debug (and not Release).
+</p>
+
+<p>
+You need to change the directory to the location where you unarchived the Lua source so that it can find the top-level Makefile.
+</p>
+
+<p>
+Then you need to add a new build setting, MYCFLAGS so that we can pass the -g flag (for debug) to the compiler. Without this flag, we cannot debug our program effectively with the debugger (it doesn't have all the necessary debugging information).
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775787" title="View 'The result of the build (for debug)' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3586/3281775787_05edcafb11.jpg" alt="The result of the build (for debug)" border="0" width="" height="" /></div></a>
+ 
+<p>
+Now we can build our project by going to Build &gt; Build. And notice that we are building for the Debug configuration i.e. on the menu item at the top it says 10.5 | Debug | i386. The settings that we made for our Lua target are reflected in the output of the build e.g. gcc -O2 -Wall -g .... (the -g flag that we specified in the settings).
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775925" title="View 'Executing Lua in the command line' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3411/3281775925_52caa58b17.jpg" alt="Executing Lua in the command line" border="0" width="" height="" /></div></a>
+
+<p>
+Now that the project builds, we can proceed to debug it (or rather we just want to step through its execution in the debugger to find out how it works). The image above shows how we would run that executable (notice that we are passing some arguments to it). We want mimic this and run the program in the debugger.</p>
+
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775649" title="View 'Create a new executable that you can launch from Xcode' on Flickr.com"><div style="text-align:center;"><img src="http://farm4.static.flickr.com/3568/3281775649_5c9532ee50.jpg" alt="Create a new executable that you can launch from Xcode" border="0" width="500" height="375" /></div></a>
+
+<p>
+So we create a new Custom Executable. We call it Lua.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775899" title="View 'Parameters for Lua custom executable' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3659/3281775899_4a60fdbe58.jpg" alt="Parameters for Lua custom executable" border="0" width="" height="" /></div></a>
+
+<p>
+In the dialog that pops-up, remember to specify the location of the lua executable (you will only have it after you have built the project).
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775869" title="View 'Don't load symbols lazily' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3501/3281775869_58ff456e07.jpg" alt="Don't load symbols lazily" border="0" width="" height="" /></div></a>
+
+<p>
+Before we can debug the lua executable, there is one more setting that we have to perform: change the way debugging symbols are loaded. So, open up the preferences for Xcode, and switch to the debugging tab. Ensure that the "Load symbols lazily" is <strong>unchecked</strong>.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3281775609" title="View 'Build and Debug your program' on Flickr.com"><div style="text-align:center;"><img src="http://farm4.static.flickr.com/3373/3281775609_29b58f2147.jpg" alt="Build and Debug your program" border="0" width="500" height="375" /></div></a>
+
+<p>
+Now we need to set a breakpoint. Notice in the image above that I have set one on line 378 in the lua.c (Xcode/lua-5.1.4/src/lua.c) file. After that we can invoke the debugger from the Build &gt; Build and Debug menu.
+</p>
+
+<a href="http://www.flickr.com/photos/37092324@N00/3282597014" title="View 'Debugger in action' on Flickr.com"><div style="text-align:center;"><img src="http://static.flickr.com/3662/3282597014_dbb8e2e57d.jpg" alt="Debugger in action" border="0" width="" height="" /></div></a>
+
+<p>
+And finally we have our debugger in action.
+</p>
+
+<p>
+The steps above are applicable for any other external project that you need to work on (sans the modifications to the Makefiles since that is Lua-specific).
+</p>

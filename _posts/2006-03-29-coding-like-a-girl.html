@@ -1,0 +1,52 @@
+--- 
+layout: post
+typo_id: 173
+title: Coding Like a Girl
+---
+<p><a href="http://37signals.com/svn/archives2/beautiful_code_testfirst.php">Beautiful code, test-first - Signal vs. Noise (by 37signals)</a>:
+<blockquote> "I was talking with a friend recently and discovered we have a failing in common: we both have a tendency towards a peculiar form of perfectionism. He was telling me how he feels like he has to sit and tweak his code over and over until it not only acts right, but looks right. It cannot be merely functional, it must be beautiful, as well."
+</blockquote>
+</p>
+
+<p>(Via <a href="http://headrush.typepad.com/creating_passionate_users/2006/03/code_like_a_gir.html">Code Like a Girl</a>.)</p>
+
+<p>
+While programming in Squeak, I find that I am compulsive about making the code beautiful. And the Smalltalk language makes that really possible because of its syntax. Also, reading the book <a href="http://www.amazon.com/gp/product/013476904X/104-8464842-4903943?v=glance&n=283155">Smalltalk: Best Practice Patterns</a> helps too. And I do not mean doing ridiculous stuff like making beautiful function headers. I mean making Smalltalk code look like it should: short, simple and human readable.</p>
+
+<p>
+I am not an expert at this, but from looking at the source code and reading the book, here are some of the things that I notice.
+<ul>
+	<li>Minimal comments <br />
+	Some people like having comments there. I agree that sometimes comments are necessary but with code like Smalltalk or Ruby, having comments would easily make the ratio of comments to code increase dramatically.
+	<br />
+	<code>
+	Bin &gt;&gt; run <br />
+	"Tell my station to process me." <br />
+	self station process: self <br />
+	</code>
+	</li>
+	<li>Put methods in the right protocols <br />
+	I am not sure why other languages do not have this facility, but you can group methods in Smalltalk into protocols. This makes it really easy to see those methods that you need. For instance, want to find out how to create the object, look at the methods in the <code> instance creation </code> protocol. Want to convert from objectA to objectB? Look into the <code> converting </code> protocol. Grouping methods into the proper protocols really makes it easier to find those that you need.</li>
+	<li>Use polymorphism instead of compare statements <br />
+	Smalltalk did away with long if...else and case statements. And because of that , it forces you to think in a more dynamic sense as well.</li>
+	<li> Short methods <br />
+	Most methods in Smalltalk should be about 3 - 4 lines of code. And this is actually enforced by the way that methods are being displayed in the code browser. Unlike traditional source code viewers, in Squeak, you can only view one method in one window at any time. Of course you are free to open multiple windows, but each window can only show one method at a time. And the size of the pane for showing the method is not that big either. So it forces you to write short methods since it is really hard for you to keep track of stuff otherwise.
+	</li>
+	<li>Using collections <br />
+	Smalltalk provides a rich set of collections: Arrays, Dictionaries, OrderedCollections, SortedCollections, Sets, etc. In fact because these collections are so fundamental, they are being used everywhere. It is completely nonsensical to cook up your own data structure when there are so many provided for you. 
+	</li>
+	<li> Readable code <br />
+	<code>
+	chatSession sendMessage: 'Hello there!' to: 'myfriend@friend.com' 
+ 	</code>
+	<br />
+	You understand what it means instantly because it reads correctly. Not many languages out there have the sense to make their parameters key-word based.
+	</li>
+</ul>
+</p>
+
+<p>
+The point being that code that is not following those standards feel really, really bad and sloppy. It is almost like leaving spaghetti stains on your white shirt. Sure no one would care about it since you are still clothed and all, but it just becomes an eye sore.</p>
+
+<p>
+Regardless of the programming language, one should always stick with the proper convention of doing stuff. Program in C, stick to the C convention. Program in Java, stick to the Java style.</p>

@@ -1,0 +1,35 @@
+--- 
+layout: post
+typo_id: 281
+title: "Eclipse WTP: A hidden gem"
+---
+<p>
+In my previous <a href="http://blog.vazexqi.com/articles/2007/07/27/setup-struts-project-in-eclipse-more-choices-than-necessary">post</a>, I lamented how hard it was to find the right tools to get started with developing Struts (and other web applications) in Eclipse. The solution I finally found was to use the Eclipse Web Tools Platform (<a href="http://www.eclipse.org/webtools/main.php">WPT</a>) plug-in.
+</p>
+
+<p>
+Today, I was trying the <a href="http://www.springframework.org/">Spring Framework</a> out and wanted to quickly set it up in Eclipse. I was following along the tutorial from the sample chapter of <a href="http://www.sourcebeat.com/books/springlive.html" title="SourceBeat | The Spring Primer"><em>The Spring 1.x Primer</em></a>. Personally I think it is a terrible tutorial. There are too many things going on in that chapter; the author expects that the user should set up decently-sized web application with Spring, Hibernate, Struts and Ant and then refactor this web application through the book. The whole chapter was basically a set of instructions: do this, do that, don't worry about that since we will get to it in a later chapter. Needless to say, I think this is a bad way to introduce a framework especially if you are bundling it with other huge frameworks. This forces the user to come to grasp with four different things at the same time. 
+
+<p>
+Moreover, the author was advocating using his tool to create a skeleton for the project. While I agree that this is a good approach - it was almost as simple to use as the Ruby on Rails generator - but his tool was a bit outdated. It was using an older version of Hibernate and an older version of Spring. Moreover his tool generated an older version of a project file for IntelliJ that had to be updated. At this point, I was rather frustrated because of all the dependency issues that had to be resolved.
+</p>
+
+<p>
+Fortunately, a search for "best spring book" revealed <a href="http://forum.springframework.org/archive/index.php/t-18095.html">this link</a>. I found it useful to read through the articles on Dependency Injection before even attempting to program with Spring. There are two well-written articles on the web for that: <a href="http://www.martinfowler.com/articles/injection.html">one</a> by Martin Fowler and <a href="http://www.devx.com/Java/Article/21665">another</a> by Javid James. Both authors give good examples that motivate the use of Spring without the needless coupling with other frameworks. I respect them both as good authors since they are able to explain things succinctly without having to confusing the reader.
+</p>
+
+<p>
+Anyway, I downloaded the source code for <a href="http://www.devx.com/Java/Article/22134">this article</a> and then just set up a new Dynamic Web Project in Eclipse. The WTP plug-in created a directory structure that mimics what a normal web application should look like and I was able to just copy the source code into my project. WTP was clever enough that it has a pseudo library called <i>Web App Libraries</i> that will mimic what was stored in the WEB-INF/lib folder without making me configure it. The XML editor even had decent code-completion based on the XML schema. Additionally, it was easy to set up the project to work with Tomcat 5.5 and I could test the application out in Eclipse itself using the built-in web browser. All in all, I was pleasantly surprised with how well integrated the WTP is.
+</p>
+
+<p>
+I am sure there are other hidden features of WTP that I have yet to discover. A cursory inspection reveals that there is built-in support for adding data sources either from a file, web service or database. However, if you need <i>dedicated</i> support for Spring (and not just an easy way to get started), then you should either use <a href="http://www.jetbrains.com/idea/" title="IntelliJ IDEA :: The Most Intelligent Java IDE">IntelliJ</a> which has great support for Spring, Hibernate and Struts or you can try out the <a href="http://springide.org/blog/">Spring IDE</a> which is based on Eclipse. Personally, I believe one would have a higher chance of success with IntelliJ since using multiple plug-ins in Elcipse (especially plug-ins that are not part of the official Eclipse project) creates lots of nasty dependency and versioning issues.
+</p>
+
+<p>
+There are two articles on the web discussing how to use an older version of the Eclipse WTP. One details how to <a href="http://jdj.sys-con.com/read/152270.htm">create web applications with WTP</a>. Another details how to <a href="http://java.sys-con.com/read/216320_1.htm">create a web application that uses Struts and Hibernate with the WTP</a>. There are rather good articles and I was surprised that not many people had bookmarked them on <a href="http://del.icio.us/">del.icio.us</a>. Maybe most people just have not heard of the WTP plug-in.
+</p>
+
+<p>
+The Eclipse WTP <a href="http://www.eclipsewtp.org/">book</a> was also recently published. I have always viewed the publication of a book for an open source project as a good indication that you will not be screwed in the future using it. A book is a good indication of user momentum; there are people who are interested in finding out how to use it. I have not read the book since I am only doing basic things with WTP and the help documentation suffices for my needs but I expect that it will be useful when you are dealing with more complex issues.
+</p>
