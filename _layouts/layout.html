@@ -42,6 +42,11 @@
     </div>
   </div>
 
+  {% if page.background %}
+  <div class="hero" style="background-image: url({{ page.background }});"></div>
+  <br>
+  {% endif %}
+
   <div class="container">
     {{ content }}
   </div>
