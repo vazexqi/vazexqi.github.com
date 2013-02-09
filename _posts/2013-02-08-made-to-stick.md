@@ -4,8 +4,8 @@ title: "Made to Stick"
 category: posts
 ---
 
-<div class="media">
-<a class="pull-left" href="http://www.heathbrothers.com/madetostick/">
+<div class="media pull-left">
+<a href="http://www.heathbrothers.com/madetostick/">
 <img
 src="http://bks2.books.google.com/books?id=DhRlRwAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70qTJ9S86TDlIDEbBLMaBZd3OgQhfltmmaebaTHSzko55q3rUDYOMJzunwwnejEyAd8WazoCRdCIut1vQOeN_jRAVv3flgW0TW6nhkiJbS0qj-NwsO0f9VhRQCH17C3iCcAGikH"
 class="media-object"/></a>
