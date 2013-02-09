@@ -20,6 +20,7 @@ h2,h3,h4,h5,h6 {
   background-size: cover;
   height: 200px;
   box-shadow: inset 0 0 30px rgba(0,0,0,.79);
+  margin-top: -20px;
 }
 section.content {
   height: 100%;
