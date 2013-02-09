@@ -82,7 +82,8 @@ process for doing so.
 I've used the techniques in the book myself during my presentations and
 during my interviews. I have recommended the book to my colleagues who
 are about to make presentations. And when people embrace those ideas,
-there is definitely a positive effect on their presentations.
+there is definitely a positive effect on their presentations <i
+class="icon-thumbs-up"></i>.
 
 By the way, the story happened in 1992. I was unable to find any
 continuation of the story in the present time. So I would assume that
