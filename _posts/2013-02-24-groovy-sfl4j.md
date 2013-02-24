@@ -85,6 +85,12 @@ to the console).
 
 <script src="https://gist.github.com/vazexqi/5024557.js"></script>
 
+This code snippet uses a bit of Groovy _magic_ available since version
+1.8. It uses the `@sfl4j` type annotation to introduce a new variable
+called `log` that maps to a call to the logger. That way, you no longer
+have to write ugly code that instantiates a logger for each of your
+classes.
+
 ### The logback.xml file
 
 By default the loggers will all output only to console. Since the purpose of
@@ -106,6 +112,13 @@ for more code snippets.
 
 
 ### Running the example
+
+<div class="media"> 
+<a href="http://db.tt/kw3flQg9">
+<img
+src="http://dl.dropbox.com/u/11541918/Blog/images/logging_running.png"
+class="media-object"/></a>
+</div>
 
 Assuming that you have gradle installed, you just need to execute `gradle
 runMyExample`.
