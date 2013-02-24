@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Logging to file using SF4J"
+title: "Logging to file using SLF4J"
 category: posts
 ---
 
@@ -25,7 +25,7 @@ logging](http://commons.apache.org/logging/),
 
 After reading more about the different frameworks, I realize that I necessarily
 have to fully _commit_ to one. I could use, yet another framework, to _decouple_
-the dependency. Thus, enters [SF4J](http://www.slf4j.org/manual.html).
+the dependency. Thus, enters [SLF4J](http://www.slf4j.org/manual.html).
 According to the website:
 
 > The Simple Logging Facade for Java or (SLF4J) serves as a simple facade or
@@ -33,7 +33,7 @@ According to the website:
 > logback. SLF4J allows the end-user to plug in the desired logging framework at
 > deployment time.
 
-There is even a nice image on the SF4J website that shows how this works under
+There is even a nice image on the SLF4J website that shows how this works under
 the hood:
 
 <div class="media">
