@@ -17,7 +17,7 @@ be seen below:
 <div class="media">
 <a href="http://db.tt/bm9Tuquc">
 <img src="http://db.tt/bm9Tuquc"
-class="media-object"/>
+class="media-object noshadow"/>
 </a>
 </div>
 

@@ -62,7 +62,7 @@ to stick with that scheme. This means, that all source files should go into
 <a href="http://db.tt/RzuGL16Y">
 <img
 src="http://dl.dropbox.com/u/11541918/Blog/images/logging_directory_structure.png"
-class="media-object"/></a>
+class="media-object noshadow"/></a>
 </div>
 
 For each of the files that I will describe below, stick them in the right
@@ -117,7 +117,7 @@ for more code snippets.
 <a href="http://db.tt/kw3flQg9">
 <img
 src="http://dl.dropbox.com/u/11541918/Blog/images/logging_running.png"
-class="media-object"/></a>
+class="media-object noshadow"/></a>
 </div>
 
 Assuming that you have gradle installed, you just need to execute `gradle
