@@ -36,6 +36,16 @@ section.content img {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+section.content img.noshadow {
+  max-width: 70%;
+  max-height: 70%;
+  box-shadow: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 section.content h1:first-child {
   margin-top: 20px;
 }
