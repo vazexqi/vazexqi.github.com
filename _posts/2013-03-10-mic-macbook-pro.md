@@ -64,7 +64,9 @@ _What was the final solution?_
 Because I didn't want to produce "truly shit recordings", I needed to
 find a different work around. Fortunately, I found an old Philips PSC805
 Aurilium external [sound
-card](http://download.p4c.philips.com/files/p/psc805_17/psc805_17_dfu_aen.pdf) lying around. I plugged the USB connection into my USB port and connected the headset to _its_ mic in and headphone jacks, like so:
+card](http://download.p4c.philips.com/files/p/psc805_17/psc805_17_dfu_aen.pdf)
+lying around. I plugged the USB connection into my USB port and
+connected the headset to _its_ mic in and headphone jacks, like so:
 
 <div class="media">
 <a href="http://db.tt/0WENuZFQ">
@@ -73,9 +75,22 @@ class="media-object"/>
 </a>
 </div>
 
+----
+
+**UPDATE**: Turns out that the Philips PSC805 Aurilium had actually
+stopped working for the microphone. So I bought a [Creative Sound
+Blaster X-Fi Go!
+Pro](http://us.store.creative.com/Creative-Sound-Blaster-XFi-Go-Pro/M/B0044DEDC0.htm)
+(now that's a mouthful) instead. The nice thing? This external soundcard
+is about the size of a USB thumbdrive -- it's tiny! There's no driver
+for the Mac (and it claims to not be Mac-compatible) but it does work
+when you plug it in.
+
+
 The conclusion: if you are using an external non-USB headset with your
 MacBook Pro, you might want to consider getting an external sound card
 or something that can amplify the audio signal. It's not that the
 headset doesn't work; it's that the MacBook Pro by itself does not
 amplify the signals through the audio-in jack.
+
 
