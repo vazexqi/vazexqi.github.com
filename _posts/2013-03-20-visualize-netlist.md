@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Visualizing Netlist files using Google Scatter Plot"
+title: "Visualizing Netlist files using Google Scatter Chart"
 category: posts
 ---
 
