@@ -65,8 +65,8 @@ with no problems.
 Here it is in action:
 
 <div class="media">
-<iframe width="420" height="315"
-src="http://www.youtube-nocookie.com/embed/aPEjCaRS-HE?rel=0"
+<iframe width="640" height="480"
+src="https://www.youtube-nocookie.com/embed/KcXd3D0kiGA?rel=0"
 frameborder="0" allowfullscreen></iframe>
 </div>
 
