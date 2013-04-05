@@ -42,10 +42,10 @@ the same ideas permeate the entire design; there are very few corner
 cases.
 
 While this is my first time using d3, I had used its predecessor,
-Protovis. I was very happy with it because it was flexible enough to
-handle everything that we needed. Here is the particular visualization
-that we had to do with it for my health instrumentation
-[project](http://db.tt/HNP8YH2w):
+[Protovis](http://mbostock.github.com/protovis/). I was very happy with
+it because it was flexible enough to handle everything that we needed.
+Here is the particular visualization that we had to do with it for my
+health instrumentation [project](http://db.tt/HNP8YH2w):
 
 <div class="media">
 <a href="http://db.tt/TLVlgykM">
