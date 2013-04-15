@@ -33,7 +33,8 @@ A simple example on a 6x5 grid with two nets is shown above. The blue
 cells show obstacles on the first layer (yes, this is a 3D problem) and
 the orange cells show obstacles on the second layer. If you squint, you
 can also see some gray cells -- those are cells that have some cost
-associated with them.
+associated with them. I'd like to show a bigger example but because this
+is an assignment, I don't want to reveal any of the answers.
 
 A blue route specifies a path through the first layer. Correspondingly, an orange route specifies a path through the second layer. Paths can go up and down layers. When they do, we denote this using the cross symbol. A green square denotes the start of a route; a red square denotes the
 end of a path.
