@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Visualizations using D3.js"
+title: "Visualizations using d3.js"
 category: posts
 ---
 
