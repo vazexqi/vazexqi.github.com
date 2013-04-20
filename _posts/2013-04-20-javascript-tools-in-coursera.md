@@ -68,7 +68,7 @@ experiences creating such tools.
 
 All of these tools were implemented in less than 700 lines of code. And
 all of them are released under the University of Illinois / NCSA Open
-Source License so you are free to use them in your courses.
+Source License so you are free to use them as you see fit.
 
 <div class="media">
 <a href="http://db.tt/yhq13USO">
