@@ -128,12 +128,12 @@ the use of a numerical library.
 For another assignment, we had students implement a placer. A placer
 _places_ the gates on a chip. A good placer will distribute and place
 chips as evenly as possible, while following some constraints. The
-result of a placer is usually a textfile that describes where each gate
+result of a placer is usually a text file that describes where each gate
 ends up on the chip, in the form of a x and y coordinate.
 
 Because there can be thousands of such gates for an assignment (and
 millions for an actual industrial chip), it is not easy to make sense of
-the textfile. Thus, it is important to be able to visualize the result
+the text file. Thus, it is important to be able to visualize the result
 of the placer. 
 
 <div class="media">
