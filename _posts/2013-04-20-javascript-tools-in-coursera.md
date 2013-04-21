@@ -70,7 +70,7 @@ Indeed, that has been our experience so far. We have implemented three
 tools for our [VLSI CAD: Logic to
 Layout](https://class.coursera.org/vlsicad-001/wiki/view?page=WebbasedTools)
 Coursera Course. The first tool is a simple _calculator_ for solving
-linear equation systems. The second and third tool are _visualizations_
+linear equation systems. The second and third tools are _visualizations_
 for two core assignments for the course. We are pleasantly surprised by
 how well this has worked for us. And we would like to share some of our
 experiences creating such tools.
