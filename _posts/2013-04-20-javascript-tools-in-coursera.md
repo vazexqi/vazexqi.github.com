@@ -4,6 +4,12 @@ title: "Creating Useful Tools using JavaScript for our Coursera Course"
 category: posts
 ---
 
+_Disclaimer: I'd like to state upfront that this article is about the
+work that we -- the teaching staff for the VLSI CAD: Logic to Layout
+course -- have done for our particular course. We are just sharing our
+experiences; this post does not reflect what Coursera is doing for any
+of their other courses in terms of tools or services._
+
 As instructors, we usually need to provide simple, yet useful, auxiliary
 tools for our courses. Auxiliary tools include specialized math
 calculators, visualizations, etc for a small part of the course
