@@ -46,14 +46,14 @@ should.
 Fortunately, even without installing any in-browser runtime
 environments, web browsers themselves are becoming more capable
 computing platforms _out-of-the-box_. A few years back, developing for
-web browser used to be a very unpleasant experience. There was no
+web browsers used to be a very unpleasant experience. There was no
 standardized support for different functionalities and it was common for
 applications to work in one web browser and not another. Modern web
 browsers have begun to change that experience. Now, we can safely expect
 most web browsers to support web standards such as HTML, CSS, SVG and
 JavaScript consistently. More importantly, we can expect that the
 applications we write will work gracefully on all web browsers. It is
-feasible now to do this without a dedicated team of developers testing
+feasible to do this without a dedicated team of developers testing
 on multiple versions of web browsers on multiple versions of operating
 systems. Several teaching assistants with some programming experience
 should be able to easily create such auxiliary tools using a combination
@@ -221,11 +221,11 @@ library.
 
 We were able to successfully visualize a 1000 by 1000 grid with 1000
 routes. To give you a scale of how big this is, if we were to print it
-out, it will require a 144 in x 144 in paper. It took less than 10 seconds
-and consumed 256 MB of memory on Google Chrome on a 2010 MacBook Pro
-with a 2.53 GHz Core i5 processor with 8 GB of RAM. In summary, we thought
-that performance was decent for what we needed to do. And it did not
-demand too much from the student's computer.
+out, it will require a 144 in x 144 in paper. It took less than 10
+seconds and consumed 256 MB of memory on Google Chrome on a 2010 MacBook
+Pro with a 2.53 GHz Core i5 processor and 8 GB of RAM. In summary, we
+thought that its performance was decent for what we needed to do. And it
+did not demand too much from the student's computer.
 
 One student found the tool useful enough to leave the following
 feedback:
