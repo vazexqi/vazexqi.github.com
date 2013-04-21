@@ -4,20 +4,20 @@ title: "Creating Useful Tools using JavaScript for our Coursera Course"
 category: posts
 ---
 
-As instructors, we usually need to provide simple, yet useful auxiliary
+As instructors, we usually need to provide simple, yet useful, auxiliary
 tools for our courses. Auxiliary tools include specialized math
-calculators, visualizations, etc. Such tools enhance the learning
-process and provide students with new avenues to experiment and try
-things out. In traditional courses, such tools are usually made
-available in the form of applications that students run. Sometimes these
-applications require specific versions of operating systems, frameworks
-or libraries. There is the implicit assumption that the students will
-have access to computing resources, e.g., their own machines or lab
-computers that are capable of running those applications. In an online
-learning environment such as Coursera with tens of thousands of
-students, one cannot assume that all students have access to the same
-computing resources. _What is the best way to implement and deploy such
-tools?_
+calculators, visualizations, etc for a small part of the course
+material. Such tools enhance the learning process and provide students
+with new ways to experiment and try things out. In traditional courses,
+such tools are usually made available in the form of applications that
+students run. Sometimes these applications require specific versions of
+operating systems, frameworks or libraries. There is the assumption that
+the students will have access to computing resources, e.g., their own
+machines or lab computers that are capable of running those
+applications. In an online learning environment such as Coursera with
+tens of thousands of students, we cannot assume that all students have
+access to the same computing resources. _What is the best way to
+implement and deploy such tools?_
 
 There are several solutions. We could choose only to use applications
 that run on all major operating systems. For instance, we could ask
@@ -26,7 +26,7 @@ and Linux. While this works, it might be too much to expect students to
 install the support for running Java. Recall that we are dealing with
 _auxiliary_ tools. These tools are meant to be simple to use. Forcing a
 student to install a whole runtime just to be able to run a simple tool
-is not the best solution. We deemed this solution to have too much
+is not the best solution. We deem this solution to have too much
 overhead.
 
 A more attractive solution would be to run the tools inside the web
@@ -52,10 +52,13 @@ applications to work in one web browser and not another. Modern web
 browsers have begun to change that experience. Now, we can safely expect
 most web browsers to support web standards such as HTML, CSS, SVG and
 JavaScript consistently. More importantly, we can expect that the
-applications we write will work gracefully on all web browsers. More
-importantly, we can do this without a dedicated team of developers
-testing on multiple versions of web browsers on multiple versions of
-operating systems.
+applications we write will work gracefully on all web browsers. It is
+feasible now to do this without a dedicated team of developers testing
+on multiple versions of web browsers on multiple versions of operating
+systems. Several teaching assistants with some programming experience
+should be able to easily create such auxiliary tools using a combination
+of HTML, CSS, SVG and JavaScript. _There is no need for a dedicated web
+server and complicated client/server programming_.
 
 Indeed, that has been our experience so far. We have implemented three
 tools for our [VLSI CAD: Logic to
@@ -66,9 +69,10 @@ for two core assignments for the course. We are pleasantly surprised by
 how well this has worked for us. And we would like to share some of our
 experiences creating such tools.
 
-All of these tools were implemented in less than 700 lines of code. And
-all of them are released under the University of Illinois / NCSA Open
-Source License so you are free to use them as you see fit.
+By leveraging several popular JavaScript frameworks, we were able to
+implement each tool in less than 700 lines of code. All of them are
+released under the University of Illinois / NCSA Open Source License so
+you are free to use them as you see fit.
 
 <div class="media">
 <a href="http://db.tt/yhq13USO">
@@ -103,9 +107,10 @@ itself can also be directly embedded into the Coursera web page, giving
 it proper _branding_ so that students know that they are still using a
 tool from the course website.
 
-We use the [Numeric.js](http://www.numericjs.com/) library by
-Sebastien Loisel. The library implements many functions that you would
-expect from a numerical library, all of which are rewritten in
+We use the [Numeric.js](http://www.numericjs.com/) library by [Sebastien
+Loisel](http://www.ma.hw.ac.uk/~loisel/), Lecturer in Mathematics,
+Heriot-Watt University. The library implements many functions that you
+would expect from a numerical library, all of which are rewritten in
 JavaScript. Numeric.js has decent
 [performance](http://www.numericjs.com/benchmark.html); it's capable of
 reaching several hundred million of floating point operations per second
@@ -121,7 +126,12 @@ While we have only used its solver, Numeric.js comes with many different
 functionalities as exemplified in its
 [documentation](http://www.numericjs.com/documentation.html). It should
 be a useful library for many different engineering courses that require
-the use of a numerical library.
+the use of a numerical library. If desired, it also comes with a
+dedicated _prompt_ where you can issue commands directly to the library
+and see your results printed in real time.
+
+The source code is available from
+[https://gist.github.com/vazexqi/5316339](https://gist.github.com/vazexqi/5316339).
 
 ### Placer Result Visualization
 
@@ -134,7 +144,8 @@ ends up on the chip, in the form of a x and y coordinate.
 Because there can be thousands of such gates for an assignment (and
 millions for an actual industrial chip), it is not easy to make sense of
 the text file. Thus, it is important to be able to visualize the result
-of the placer. 
+of the placer. The visualization should help students determine how well
+their implementation has distributed the gates on the chip.
 
 <div class="media">
 <a href="http://db.tt/rlnAfIu5">
@@ -165,13 +176,13 @@ ideas and software for visualization of information. d3.js is a very
 rich library that is capable of many different
 [visualizations](https://github.com/mbostock/d3/wiki/Gallery). There is
 a learning curve to using the tool. However, once we understood the
-architecture it was easy to add new visualizations.
+architecture it was easy to customize and add new visualizations.
 
 Before using d3.js, we implemented a version using [Google Scatter
 Chart](https://developers.google.com/chart/interactive/docs/gallery/scatterchart).
 While it was easier to use initially, it was difficult to change the
 graph to look the way we needed it to. For instance, we had a very
-specific requirement on how the axes needed to be marked in the graph.
+specific requirement on how the axes needed to be drawn in the graph.
 Google's Scatter Chart API did not provide a way to do this. And because
 it was close source, we could not modify the source code to do what we
 wanted. Thus, we switched to d3.js because it provided more control
@@ -179,6 +190,9 @@ overall.
 
 In our experience, the tool was seamless to use for the students and it
 provided a useful visualization for them to verify their results.
+
+The source code is available from
+[https://gist.github.com/vazexqi/5316324](https://gist.github.com/vazexqi/5316324).
 
 ### Router Result Visualization
 
@@ -207,11 +221,21 @@ library.
 
 We were able to successfully visualize a 1000 by 1000 grid with 1000
 routes. To give you a scale of how big this is, if we were to print it
-out, it will take a 144 in x 144 in paper. It took less than 10 seconds
+out, it will require a 144 in x 144 in paper. It took less than 10 seconds
 and consumed 256 MB of memory on Google Chrome on a 2010 MacBook Pro
 with a 2.53 GHz Core i5 processor with 8 GB of RAM. In summary, we thought
 that performance was decent for what we needed to do. And it did not
 demand too much from the student's computer.
+
+One student found the tool useful enough to leave the following
+feedback:
+
+> BTW, congrats for the visualizer. I remember when I studied CS more
+> than 10 years ago and I was taught the A\* algorithm on paper [a
+> routing algorithm] and with a single small example on the blackboard.
+> Learning is a lot better implementing it and trying it, and your
+> visualizer certainly helps a lot. This way of learning is fun, the
+> other method was boooring [sic]. Good job guys!
 
 You can see the tool in action in the video below:
 
@@ -219,14 +243,19 @@ You can see the tool in action in the video below:
 src="https://www.youtube-nocookie.com/embed/4m0V6fpwROA?rel=0"
 frameborder="0" allowfullscreen></iframe>
 
+The source code is available from
+[https://gist.github.com/vazexqi/5385456](https://gist.github.com/vazexqi/5385456).
+
 ----
 
-In summary, our experiences with creating these auxiliary tools have
-convinced us of the possibilities of doing _as much as possible_ from
-the web browser. Before we implemented the tools, we were worried about
-the performance of JavaScript-based tools inside web browsers. We were
-worried that it would be too slow or take up too much resources on the
-student's machine.
+### Summary
+
+Our experiences with creating these auxiliary tools have convinced us of
+the possibilities of doing _as much as possible_ from the web browser.
+Before we implemented the tools, we were concerned about the performance
+of JavaScript-based tools inside web browsers. We were worried that it
+would be too slow or take up too much resources on the student's
+machine.
 
 It is safe to say that our fears were alleviated. Our VLSI CAD: Logic to
 Layout course has about 17,000 students registered. Of this, about 1,000
@@ -234,10 +263,11 @@ are actively doing the assignments and using the tools.
 
 As future work, it is worth exploring how far we can take this approach
 of doing everything inside JavaScript. My colleague who is a teaching
-assistant for our [Creative, Serious and Playful Science of Android Apps
-course](https://www.coursera.org/course/androidapps101) on Coursera
-is looking into using [Doppio](http://int3.github.io/doppio/about.html)
-to enable students to program with Java inside their web browser.
+assistant for the University of Illinois's [Creative, Serious and
+Playful Science of Android Apps
+course](https://www.coursera.org/course/androidapps101) on Coursera is
+looking into using [Doppio](http://int3.github.io/doppio/about.html) to
+enable students to program with Java inside their web browser.
 
 Other projects such as
 [Emscripten](https://github.com/kripken/emscripten) will also be worth
