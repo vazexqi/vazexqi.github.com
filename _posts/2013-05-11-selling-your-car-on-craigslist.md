@@ -10,7 +10,7 @@ some time to reflect on it more. The purpose of this post is to document
 some of the things that, in hindsight, seem suspicious _and_ to let
 others know what to watch out for while selling their vehicle. Note that
 most of these things are quite speculative – there is no way for me to
-prove that there are true or not. I am just documenting why I think they
+prove whether there are true or not. I am just documenting why I think they
 were (very) suspicious. If you are ever thinking of selling/buying a
 car, you might want to read through this to form your opinion.
 
