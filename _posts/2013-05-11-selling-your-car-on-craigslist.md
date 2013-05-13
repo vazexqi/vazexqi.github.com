@@ -10,7 +10,7 @@ some time to reflect on it more. The purpose of this post is to document
 some of the things that, in hindsight, seem suspicious _and_ to let
 others know what to watch out for while selling their vehicle. Note that
 most of these things are quite speculative – there is no way for me to
-prove whether there are true or not. I am just documenting why I think they
+prove whether these are true or not. I am just documenting why I think they
 were (very) suspicious. If you are ever thinking of selling/buying a
 car, you might want to read through this to form your opinion.
 
@@ -27,9 +27,10 @@ we were reluctant to take it to California with us. We were second
 owners of the car and the car is in pretty good condition. We were aware
 of a few minor defects (like the seat not reclining completely, etc). We
 weren't asking for a high price. We were asking for $4600 which was
-decent given the known defects. It's a GLX so it has all the nice extras
-such as a V6 engine, leather seats, heated front seats, styling, etc. It
-has 150,000 miles on it so it's not a new car but it has been
+decent given the known defects. We paid $9995 for the car when we bought
+it about 7 years ago. It's a GLX so it has all the nice extras such as a
+V6 engine, leather seats, heated front seats, styling, etc. It has
+150,000 miles on it so it's not a new car but it has been
 well-maintained.
 
 We were leaving campus soon and we wanted to sell off our car quickly.
@@ -37,9 +38,9 @@ We were prepared to lower the price quite a bit. The money we get back
 will help subsidize the down payment for a new car.
 
 Though we posted the ad at 1 am, by next morning, we had around 5
-requests to see the car. One person even offered $3750 in cash on the
-spot. There were a few others who tried to bargain it down immediately.
-One person was even more prompt: he requested to see the car at 10.15. 
+requests to see the car. One person even offered $3750 in cash. There
+were a few others who tried to bargain it down immediately.  One person
+was even more prompt: he requested to see the car at 10.15. 
 
 <p class="text-info">
 Let's call this person F. F is the main character of the story since he
@@ -102,7 +103,7 @@ long run. All in all, the cost of repairs could be a few hundred dollars
 from overseas. Repairing the timing belt alone could be $1000 according
 to our own mechanic.
 
-The only issue with the mechanic? He was operating from a **very**
+The only issue with J the mechanic? He was operating from a **very**
 suspicious location. Basically, it was from a storage unit! If you have
 ever watched an episode of _Breaking Bad_, this almost felt like some
 shaddy location where they would do one of their exchanges. Fortunately,
@@ -162,7 +163,7 @@ up, then it just proves that you can never trust people when it comes to
 money.
 </p>
 
-<p class="text-info"> He, however, did something really unexpected the
+<p class="text-info"> F, however, did something really unexpected the
 next day....  </p>
 
 I was about to contact him the next day for the remaining $100 when he
@@ -178,14 +179,14 @@ the cost and time of repairs. I also said that we had signed off on the
 title. 
 
 F then replied that he "talked" to people at the DMV and that usually
-buyers and sellers have a "48 hour period" to back off. He also
+buyers and sellers have a "48-hour period" to back off. He also
 mentioned that it was possible to just restore the original title at the
 DMV.
 
 I said no. He seemed fine with the decision. But it was not clear if he
-would pursue the "48 hour period" issue.
+would pursue the "48-hour period" issue.
 
-I was really concerned about the "48 hour period" issue he raised. If
+I was really concerned about the "48-hour period" issue he raised. If
 this were my own home country, it would be easy to call this _bollocks_.
 There is no such rule from where I am from. However, this is the United
 States. If you buy something there is always an accompanying return
