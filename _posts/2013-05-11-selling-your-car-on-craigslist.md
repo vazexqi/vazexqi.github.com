@@ -141,7 +141,7 @@ mentally. It was already late in the day, raining and we simply didn't
 want to have to deal with these hassles again if the deal didn't go
 through.
 
-At this house, he took his time trying to get the cash. He was fumbling
+At his house, he took his time trying to get the cash. He was fumbling
 around and finally said that he couldn't find his wife's check book to
 write us the $100. Again, at this point, as sellers this was a red flag
 and you should cancel the transaction immediately instead of giving the
