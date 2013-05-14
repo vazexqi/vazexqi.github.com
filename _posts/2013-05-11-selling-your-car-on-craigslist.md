@@ -9,8 +9,8 @@ car on Craigslist. The transaction happened a few days ago and I had
 some time to reflect on it more. The purpose of this post is to document
 some of the things that, in hindsight, seem suspicious _and_ to let
 others know what to watch out for while selling their vehicle. Note that
-most of these things are quite speculative – there is no way for me to
-prove whether these are true or not. I am just documenting why I think they
+most of what I have written are quite speculative – there is no way for
+me to prove or disprove them. I am just documenting why I think they
 were (very) suspicious. If you are ever thinking of selling/buying a
 car, you might want to read through this to form your opinion.
 
@@ -38,9 +38,9 @@ We were prepared to lower the price quite a bit. The money we get back
 will help subsidize the down payment for a new car.
 
 Though we posted the ad at 1 am, by next morning, we had around 5
-requests to see the car. One person even offered $3750 in cash. There
-were a few others who tried to bargain it down immediately.  One person
-was even more prompt: he requested to see the car at 10.15. 
+requests to see the car. One person was prepared to offer $3750 in cash.
+There were a few others who tried to bargain it down immediately. One
+person was even more prompt: he requested to see the car at 10.15. 
 
 <p class="text-info">
 Let's call this person F. F is the main character of the story since he
@@ -51,7 +51,7 @@ F came by and looked at the car. He told a story about how he was
 purchasing this car for his daughter who was going to study at Georgia
 State in the fall. He was looking for something that would be good for
 her. Because of the broken seat that couldn't recline, he was not able
-to test drive it first. So he wanted to ask his sister to come by later
+to test drive it. So he wanted to ask his sister to come by later
 to test drive it. His daughter was not around to test drive it now. 
 
 <p class="text-info"> One of the easiest way to form rapport is to tell
@@ -127,10 +127,10 @@ Why did we agree? At this point, we (my roomate and I) agreed $3000 was
 a good price. Whether we got the remaining check or not (maybe it will
 bounce) was not a problem to us. 
 
-The astute reader might catch on the fact that he said that he was going
-to buy the car for $3800 cash. And now he only mentioned that he had
-$3000? Where did the remaining $800 go? Clearly he wasn't prepared to
-pay the $800. This was very suspicious. If we were not prepared to go
+The astute reader might have caught on the fact that he said that he was
+going to buy the car for $3800 cash. And now he only mentioned that he
+had $3000? Where did the remaining $800 go? Clearly he wasn't prepared
+to pay the $800. This was very suspicious. If we were not prepared to go
 down to $3000, we would have canceled the deal immediately.
 
 So we drove to his house to pick up the money. It was raining that day
@@ -144,8 +144,8 @@ through.
 At this house, he took his time trying to get the cash. He was fumbling
 around and finally said that he couldn't find his wife's check book to
 write us the $100. Again, at this point, as sellers this was a red flag
-and you should cancel the transaction immediately instead of giving him
-the benefit of doubt. He said that he will bring the check to us
+and you should cancel the transaction immediately instead of giving the
+buyer the benefit of doubt. He said that he will bring the check to us
 tomorrow at our place. We managed to get the $3000 though, in cash,
 which was important. So we sign off on the title and handed him the car.
 
@@ -200,8 +200,15 @@ this unexpectedness.
 
 We talked to a couple of my American friends. Most of them said what F
 said was plain nonsense. However, none of them are legal experts so I
-still couldn't be sure. I now have an appointment with student legal
-services next week to get to the bottom of this.
+still couldn't be sure. I made an appointment with student legal
+services to get to the bottom of this.
+
+When I finally met with student legal services, the lawyer confirmed
+that there was no such "48-hour period" thing. Once the title has been
+transferred and the payment has been received, the transaction was over.
+When I asked if I should prompt F for the remaining $100, the lawyer
+advised against it. His words were "let sleeping dogs lie", which I
+completely agree with.
 
 Of course, after all this, the issue of the remaining $100 was never
 raised again. So F got what he wanted -- a good car for $3000. This was
@@ -209,7 +216,7 @@ probably his ploy from the beginning.
 
 All in all, I don't mind selling the car at a cheaper price to F.
 Getting $3000 was good enough for us because it can be used as a down
-payment for a new car. I just wished he didn't pull the shit with trying
+payment for a new car. I just wished he didn't pull the stunt with trying
 to return it. He might be a professional buyer who prowls Craigslist for
 cheap luxury cars from university students and then tries to sell them
 for higher later. Nothing wrong with that. It's a workable business
@@ -221,23 +228,19 @@ To summarize here are the list of suspicious things that you should
 definitely watch out for while selling your car:
 
 1. Watch out for people telling a story about buying a car for his/her
-   close family member. It's a _probably_ way to form a connection with
-you as the seller.
+   close family member. It's _probably_ a way to form a connection with
+you as the seller. It's probably best to be as apathetic as possible.
 1. Know the condition of the car before selling it. Do your own check at
    a mechanic you can trust. That way you can see if both assessments
 match.
 1. Be firm on the price that you are willing to accept and don't go
    below this. Ours was $3000.
-1. Make sure you have access to student legal services. At this point, I
-   am not sure if F is going to pull more shit with returning the car.
-So I am talking to legal services to get all my bases covered.
+1. Know that you have should walk away from the deal anytime you feel
+   something is suspicious. Always do all the transactions in public
+spaces and be sure to have a witness.
 
 Again, like I mentioned at the beginning of this post, I have no way to
 prove any of what I have written. It's all speculative. However, given
 the number of red flags, I think it is safe to say that F definitely had
 something up his sleeve from the beginning.
-
-I will update this post most when I hear back from student legal
-services. But at this point, I think F was just trying to pull a fast
-one with the "48-hour period" issue.
 
