@@ -7,20 +7,20 @@ categories: [post, phd]
 This is the first in a series of articles that I have always wanted to
 write. I just needed to wait for the right time to write it. I think the
 time is right -- I just completed (defended and deposited) my PhD a few
-weeks back, so I feel that I am now in a position to opine about this
-topic. These are all thoughts that I have always held dear but never
-wrote down.
+weeks back, so I feel that I am now in a _better_ position to opine
+about this topic. These are all thoughts that I have always held dear
+but never wrote down.
 
 What, specifically, is the topic of this post? It is about the things
 that no one tells you about what a PhD is. This is just a natural side
 effect from fact that unless you grow up in a campus town, not many
 people you know will have a PhD.
 
-A PhD is _just another degree_, much like your Bachelor's and Master's.
-A Bachelor's degree is the most structured of them, much like a high
-school diploma. To earn a Bachelor's you take the required courses and
-get decent grades in them. A Master's is less structured. You need to
-take some courses and perhaps work on a large project. A PhD is the
+A PhD is _just another degree_, much like your Bachelor's and Master's
+degrees. A Bachelor's degree is the most structured of them, much like a
+high school diploma. To earn a Bachelor's you take the required courses
+and get decent grades in them. A Master's is less structured.  You need
+to take some courses and perhaps work on a large project. A PhD is the
 least structured (it is, thankfully, becoming more structured now). You
 take more classes and then you need to come up with a specific area to
 work on. Then you need to demonstrate to a group of _at least_ four
@@ -46,7 +46,7 @@ are the things that most people sweep under the rug because it is simply
 too hard to explain it until you have worked on the topic for a
 sufficiently long time.
 
-In fact, if you give us enough time, PhDs can talk about all the
+In fact, if you give them enough time, PhDs can talk about all the
 subtleties of their particular topic -- way more than any normal person
 would care to listen to.
 
@@ -68,7 +68,8 @@ demonstrating intellectual merit in an academic setting.
 First, let's see how things work in the real world. If you were in
 charge of a large project in the real world, you demonstrate competency
 to your employers by building a complete, reliable and working system
-that others can use.
+that others can use. You are rewarded for making something practical
+that works.
 
 This is not how it actually works in an academic setting. You
 demonstrate competency by building a partial and mostly-working
@@ -83,7 +84,10 @@ next prototype to demonstrate your future claims.
 The unfortunate consequence of this is that sometimes that prototype
 that you build could be rather detached from the real world. In extreme
 cases, since you are the only one working on it, it might not even work
-for other people.
+for other people. Building something that is practical is a good thing
+to do but it is not pivotal to getting a PhD. I've read enough papers
+where the proposed technique was so complicated that most people would
+shy away from using it in real life.
 
 So those are the three main keywords. Now let's talk about the phrase
 "reasonably smart". Getting a PhD is more about perseverance than
@@ -97,7 +101,7 @@ what they are doing.
 
 Hopefully this post has helped clarified what a PhD actually is. Like I
 mentioned, unless you frequently interact with PhDs, it is not
-immediately obvious what that actually means. Most technical
+immediately obvious what it means to have a PhD. Most technical
 interviewers have the wrong idea of what a PhD is and, thus, tend to
 have wrong expectations during the interview process.
 
