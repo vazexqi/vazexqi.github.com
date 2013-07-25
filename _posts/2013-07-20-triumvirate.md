@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "new post"
+title: "Tmux, Vim and Zsh "
 published: false
 category: posts
 ---
+
+
