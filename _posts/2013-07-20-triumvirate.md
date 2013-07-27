@@ -25,4 +25,40 @@ application is just not feasible.
 
 So if you have any time at all, I think it is a good investment to start
 learning how to use these tools. The learning curve might be steep at
-first but you can always start small and move on from there.
+first but you can always start small and move on from there. All of
+these tools that I will be talking about are easily configured. To get
+you started, I've shared my configuration files in my
+[dotfiles](https://github.com/vazexqi/dotfiles) repository on Github.
+
+Let's start with the most essential, tmux.
+
+h1. tmux
+
+tmux is a _terminal multiplexer_.
+
+> It lets you switch easily between several programs in one terminal,
+> detach them (they keep running in the background) and reattach them to a
+> different terminal.
+
+Why is this useful? 
+
+Everyday, I get to my office, open the terminal at my workstation and
+hack away. I open several programs in the terminal -- usually a
+combination of vim, perforce, etc. I do my work and go home. Sometimes,
+at home I would like to reconnect to my workstation and continue working
+from home. tmux lets me _reattach_ to the same terminal at my
+workstation so I get the same opened programs. So I can manipulate all
+my opened programs easily.
+
+When I am done at home, I just detach tmux and reattach it again the
+next day at the office.
+
+This is not limited to working at the office and at home. I can
+reconnect to a terminal on a remote machine from any other terminal and
+have access to all my programs and the state that they were in.
+
+As a bonus, because I can _multiplex_ between different programs from a
+single terminal, I eliminate the need to open multiple terminal windows.
+Opening multiple terminal windows for each new program gets unwieldy
+pretty quickly.
+
