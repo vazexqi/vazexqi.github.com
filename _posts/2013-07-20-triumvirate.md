@@ -62,3 +62,13 @@ single terminal, I eliminate the need to open multiple terminal windows.
 Opening multiple terminal windows for each new program gets unwieldy
 pretty quickly.
 
+There is at least one other alternative to tmux:
+[screen](http://en.wikipedia.org/wiki/GNU_Screen) which has been around
+for a longer time. It is worth learning simply for the fact that you can
+count on it being installed on most systems whereas you would probably
+need to install tmux on your own.
+
+Regardless of which one you choose to learn, being able to use at least
+one terminal multiplexer is a good investment especially if you
+frequently use different machines to work on.
+
