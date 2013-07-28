@@ -1,19 +1,19 @@
 ---
 layout: post
-title: "Tmux, Vim and Zsh "
+title: "tmux, vim and zsh"
 published: false
 category: posts
 ---
 
-It's been almost two weeks since I started working at Salesforce.com.
+It's been about two weeks since I started working at Salesforce.com.
 And so far I am really enjoying it. There are plenty of interesting and
 challenging problems to work on. And we have a good set of internal
 tools that we use to get our stuff down.
 
 We work using a variety of different languages with a very large code
 base. And, most of the time, the three tools that I have found
-indispensable are tmux, vim (or your favorite terminal editor) and zsh
-(with the oh-my-zsh plug-ins).
+indispensable are tmux (or your favorite terminal multiplexer), vim (or
+your favorite terminal editor) and zsh (with the oh-my-zsh plug-ins).
 
 In fact, I would say that these three tools, when adequately configured,
 are the most useful things that one can have in their repertoire of
@@ -21,20 +21,21 @@ developer tools. They work almost everywhere -- this is very important
 when you are not sure which machine you need to be working on locally or
 remotely. They are good are what they do -- handling everything from the
 simple cases to the more complex ones where loading full fledge GUI
-application is just not feasible.
+application through the internet is just not feasible.
 
 So if you have any time at all, I think it is a good investment to start
-learning how to use these tools. The learning curve might be steep at
-first but you can always start small and move on from there. All of
-these tools that I will be talking about are easily configured. To get
-you started, I've shared my configuration files in my
+learning how to use these tools. I started off during my years at the
+university. The initial learning curve might be steep but you can always
+start small and move on from there. All of these tools that I will be
+talking about are easily configured. To get you started, I've shared my
+configuration files in my
 [dotfiles](https://github.com/vazexqi/dotfiles) repository on Github.
 
 Let's start with the most essential, tmux.
 
-h1. tmux
+## tmux
 
-tmux is a _terminal multiplexer_.
+[tmux](http://tmux.sourceforge.net/) is a _terminal multiplexer_.
 
 > It lets you switch easily between several programs in one terminal,
 > detach them (they keep running in the background) and reattach them to a
@@ -50,8 +51,8 @@ from home. tmux lets me _reattach_ to the same terminal at my
 workstation so I get the same opened programs. So I can manipulate all
 my opened programs easily.
 
-When I am done at home, I just detach tmux and reattach it again the
-next day at the office.
+When I am done at home, I just detach tmux and I can reattach it again
+the next day at the office.
 
 This is not limited to working at the office and at home. I can
 reconnect to a terminal on a remote machine from any other terminal and
@@ -60,7 +61,9 @@ have access to all my programs and the state that they were in.
 As a bonus, because I can _multiplex_ between different programs from a
 single terminal, I eliminate the need to open multiple terminal windows.
 Opening multiple terminal windows for each new program gets unwieldy
-pretty quickly.
+pretty quickly. How often do you see your co-workers desktops littered
+with a ton of open terminal windows without a clear way to identify the
+right one quickly?
 
 There is at least one other alternative to tmux:
 [screen](http://en.wikipedia.org/wiki/GNU_Screen) which has been around
@@ -70,5 +73,27 @@ need to install tmux on your own.
 
 Regardless of which one you choose to learn, being able to use at least
 one terminal multiplexer is a good investment especially if you
-frequently use different machines to work on.
+frequently use different machines to work on. I would recommend reading
+[Pragmatic Tmux](http://pragprog.com/book/bhtmux/tmux) to get up to
+speed quickly on tmux. Here's a video of the author, Brian Hogan,
+promoting the usefulness of tmux:
+
+<iframe width="420" height="315"
+src="//www.youtube.com/embed/JXwS7z6Dqic" frameborder="0"
+allowfullscreen></iframe>
+
+## vim
+
+I'm not going to turn this into a vim vs emacs post so you can just pick
+whichever text editor you are comfortable with. In fact, if you prefer
+to use nano or pico, that is probably fine too. You just need to be able
+to use a terminal-based (not GUI-based) editor fairly well.
+
+I am not bashing full-featured text editors such as TextMate or its,
+now-more-sexy counterpart, Sublime Text. Those GUI editors are wonderful
+and I use them too. However, sometimes you just don't have the luxury of
+installing and configuring a GUI-based too. What if the computer you are
+trying to connect to doesn't allow to load a UI instance? You need some
+fallback plan.
+
 
