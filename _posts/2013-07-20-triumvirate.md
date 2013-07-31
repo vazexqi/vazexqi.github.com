@@ -96,4 +96,14 @@ installing and configuring a GUI-based too. What if the computer you are
 trying to connect to doesn't allow to load a UI instance? You need some
 fallback plan.
 
+vim (and other venerable text editors) are almost always around on any
+\*nix based machines. Therefore you can always rely on them on remote
+machines especially when you are trying to edit some configuration file.
+
+Another advantage that I have found with such editors is that they are
+really fast compared to full IDEs. Now, don't get me wrong, I think IDEs
+are indispensable (heck, I worked on creating useful tools that plug
+into Eclipse as part of my PhD). However, sometimes they can be just too
+slow. And for dynamic languages such as JavaScript, current IDEs do not
+offer much in comparison to a well-configured text editor.
 
