@@ -5,7 +5,7 @@ published: false
 category: posts
 ---
 
-It's been about two weeks since I started working at Salesforce.com.
+It's been about three weeks since I started working at Salesforce.com.
 And so far I am really enjoying it. There are plenty of interesting and
 challenging problems to work on. And we have a good set of internal
 tools that we use to get our stuff down.
@@ -105,5 +105,11 @@ really fast compared to full IDEs. Now, don't get me wrong, I think IDEs
 are indispensable (heck, I worked on creating useful tools that plug
 into Eclipse as part of my PhD). However, sometimes they can be just too
 slow. And for dynamic languages such as JavaScript, current IDEs do not
-offer much in comparison to a well-configured text editor.
+offer any advantage over a well-configured text editor. The usual
+features that IDEs have for statically-typed languages such as Java or
+C\# -- code completion, call hierarchy, find all references, etc -- are
+not available for JavaScript meaning that you are pretty much left
+with regular expression search.
+
+## zsh
 
